@@ -20,12 +20,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         window?.makeKeyAndVisible()
+    
         
         let checkInVC = CheckInViewController()
+//        let navigationController = UINavigationController(rootViewController: checkInVC)
+//        navigationController.navigationBar.isTranslucent = true
+//        navigationController.navigationBar.setBackgroundImage(UIImage(named: "primaryOrange"), for: .default)
+//        navigationController.navigationBar.shadowImage = UIImage(named: "primaryOrange")
+     
+//        navigationController.navigationItem.largeTitleDisplayMode = .always
+        
         window?.rootViewController = checkInVC
         
         return true
     }
+    
+  
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
