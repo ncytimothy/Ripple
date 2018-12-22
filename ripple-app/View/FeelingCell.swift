@@ -77,8 +77,6 @@ class FeelingCell: UICollectionViewCell {
                 titleLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
                 titleLabel.topAnchor.constraint(equalTo: feelingImageView.safeAreaLayoutGuide.bottomAnchor, constant: 10),
        
-      
-                
                 colorOverlay.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
                 colorOverlay.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
                 colorOverlay.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1.0),

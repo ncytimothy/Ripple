@@ -23,18 +23,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         
         let checkInVC = CheckInViewController()
-//        let navigationController = UINavigationController(rootViewController: checkInVC)
-//        navigationController.navigationBar.isTranslucent = true
-//        navigationController.navigationBar.setBackgroundImage(UIImage(named: "primaryOrange"), for: .default)
-//        navigationController.navigationBar.shadowImage = UIImage(named: "primaryOrange")
-     
-//        navigationController.navigationItem.largeTitleDisplayMode = .always
+
+        let navigationVC = UINavigationController(rootViewController: checkInVC)
+        navigationVC.navigationBar.isTranslucent = false
+        navigationVC.navigationBar.setBackgroundImage(UIImage(named: "primaryOrange"), for: .default)
+        navigationVC.navigationBar.shadowImage = UIImage()
         
-        window?.rootViewController = checkInVC
+        navigationVC.navigationBar.tintColor = .white
+
+        window?.rootViewController = navigationVC
         
         return true
     }
     
+    
+    //        let navigationController = UINavigationController(rootViewController: checkInVC)
+    //        navigationController.navigationBar.isTranslucent = true
+    //        navigationController.navigationBar.setBackgroundImage(UIImage(named: "primaryOrange"), for: .default)
+    //        navigationController.navigationBar.shadowImage = UIImage(named: "primaryOrange")
+    
+    //        navigationController.navigationItem.largeTitleDisplayMode = .always
   
 
     func applicationWillResignActive(_ application: UIApplication) {

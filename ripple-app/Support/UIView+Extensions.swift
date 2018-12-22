@@ -24,10 +24,51 @@ extension UIView {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
         
     }
-   
+    
+    static func setHeaderContainerView() -> UIView {
+        let containterView = UIView()
+        containterView.translatesAutoresizingMaskIntoConstraints = false
+        return containterView
+    }
+}
 
-    
-    
+extension UITextView {
+    func setHeaderTextView(title: String, subtitle: String) -> UITextView {
+        let textView = UITextView()
+        
+        textView.backgroundColor = .green
+        
+         let attributedText = NSMutableAttributedString(string: title, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        attributedText.append(NSAttributedString(string: "\n\(subtitle)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        
+        textView.attributedText = attributedText
+        
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return textView
+    }
     
 }
+
+extension UILabel {
+    static func setHeaderLabel(title: String, subtitle: String) -> UILabel {
+        let label = UILabel()
+        label.numberOfLines = 2
+        
+        let attributedText = NSMutableAttributedString(string: title, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        attributedText.append(NSAttributedString(string: "\n\(subtitle)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        
+        label.attributedText = attributedText
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+        
+    }
+    
+}
+
+
 

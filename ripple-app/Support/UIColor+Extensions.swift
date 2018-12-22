@@ -14,9 +14,9 @@ extension UIColor {
     
     static let primaryOrange: UIColor = UIColor.rgb(red: 245, green: 166, blue: 35)
     static let secondaryOrange: UIColor = UIColor.rgb(red: 239, green: 155, blue: 15)
+    static let darkenOrange: UIColor = UIColor.rgb(red: 172, green: 113, blue: 14)
     static let overlayOrange: UIColor = UIColor.rgb(red: 217, green: 149, blue: 37, alpha: 0.68)
 
-    
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1) -> UIColor {
         return UIColor(red: red/Divisor, green: green/Divisor, blue: blue/Divisor, alpha: alpha)
     }

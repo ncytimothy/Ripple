@@ -8,19 +8,23 @@
 
 import UIKit
 
-let cellId = "feelingCell"
-
 class CheckInViewController: UIViewController {
 
+    let cellId = "feelingCell"
+    
     var feelingsCollectionView: UICollectionView!
-    var leadingConstraintForFeelingsCollection: CGFloat!
-    var nextButton: UIButton!
+    var leadingConstraintForFeelingsCollection: CGFloat = 20
+    
+
+    var nextBarButtonItem = UIBarButtonItem()
     
     var feelings = [Feeling]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupViews()
+        
         
         let happy = Feeling.setFeeling(feelingImageName: "happy", feelingText: "Happy")
         let sad = Feeling.setFeeling(feelingImageName: "sad", feelingText: "Sad")

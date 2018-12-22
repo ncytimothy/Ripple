@@ -12,7 +12,6 @@ extension CheckInViewController: UICollectionViewDataSource, UICollectionViewDel
     
     func setupCollectionView() {
         
-        
         let layout = UICollectionViewFlowLayout()
         let space: CGFloat = 3.0
         
@@ -27,11 +26,10 @@ extension CheckInViewController: UICollectionViewDataSource, UICollectionViewDel
         layout.minimumLineSpacing = space
         layout.itemSize = CGSize(width: dimension, height: dimension)
         layout.scrollDirection = UICollectionView.ScrollDirection.vertical
-        
+    
         feelingsCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         feelingsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         feelingsCollectionView.backgroundColor = UIColor.primaryOrange
-//        feelingsCollectionView.allowsMultipleSelection = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -55,41 +53,41 @@ extension CheckInViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
 
-    func updateSelectUI(cell: FeelingCell) {
-        
-        if cell.isSelected {
-            if  cell.colorOverlay.alpha == 0.0 {
-                animateSelectOverlay(cell)
-                nextButton.isHidden = false
-            } else {
-                animateDeselectOverlay(cell)
-                nextButton.isHidden = true
-            }
-        }
-        
-        if !cell.isSelected && cell.colorOverlay.alpha != 0.0 {
-            animateDeselectOverlay(cell)
-        }
-        
-    }
+//    func updateSelectUI(cell: FeelingCell) {
+//        
+//        if cell.isSelected {
+//            if  cell.colorOverlay.alpha == 0.0 {
+//                animateSelectOverlay(cell)
+//                nextButton.isHidden = false
+//            } else {
+//                animateDeselectOverlay(cell)
+//                nextButton.isHidden = true
+//            }
+//        }
+//        
+//        if !cell.isSelected && cell.colorOverlay.alpha != 0.0 {
+//            animateDeselectOverlay(cell)
+//        }
+//        
+//    }
     
-    fileprivate func animateSelectOverlay(_ cell: FeelingCell) {
-        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options:                     [.curveEaseIn, .curveEaseOut], animations: {
-            cell.colorOverlay.alpha = 0.68
-            cell.colorOverlay.bounds.size.height -= 20
-            cell.colorOverlay.bounds.size.width -= 20
-        }, completion: nil
-        )
-    }
-    
-    
-    fileprivate func animateDeselectOverlay(_ cell: FeelingCell) {
-        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [.curveEaseIn, .curveEaseOut], animations: {
-            cell.colorOverlay.bounds.size.height += 20
-            cell.colorOverlay.bounds.size.width += 20
-            cell.colorOverlay.alpha = 0.0
-        }, completion: nil
-        )
-    }
+//    fileprivate func animateSelectOverlay(_ cell: FeelingCell) {
+//        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options:                     [.curveEaseIn, .curveEaseOut], animations: {
+//            cell.colorOverlay.alpha = 0.68
+//            cell.colorOverlay.bounds.size.height -= 20
+//            cell.colorOverlay.bounds.size.width -= 20
+//        }, completion: nil
+//        )
+//    }
+//    
+//    
+//    fileprivate func animateDeselectOverlay(_ cell: FeelingCell) {
+//        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [.curveEaseIn, .curveEaseOut], animations: {
+//            cell.colorOverlay.bounds.size.height += 20
+//            cell.colorOverlay.bounds.size.width += 20
+//            cell.colorOverlay.alpha = 0.0
+//        }, completion: nil
+//        )
+//    }
     
 }
