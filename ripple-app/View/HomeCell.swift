@@ -1,5 +1,5 @@
 //
-//  PersonCell.swift
+//  HomeCell.swift
 //  ripple-app
 //
 //  Created by Tim Ng on 12/22/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PersonCell: UICollectionViewCell {
+class HomeCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,8 +18,6 @@ class PersonCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //TODO: Profile Image
     
     var person: Person? {
         didSet {
@@ -58,14 +56,13 @@ class PersonCell: UICollectionViewCell {
         addSubview(phoneNumberLabel)
         
         NSLayoutConstraint.activate([
-                nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
-                nameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 12),
-                nameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -12),
-                
-                phoneNumberLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
-                phoneNumberLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 12),
-                phoneNumberLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -12)
+            nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
+            nameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 12),
+            nameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -12),
+            
+            phoneNumberLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
+            phoneNumberLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 12),
+            phoneNumberLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -12)
             ])
     }
-    
 }

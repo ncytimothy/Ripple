@@ -50,8 +50,11 @@ class CheckInViewController: UIViewController {
     
     @objc func nextTapped() {
         print("Next tapped...")
-        let contactSelectionVC = ContactSelectionVC()
-        self.navigationController?.pushViewController(contactSelectionVC, animated: true)
+        
+        let homeViewController = HomeViewController()
+        self.navigationController?.pushViewController(homeViewController, animated: true)
+//        let contactSelectionVC = ContactSelectionVC()
+//        self.navigationController?.pushViewController(contactSelectionVC, animated: true)
         
     }
 

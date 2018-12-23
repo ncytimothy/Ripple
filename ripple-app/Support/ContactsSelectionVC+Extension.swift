@@ -13,6 +13,8 @@ import Contacts
 extension ContactSelectionVC {
     func setupViews() {
         
+         view.backgroundColor = .primaryOrange
+        
         nextBarButtonItem = UIBarButtonItem(title: "NEXT", style: .done, target: self, action: #selector(nextTapped))
         
         setupCollectionView()
@@ -35,20 +37,15 @@ extension ContactSelectionVC {
             
             textView.attributedText = attributedText
             
+            textView.isEditable = false
+            textView.isSelectable = false
+            
             textView.translatesAutoresizingMaskIntoConstraints = false
             
             return textView
         }()
-
-
-        let headerContainerView: UIView = {
-            let containterView = UIView()
-            containterView.backgroundColor = .white
-            containterView.translatesAutoresizingMaskIntoConstraints = false
-            return containterView
-        }()
         
-        let button: UIButton = {
+        let bottomButton: UIButton = {
             let button = UIButton()
             button.setTitle("Add Contact", for: .normal)
             button.setTitleColor(.primaryOrange, for: .normal)
@@ -59,11 +56,12 @@ extension ContactSelectionVC {
             return button
         }()
         
-        view.addSubview(headerContainerView)
-        headerContainerView.addSubview(headerTextView)
-        view.addSubview(button)
+        bottomButton.addTarget(self, action: #selector(showContactsPicker), for: .touchUpInside)
+
+        view.addSubview(headerTextView)
+        view.addSubview(bottomButton)
         view.addSubview(safeCirclesCollectionView)
-        button.addTarget(self, action: #selector(showContactsPicker), for: .touchUpInside)
+    
         
         NSLayoutConstraint.activate([
 
@@ -76,12 +74,13 @@ extension ContactSelectionVC {
             safeCirclesCollectionView.topAnchor.constraint(equalTo: headerTextView.bottomAnchor),
             safeCirclesCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             safeCirclesCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            safeCirclesCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.55),
             
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.topAnchor.constraint(equalTo: safeCirclesCollectionView.bottomAnchor, constant: 8),
-            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
-            button.heightAnchor.constraint(equalToConstant: 50),
-            button.widthAnchor.constraint(equalToConstant: 200)
+            bottomButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            bottomButton.topAnchor.constraint(equalTo: safeCirclesCollectionView.bottomAnchor, constant: 8),
+            bottomButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
+            bottomButton.heightAnchor.constraint(equalToConstant: 50),
+            bottomButton.widthAnchor.constraint(equalToConstant: 200)
             
             ]) 
     }

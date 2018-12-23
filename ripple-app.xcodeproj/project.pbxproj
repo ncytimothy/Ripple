@@ -7,10 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C41760E421CF1BB900B29212 /* ThanksEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E321CF1BB900B29212 /* ThanksEditorVC.swift */; };
+		C41760E621CF1C6C00B29212 /* ThanksVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E521CF1C6C00B29212 /* ThanksVC+Extension.swift */; };
+		C41760E821CF239200B29212 /* EditorDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E721CF239200B29212 /* EditorDefaults.swift */; };
 		C42A330921B569FC00820AC7 /* ConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42A330821B569FC00820AC7 /* ConfirmationVC.swift */; };
 		C46A342E21B3FA0400C31029 /* FeelingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46A342D21B3FA0400C31029 /* FeelingCell.swift */; };
 		C46A343021B3FE0300C31029 /* CheckInVC+CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46A342F21B3FE0300C31029 /* CheckInVC+CollectionViewExtension.swift */; };
+		C46F144D21CE05D600C80533 /* PersonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F144C21CE05D600C80533 /* PersonConstants.swift */; };
+		C46F144F21CE072600C80533 /* PersonStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F144E21CE072600C80533 /* PersonStorage.swift */; };
+		C46F145121CE07D400C80533 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F145021CE07D400C80533 /* PersonCell.swift */; };
+		C46F145321CE2B5A00C80533 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F145221CE2B5A00C80533 /* HomeViewController.swift */; };
+		C46F145521CE2BBF00C80533 /* HomeViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F145421CE2BBF00C80533 /* HomeViewController+Extension.swift */; };
+		C46F145721CE347400C80533 /* HomeVC+CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F145621CE347400C80533 /* HomeVC+CollectionViewExtension.swift */; };
+		C46F145921CE34CD00C80533 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F145821CE34CD00C80533 /* HomeCell.swift */; };
+		C4801DCE21CDD50500B2762F /* ContactsSelectionVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4801DCD21CDD50500B2762F /* ContactsSelectionVC+Extension.swift */; };
+		C4801DD021CDD5B300B2762F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4801DCF21CDD5B300B2762F /* Person.swift */; };
+		C48D684A21CF70D3002AB82B /* HintVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48D684921CF70D3002AB82B /* HintVC.swift */; };
+		C48D684C21CF71AC002AB82B /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48D684B21CF71AC002AB82B /* Page.swift */; };
+		C48D684E21CF765D002AB82B /* HintVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48D684D21CF765D002AB82B /* HintVC+Extension.swift */; };
+		C48D685021CF76F0002AB82B /* HintCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48D684F21CF76F0002AB82B /* HintCell.swift */; };
 		C495AD2B21B41F030059F70A /* FeelingCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495AD2A21B41F030059F70A /* FeelingCell+Model.swift */; };
+		C4B4172021CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4171F21CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift */; };
 		C4B9D5EB21B2806A00515E40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B9D5EA21B2806A00515E40 /* AppDelegate.swift */; };
 		C4B9D5ED21B2806A00515E40 /* CheckInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B9D5EC21B2806A00515E40 /* CheckInVC.swift */; };
 		C4B9D5F221B2806A00515E40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4B9D5F121B2806A00515E40 /* Assets.xcassets */; };
@@ -22,10 +39,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C41760E321CF1BB900B29212 /* ThanksEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksEditorVC.swift; sourceTree = "<group>"; };
+		C41760E521CF1C6C00B29212 /* ThanksVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThanksVC+Extension.swift"; sourceTree = "<group>"; };
+		C41760E721CF239200B29212 /* EditorDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorDefaults.swift; sourceTree = "<group>"; };
 		C42A330821B569FC00820AC7 /* ConfirmationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationVC.swift; sourceTree = "<group>"; };
 		C46A342D21B3FA0400C31029 /* FeelingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingCell.swift; sourceTree = "<group>"; };
 		C46A342F21B3FE0300C31029 /* CheckInVC+CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckInVC+CollectionViewExtension.swift"; sourceTree = "<group>"; };
+		C46F144C21CE05D600C80533 /* PersonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonConstants.swift; sourceTree = "<group>"; };
+		C46F144E21CE072600C80533 /* PersonStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonStorage.swift; sourceTree = "<group>"; };
+		C46F145021CE07D400C80533 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
+		C46F145221CE2B5A00C80533 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C46F145421CE2BBF00C80533 /* HomeViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Extension.swift"; sourceTree = "<group>"; };
+		C46F145621CE347400C80533 /* HomeVC+CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+CollectionViewExtension.swift"; sourceTree = "<group>"; };
+		C46F145821CE34CD00C80533 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		C4801DCD21CDD50500B2762F /* ContactsSelectionVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactsSelectionVC+Extension.swift"; sourceTree = "<group>"; };
+		C4801DCF21CDD5B300B2762F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		C48D684921CF70D3002AB82B /* HintVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintVC.swift; sourceTree = "<group>"; };
+		C48D684B21CF71AC002AB82B /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		C48D684D21CF765D002AB82B /* HintVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HintVC+Extension.swift"; sourceTree = "<group>"; };
+		C48D684F21CF76F0002AB82B /* HintCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintCell.swift; sourceTree = "<group>"; };
 		C495AD2A21B41F030059F70A /* FeelingCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeelingCell+Model.swift"; sourceTree = "<group>"; };
+		C4B4171F21CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactSelectionVC+CollectionViewExtension.swift"; sourceTree = "<group>"; };
 		C4B9D5E721B2806A00515E40 /* ripple-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ripple-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4B9D5EA21B2806A00515E40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4B9D5EC21B2806A00515E40 /* CheckInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInVC.swift; sourceTree = "<group>"; };
@@ -53,6 +87,9 @@
 			isa = PBXGroup;
 			children = (
 				C46A342D21B3FA0400C31029 /* FeelingCell.swift */,
+				C46F145021CE07D400C80533 /* PersonCell.swift */,
+				C46F145821CE34CD00C80533 /* HomeCell.swift */,
+				C48D684F21CF76F0002AB82B /* HintCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -62,6 +99,9 @@
 			children = (
 				C4B9D5EC21B2806A00515E40 /* CheckInVC.swift */,
 				C4FF4B4E21C6F8DA004BC137 /* ContactSelectionVC.swift */,
+				C46F145221CE2B5A00C80533 /* HomeViewController.swift */,
+				C41760E321CF1BB900B29212 /* ThanksEditorVC.swift */,
+				C48D684921CF70D3002AB82B /* HintVC.swift */,
 				C42A330821B569FC00820AC7 /* ConfirmationVC.swift */,
 			);
 			path = "View Controller";
@@ -71,6 +111,11 @@
 			isa = PBXGroup;
 			children = (
 				C495AD2A21B41F030059F70A /* FeelingCell+Model.swift */,
+				C4801DCF21CDD5B300B2762F /* Person.swift */,
+				C46F144E21CE072600C80533 /* PersonStorage.swift */,
+				C46F144C21CE05D600C80533 /* PersonConstants.swift */,
+				C41760E721CF239200B29212 /* EditorDefaults.swift */,
+				C48D684B21CF71AC002AB82B /* Page.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -81,6 +126,12 @@
 				C4B9D5EA21B2806A00515E40 /* AppDelegate.swift */,
 				C4B9D5FC21B2841B00515E40 /* CheckInVC+Extensions.swift */,
 				C46A342F21B3FE0300C31029 /* CheckInVC+CollectionViewExtension.swift */,
+				C4801DCD21CDD50500B2762F /* ContactsSelectionVC+Extension.swift */,
+				C4B4171F21CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift */,
+				C46F145421CE2BBF00C80533 /* HomeViewController+Extension.swift */,
+				C46F145621CE347400C80533 /* HomeVC+CollectionViewExtension.swift */,
+				C41760E521CF1C6C00B29212 /* ThanksVC+Extension.swift */,
+				C48D684D21CF765D002AB82B /* HintVC+Extension.swift */,
 				C4B9D60021B28C7A00515E40 /* UIColor+Extensions.swift */,
 				C4B9D60221B2920200515E40 /* UIView+Extensions.swift */,
 			);
@@ -189,14 +240,31 @@
 			files = (
 				C42A330921B569FC00820AC7 /* ConfirmationVC.swift in Sources */,
 				C495AD2B21B41F030059F70A /* FeelingCell+Model.swift in Sources */,
+				C46F145121CE07D400C80533 /* PersonCell.swift in Sources */,
+				C48D684E21CF765D002AB82B /* HintVC+Extension.swift in Sources */,
+				C41760E821CF239200B29212 /* EditorDefaults.swift in Sources */,
+				C46F145321CE2B5A00C80533 /* HomeViewController.swift in Sources */,
+				C46F144D21CE05D600C80533 /* PersonConstants.swift in Sources */,
 				C4FF4B4F21C6F8DA004BC137 /* ContactSelectionVC.swift in Sources */,
+				C48D685021CF76F0002AB82B /* HintCell.swift in Sources */,
 				C46A342E21B3FA0400C31029 /* FeelingCell.swift in Sources */,
 				C4B9D5ED21B2806A00515E40 /* CheckInVC.swift in Sources */,
+				C4801DCE21CDD50500B2762F /* ContactsSelectionVC+Extension.swift in Sources */,
 				C4B9D5FD21B2841B00515E40 /* CheckInVC+Extensions.swift in Sources */,
 				C4B9D60321B2920200515E40 /* UIView+Extensions.swift in Sources */,
 				C4B9D5EB21B2806A00515E40 /* AppDelegate.swift in Sources */,
+				C46F145721CE347400C80533 /* HomeVC+CollectionViewExtension.swift in Sources */,
+				C48D684C21CF71AC002AB82B /* Page.swift in Sources */,
+				C41760E621CF1C6C00B29212 /* ThanksVC+Extension.swift in Sources */,
+				C4B4172021CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift in Sources */,
+				C46F145921CE34CD00C80533 /* HomeCell.swift in Sources */,
+				C41760E421CF1BB900B29212 /* ThanksEditorVC.swift in Sources */,
 				C46A343021B3FE0300C31029 /* CheckInVC+CollectionViewExtension.swift in Sources */,
+				C48D684A21CF70D3002AB82B /* HintVC.swift in Sources */,
+				C46F144F21CE072600C80533 /* PersonStorage.swift in Sources */,
+				C4801DD021CDD5B300B2762F /* Person.swift in Sources */,
 				C4B9D60121B28C7A00515E40 /* UIColor+Extensions.swift in Sources */,
+				C46F145521CE2BBF00C80533 /* HomeViewController+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

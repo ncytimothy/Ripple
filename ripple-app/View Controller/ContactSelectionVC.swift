@@ -18,12 +18,12 @@ class ContactSelectionVC: UIViewController, CNContactPickerDelegate {
     
     var nextBarButtonItem = UIBarButtonItem()
     
-    var person = Person()
+//    var person = Person()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .primaryOrange
+       
     
         contactsPicker.delegate = self
         setupViews()
@@ -39,22 +39,24 @@ class ContactSelectionVC: UIViewController, CNContactPickerDelegate {
         self.present(contactsPicker, animated: true, completion: nil)
     }
     
-    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-        print("did select!")
-        print("\(contact.givenName)")
-        person = Person(name: "\(contact.givenName)" + " " + "\(contact.familyName)", phoneNumber: contact.phoneNumbers.first?.value.stringValue)
-
-        SharedData.sharedInstance.people.append(person)
-        print("\(SharedData.sharedInstance.people)")
-        safeCirclesCollectionView.reloadData()
-        updateSelectUI()
-        
-    }
+//    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+//        print("did select!")
+//        print("\(contact.givenName)")
+//        person = Person(name: "\(contact.givenName)" + " " + "\(contact.familyName)", phoneNumber: contact.phoneNumbers.first?.value.stringValue)
+//
+//        SharedData.sharedInstance.people.append(person)
+//        print("\(SharedData.sharedInstance.people)")
+//        safeCirclesCollectionView.reloadData()
+//        updateSelectUI()
+//        
+//    }
 
     // TODO: Add Slide to Delete
     
     @objc func nextTapped() {
         print("Next Tapped!")
+        let homeVC = HomeViewController()
+        self.navigationController?.pushViewController(homeVC, animated: true)
     }
     
 }

@@ -67,6 +67,9 @@ extension CheckInViewController {
             
             textView.attributedText = attributedText
             
+            textView.isEditable = false
+            textView.isSelectable = false
+            
             textView.translatesAutoresizingMaskIntoConstraints = false
             
             return textView
@@ -83,7 +86,7 @@ extension CheckInViewController {
             
             textView.attributedText = attributedText
             
-
+          
             
             textView.translatesAutoresizingMaskIntoConstraints = false
             

@@ -11,7 +11,6 @@ import Contacts
 
 
 public struct Person {
-    var name: String? = PersonConstants.Name
-    var phoneNumber: String? = PersonConstants.phoneNumber
+    let contact: CNContact
 }
 
