@@ -23,12 +23,12 @@ extension ContactSelectionVC: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return SharedData.sharedInstance.people.count
+        return PersonSharedData.sharedInstance.people.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: personCellId, for: indexPath) as! PersonCell
-        cell.person = SharedData.sharedInstance.people[indexPath.row]
+        cell.person = PersonSharedData.sharedInstance.people[indexPath.row]
         return cell
     }
     

@@ -8,8 +8,8 @@
 
 import Foundation
 
-class SharedData {
-    static let sharedInstance = SharedData()
+class PersonSharedData {
+    static let sharedInstance = PersonSharedData()
     var people = [Person]()
     private init() {}
 }

@@ -29,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationVC.navigationBar.setBackgroundImage(UIImage(named: "primaryOrange"), for: .default)
         navigationVC.navigationBar.shadowImage = UIImage()
         
+        
+        navigationVC.navigationBar.barStyle = .black
+        
         navigationVC.navigationBar.tintColor = .white
 
         window?.rootViewController = navigationVC

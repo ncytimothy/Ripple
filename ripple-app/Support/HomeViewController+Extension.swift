@@ -12,8 +12,9 @@ extension HomeViewController: UITextViewDelegate {
 
     func setupViews() {
         view.backgroundColor = .primaryOrange
-        giveThanksButton.alpha = 0.5
-        giveThanksButton.isEnabled = false
+        disableButton(button: completeButton)
+        disableButton(button: giveThanksButton)
+        
         
 //        setupCollectionView()
 //        homeCollectionView.delegate = self
@@ -44,7 +45,7 @@ extension HomeViewController: UITextViewDelegate {
         let safeCircleLabel: UILabel = {
             let label = UILabel()
             label.text = "Safe Circle"
-            label.font = UIFont.boldSystemFont(ofSize: 17)
+            label.font = UIFont.boldSystemFont(ofSize: 21)
             label.translatesAutoresizingMaskIntoConstraints = false
             label.textColor = .white
             return label
@@ -57,40 +58,47 @@ extension HomeViewController: UITextViewDelegate {
             return view
         }()
         
+
         hintButton.addTarget(self, action: #selector(hintTapped), for: .touchUpInside)
         giveThanksButton.addTarget(self, action: #selector(giveThanksTapped), for: .touchUpInside)
+        completeButton.addTarget(self, action: #selector(completeTapped), for: .touchUpInside)
         
         view.addSubview(headerTextView)
         view.addSubview(hintButton)
+        view.addSubview(completeButton)
         view.addSubview(editorTextView)
         view.addSubview(giveThanksButton)
-//        view.addSubview(safeCircleLabel)
-//        view.addSubview(dividerLineView)
-//        view.addSubview(homeCollectionView)
-//        view.addSubview(bottomButton)
+
         
         NSLayoutConstraint.activate([
+              
             headerTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             headerTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             headerTextView.heightAnchor.constraint(equalToConstant: 100),
-            
+
+            completeButton.topAnchor.constraint(equalTo: headerTextView.bottomAnchor),
+            completeButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
+            completeButton.widthAnchor.constraint(equalToConstant: 85),
+            completeButton.heightAnchor.constraint(equalToConstant: 30),
+
             hintButton.topAnchor.constraint(equalTo: headerTextView.bottomAnchor),
-            hintButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
+            hintButton.trailingAnchor.constraint(equalTo: completeButton.leadingAnchor, constant: -10),
             hintButton.widthAnchor.constraint(equalToConstant: 60),
             hintButton.heightAnchor.constraint(equalToConstant: 30),
-            
+
+
             editorTextView.topAnchor.constraint(equalTo: hintButton.bottomAnchor, constant: 14),
             editorTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             editorTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             editorTextView.heightAnchor.constraint(equalToConstant: 174),
-            
+
             giveThanksButton.topAnchor.constraint(equalTo: editorTextView.bottomAnchor, constant: 20),
             giveThanksButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             giveThanksButton.heightAnchor.constraint(equalToConstant: 50),
-            giveThanksButton.widthAnchor.constraint(equalToConstant: 200)
-            
-            
+            giveThanksButton.widthAnchor.constraint(equalToConstant: 200),
+
+        
 //            safeCircleLabel.topAnchor.constraint(equalTo: headerTextView.bottomAnchor, constant: 20),
 //            safeCircleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
 //            safeCircleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
@@ -99,7 +107,7 @@ extension HomeViewController: UITextViewDelegate {
 //            dividerLineView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
 //            dividerLineView.heightAnchor.constraint(equalToConstant: 1),
 //            dividerLineView.widthAnchor.constraint(equalToConstant: view.frame.width),
-            
+//            
 //            homeCollectionView.topAnchor.constraint(equalTo: headerTextView.bottomAnchor),
 //            homeCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 //            homeCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -110,7 +118,7 @@ extension HomeViewController: UITextViewDelegate {
 //            bottomButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
 //            bottomButton.heightAnchor.constraint(equalToConstant: 50),
 //            bottomButton.widthAnchor.constraint(equalToConstant: 200)
-            
+//            
             
             ])
         
@@ -127,26 +135,20 @@ extension HomeViewController: UITextViewDelegate {
         return button
     }
     
+
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == .gray {
             textView.text = ""
             textView.textColor = .black
-            giveThanksButton.isEnabled = true
-            
-            UIView.animate(withDuration: 0.1) {
-                 self.giveThanksButton.alpha = 1.0
-            }
-           
+            enableButton(button: giveThanksButton)
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if !textView.hasText || textView.text == EditorDefaults.placeholderText {
             replaceTextViewPlaceholder()
-            giveThanksButton.isEnabled = false
-            UIView.animate(withDuration: 0.1) {
-                self.giveThanksButton.alpha = 0.5
-            }
+            disableButton(button: giveThanksButton)
         }
     }
     
@@ -163,5 +165,19 @@ extension HomeViewController: UITextViewDelegate {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func enableButton(button: UIButton) {
+        button.isEnabled = true
+        UIView.animate(withDuration: 0.05) {
+            button.alpha = 1.0
+        }
+    }
+    
+    func disableButton(button: UIButton) {
+        button.isEnabled = false
+        UIView.animate(withDuration: 0.05) {
+            button.alpha = 0.5
+        }
     }
 }

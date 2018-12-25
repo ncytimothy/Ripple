@@ -87,7 +87,7 @@ extension ContactSelectionVC {
     
 
     func updateSelectUI() {
-        if SharedData.sharedInstance.people.count > 0 {
+        if PersonSharedData.sharedInstance.people.count > 0 {
             nextBarButtonItem.isEnabled = true
         } else {
             nextBarButtonItem.isEnabled = false

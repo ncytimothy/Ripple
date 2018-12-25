@@ -16,6 +16,8 @@ class CheckInViewController: UIViewController {
     var leadingConstraintForFeelingsCollection: CGFloat = 20
     
 
+    
+
     var nextBarButtonItem = UIBarButtonItem()
     
     var feelings = [Feeling]()
@@ -50,11 +52,8 @@ class CheckInViewController: UIViewController {
     
     @objc func nextTapped() {
         print("Next tapped...")
-        
-        let homeViewController = HomeViewController()
-        self.navigationController?.pushViewController(homeViewController, animated: true)
-//        let contactSelectionVC = ContactSelectionVC()
-//        self.navigationController?.pushViewController(contactSelectionVC, animated: true)
+        let tabBarController = CustomTabBarController()
+        self.navigationController?.pushViewController(tabBarController, animated: true)
         
     }
 

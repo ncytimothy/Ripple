@@ -8,12 +8,14 @@
 
 import UIKit
 
-class QuoteController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    
-    
-}
+//class QuoteController: UIViewController {
+//    
+//    var quoteCollectionView: UICollectionView!
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//    }
+//    
+//    
+//    
+//}
