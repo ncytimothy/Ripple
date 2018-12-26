@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class CheckInViewController: UIViewController {
+    
+//--------------------------------------------------------------------------------------------------
+    // MARK: Properties
 
     let cellId = "feelingCell"
     
@@ -18,6 +22,19 @@ class CheckInViewController: UIViewController {
     var nextBarButtonItem = UIBarButtonItem()
     
     var feelings = [Feeling]()
+    
+    // DataController property passed from AppeDelegate
+    var dataController: DataController?
+    
+    enum TabBarControllerConstants {
+        static let HomeViewController = 0
+        static let QuoteViewController = 1
+        static let ActivityViewController = 2
+        static let HistoryViewController = 3
+    }
+    
+//--------------------------------------------------------------------------------------------------
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +66,16 @@ class CheckInViewController: UIViewController {
     
     @objc func nextTapped() {
         print("Next tapped...")
-        let tabBarController = CustomTabBarController()
-        self.navigationController?.pushViewController(tabBarController, animated: true)
+
+        let customTabBarController = CustomTabBarController()
+        guard let tabBarViewControllers = customTabBarController.viewControllers else { return }
+        
+        let quoteVC = tabBarViewControllers[TabBarControllerConstants.QuoteViewController] as! QuoteViewController
+        quoteVC.dataController = dataController
+        
+        self.navigationController?.pushViewController(customTabBarController, animated: true)
         
     }
-
 
 
 }

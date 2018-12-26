@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class QuoteViewController: UIViewController {
 
@@ -21,15 +22,41 @@ class QuoteViewController: UIViewController {
         static let cellsCount: Int = 5
     }
     
+    // Dependency Data Controller Injection
+    var dataController: DataController!
+    
+    // Fetched Results Controller, specified with an entity
+    var fetchedResultsController: NSFetchedResultsController<Quote>!
+    
+    // Loading Indicator for Collection View
+    let loadingIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.hidesWhenStopped = true
+        indicator.style = UIActivityIndicatorView.Style.whiteLarge
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
 //-------------------------------------------------------------------------------------------------------------------------------------
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         
-//        downloadQuotes()
-//        downloadRandomQuote()
+        setUpFetchedResulsController()
         downloadRandomQuotes()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setUpFetchedResulsController()
+        print("fetchedObjects: \(fetchedResultsController.fetchedObjects)")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        fetchedResultsController = nil
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,6 +64,64 @@ class QuoteViewController: UIViewController {
 //        self.presentLoadingAlert()
     }
     
+// -------------------------------------------------------------------------
+    // MARK: - Fetched Results Controller Setup
+    
+    fileprivate func setUpFetchedResulsController() {
+        // 1. Create Fetch Request
+        let fetchRequest: NSFetchRequest<Quote> = Quote.fetchRequest()
+        
+        // 2. Configure the fetch request by adding a sort rule
+        // fetchRequest.sortDescriptors property takes an array of sort descriptors
+        // .sortDescriptors **MUST** be set on any NSFetchedResultsController instance
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // 3. Instantiate fetched results controller with fetch request
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "quote")
+        
+        // 4. Set the fetched results controller delegate property to self
+        fetchedResultsController.delegate = self
+        
+        // 5. Perform fetch to load data and start tracking
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("The fetch cannot be performed: \(error.localizedDescription)")
+        }
+        
+        // 6. Remove the Fetched Results Controller when the view disappears
+        // 7. Implement delegate confromance + methods for fetched results controller for UI updates (in an Extension)
+    }
+// -------------------------------------------------------------------------
+    // MARK: - Actions
+    
+    @objc func refreshPressed() {
+        
+        deleteAllQuotes()
+        downloadRandomQuotes()
+        
+    }
+    
+//-------------------------------------------------------------------------------------------------------------------------------------
+    // MARK: - Delete Quotes
+    
+    func deleteAllQuotes() {
+        quoteCollectionView.isScrollEnabled = false
+        loadingIndicator.startAnimating()
+        
+        if let quotesToDelete = fetchedResultsController.fetchedObjects {
+            for quoteToDelete in quotesToDelete {
+                dataController.viewContext.delete(quoteToDelete)
+                do {
+                    try dataController.viewContext.save()
+                } catch {
+                    debugPrint("Cannot delete quote!")
+                }
+            }
+            quoteCollectionView.isScrollEnabled = true
+        }
+    }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
     // MARK: - Helper
@@ -51,7 +136,7 @@ class QuoteViewController: UIViewController {
     
     
     fileprivate func downloadQuotes() {
-        TheySaidSoClient.sharedInstance().downloadQuotes { (success, error) in
+        TheySaidSoClient.sharedInstance().downloadQuotes(dataController: dataController) { (success, error) in
             if success {
                 debugPrint("Success!")
                 DispatchQueue.main.async {
@@ -73,12 +158,11 @@ class QuoteViewController: UIViewController {
     }
     
     fileprivate func addRandomQuote() {
-        TheySaidSoClient.sharedInstance().downloadRandomQuote { (success, error) in
+        guard (fetchedResultsController.fetchedObjects?.isEmpty)! else { return }
+        
+        TheySaidSoClient.sharedInstance().downloadRandomQuote(dataController: dataController) { (success, error) in
             if success {
                 debugPrint("Success!")
-                DispatchQueue.main.async {
-                    self.quoteCollectionView.reloadData()
-                }
             }
         }
     }
@@ -97,5 +181,26 @@ private extension QuoteViewController {
         
         alert.view.addSubview(loadingIndicator)
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+// -------------------------------------------------------------------------
+// MARK: - NSFetchedResultsControllerDelegate
+extension QuoteViewController: NSFetchedResultsControllerDelegate {
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            loadingIndicator.stopAnimating()
+            quoteCollectionView.insertItems(at: [newIndexPath!])
+        case .delete:
+            quoteCollectionView.deleteItems(at: [indexPath!])
+        case .update:
+            quoteCollectionView.reloadItems(at: [newIndexPath!])
+            break
+        default:
+            break
+        }
     }
 }

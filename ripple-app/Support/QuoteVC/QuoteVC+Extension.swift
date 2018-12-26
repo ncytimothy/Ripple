@@ -12,11 +12,24 @@ extension QuoteViewController {
     
     func setupViews() {
         view.backgroundColor = .primaryOrange
+    
         
         setupCollectionView()
         quoteCollectionView.delegate = self
         quoteCollectionView.dataSource  = self
         quoteCollectionView.register(QuoteCell.self, forCellWithReuseIdentifier: quoteCellId)
+        
+        let refreshButton: UIButton = {
+            let button = UIButton()
+            button.setTitle("REFRESH", for: .normal)
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+            button.titleLabel?.textColor = .white
+            
+            button.translatesAutoresizingMaskIntoConstraints = false
+            
+            button.addTarget(self, action: #selector(refreshPressed), for: .touchUpInside)
+            return button
+        }()
         
         let headerTextView: UITextView = {
             let textView = UITextView()
@@ -38,6 +51,7 @@ extension QuoteViewController {
         }()
         
      view.addSubview(headerTextView)
+     view.addSubview(refreshButton)
      view.addSubview(quoteCollectionView)
         
         NSLayoutConstraint.activate([
@@ -47,7 +61,10 @@ extension QuoteViewController {
             headerTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             headerTextView.heightAnchor.constraint(equalToConstant: 100),
             
-            quoteCollectionView.topAnchor.constraint(equalTo: headerTextView.bottomAnchor, constant: 8),
+            refreshButton.topAnchor.constraint(equalTo: headerTextView.bottomAnchor),
+            refreshButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
+            
+            quoteCollectionView.topAnchor.constraint(equalTo: refreshButton.bottomAnchor, constant: 8),
             quoteCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             quoteCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             quoteCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8)

@@ -12,15 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+    // DataController init to be injected to initial VC and passed
+    let dataController = DataController(modelName: "Ripple")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+          // Override point for customization after application launch.
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        
         window?.makeKeyAndVisible()
-    
         
         let checkInVC = CheckInViewController()
 
@@ -29,9 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationVC.navigationBar.setBackgroundImage(UIImage(named: "primaryOrange"), for: .default)
         navigationVC.navigationBar.shadowImage = UIImage()
         
+        checkInVC.dataController = dataController
+        
+        dataController.load()
         
         navigationVC.navigationBar.barStyle = .black
-        
         navigationVC.navigationBar.tintColor = .white
 
         window?.rootViewController = navigationVC
@@ -39,13 +40,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    
-    //        let navigationController = UINavigationController(rootViewController: checkInVC)
-    //        navigationController.navigationBar.isTranslucent = true
-    //        navigationController.navigationBar.setBackgroundImage(UIImage(named: "primaryOrange"), for: .default)
-    //        navigationController.navigationBar.shadowImage = UIImage(named: "primaryOrange")
-    
-    //        navigationController.navigationItem.largeTitleDisplayMode = .always
+    func saveViewContext() {
+        /** Helper Method
+         * Calls save on the Data Controller's view context
+         * To be used in applicationDidEnterBackground and applicationWillTerminate
+         */
+        do {
+            try dataController.viewContext.save()
+        } catch {
+            fatalError("dataController.viewContext cannot be save!")
+        }
+    }
   
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -56,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        saveViewContext()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -68,7 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        saveViewContext()
     }
+    
+
 
 
 }

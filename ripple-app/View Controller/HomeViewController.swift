@@ -11,6 +11,8 @@ import UIKit
 class HomeViewController: UIViewController, UIActivityItemSource {
     
     let homeCellId = "homeId"
+    
+    var dataController: DataController!
    
     let editorTextView: UITextView = {
         let textView = UITextView()

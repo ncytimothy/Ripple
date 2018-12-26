@@ -7,22 +7,30 @@
 //
 
 import UIKit
-
+import CoreData
 
 class CustomTabBarController: UITabBarController {
     
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        guard let dataController = dataController else {
+//            debugPrint("Cannot pass dataController in tab")
+//            return
+//        }
         
         tabBar.tintColor = UIColor.primaryOrange
         
         let homeVC = HomeViewController()
         homeVC.tabBarItem = UITabBarItem(title: "Give", image: UIImage(named: "heart-selected"), selectedImage: UIImage(named: "heart-selected"))
         
+        
         let quoteVC = QuoteViewController()
         quoteVC.tabBarItem = UITabBarItem(title: "Quotes", image: UIImage(named: "quote"), selectedImage: UIImage(named: "quote"))
        
-        let activityVC = UIViewController()
+        let activityVC = ActivityViewController()
         activityVC.tabBarItem = UITabBarItem(title: "Activity", image: UIImage(named: "activity-happy"), selectedImage: UIImage(named: "activity-happy"))
         
         let historyVC = UIViewController()
@@ -30,6 +38,8 @@ class CustomTabBarController: UITabBarController {
         
         let tabBarList = [homeVC, quoteVC, activityVC, historyVC]
         viewControllers = tabBarList
+        
+        
         
         
         

@@ -11,7 +11,7 @@ import Foundation
 extension TheySaidSoClient {
 //---------------------------------------------------------------------------------
     // MARK: - Main downloadQuotes method
-    func downloadQuotes(completionHandlerForDownloadQuote: @escaping(_ success: Bool, _ errorString: String?) -> Void) {
+    func downloadQuotes(dataController: DataController, completionHandlerForDownloadQuote: @escaping(_ success: Bool, _ errorString: String?) -> Void) {
         var categories: [String]?
        
         // 1. Specify the parameters
@@ -48,12 +48,12 @@ extension TheySaidSoClient {
                             debugPrint("Cannot get result!")
                             return
                         }
-                        
+                    
                         guard let quote = self.convertJSONToQuote(result: result) else {
                             debugPrint("Cannot unwrap JSON to Quote!")
                             return
                         }
-                        
+
                         QuoteSharedData.sharedInstance.Quotes.append(quote)
                         completionHandlerForDownloadQuote(true, "")
                     }
@@ -70,7 +70,7 @@ extension TheySaidSoClient {
         }
     }
     
-    func downloadRandomQuote(completionHandlerForDownloadRandomQuote: @escaping(_ success: Bool, _ errorString: String?) -> Void) {
+    func downloadRandomQuote(dataController: DataController, completionHandlerForDownloadRandomQuote: @escaping(_ success: Bool, _ errorString: String?) -> Void) {
         // 1. Specify the parameters
         let parameters = [TheySaidSoClient.TheySaidSoParameterKeys.MaxLength:TheySaidSoClient.TheySaidSoParameterValues.MaxLength
         ] as [String:AnyObject]
@@ -88,20 +88,78 @@ extension TheySaidSoClient {
                 return
             }
             
-            // 5. Convert JSON result to random quote
-            guard let quote = self.convertJSONToRandomQuote(result: result) else {
-                debugPrint("Cannot convert JSON to random quote")
-                return
-            }
+            // 5. Save to Core Data
+            self.saveRandomQuoteToCoreData(result: result, dataController: dataController, { (success) in
+                if success {
+                    completionHandlerForDownloadRandomQuote(true, "")
+                }
+            })
             
-            QuoteSharedData.sharedInstance.Quotes.append(quote)
-            completionHandlerForDownloadRandomQuote(true, "")
+//            // 5. Convert JSON result to random quote
+//            guard let quote = self.convertJSONToRandomQuote(result: result) else {
+//                debugPrint("Cannot convert JSON to random quote")
+//                return
+//            }
+//
+//            QuoteSharedData.sharedInstance.Quotes.append(quote)
+//            completionHandlerForDownloadRandomQuote(true, "")
             
         }
     }
     
 //---------------------------------------------------------------------------------
-    // MARK: - Main downloadQuotes method
+    // MARK: - Conversion and Core Data Methods
+    fileprivate func saveRandomQuoteToCoreData(result: AnyObject, dataController: DataController, _ completionHandlerForSaveRandomQuoteToCoreData: @escaping(_ success: Bool) -> Void) {
+        
+        guard let randomQuoteString = self.convertJSONForRandomQuote(result: result, attribute: TheySaidSoResponseKeys.Quote) else { return }
+        guard let randomQuoteAuthor = self.convertJSONForRandomQuote(result: result, attribute: TheySaidSoResponseKeys.Author) else { return }
+         guard let randomQuoteCategory = convertJSONToRandomQuoteCategory(result: result) else { return }
+        
+        let quote = Quote(context: dataController.viewContext)
+        quote.quoteString = randomQuoteString
+        quote.author = randomQuoteAuthor
+        quote.category = randomQuoteCategory
+        
+        quote.creationDate = Date()
+        
+        do {
+            try dataController.viewContext.save()
+        } catch {
+            debugPrint("Cannot save quote to Core Data")
+        }
+        
+    }
+    
+    fileprivate func convertJSONForRandomQuote(result: AnyObject, attribute: String) -> String? {
+        var randomQuoteAttribute: String? = nil
+        
+        guard let contentsDictionary = result[TheySaidSoResponseKeys.Contents] as? [String:AnyObject], let quoteAttribute = contentsDictionary[attribute] as? String else {
+            debugPrint("Cannot find keys '\(TheySaidSoResponseKeys.Contents)' or '\(attribute)' in '\(result)'")
+            randomQuoteAttribute = ""
+            return randomQuoteAttribute
+        }
+        
+        randomQuoteAttribute = quoteAttribute
+        return randomQuoteAttribute
+    }
+    
+    fileprivate func convertJSONToRandomQuoteCategory(result: AnyObject) -> String? {
+        var randomQuoteCategory: String? = nil
+        
+        guard let contentsDictionary = result[TheySaidSoResponseKeys.Contents] as? [String:AnyObject], let categoriesArray = contentsDictionary[TheySaidSoResponseKeys.Categories] as? [String] else {
+            debugPrint("Cannot find keys \'\(TheySaidSoResponseKeys.Contents)\' and \'\(TheySaidSoResponseKeys.Categories)\' in \'\(result)\'")
+            return randomQuoteCategory
+        }
+        
+        if categoriesArray.isEmpty {
+            randomQuoteCategory = "INSPIRING"
+            return randomQuoteCategory
+        }
+        
+        randomQuoteCategory = categoriesArray.first
+        return randomQuoteCategory
+    }
+    
     fileprivate func convertJSONToCategories(result: AnyObject) -> [String]? {
         var categories: [String]? = nil
         
@@ -125,7 +183,7 @@ extension TheySaidSoClient {
         let quoteDictionary = quotesArray[0]
         print("quote: \(quoteDictionary)")
        
-        quote = Quote.quoteFromResult(quoteDictionary)
+//        quote = Quote.quoteFromResult(quoteDictionary)
         return quote
     }
     
@@ -136,7 +194,7 @@ extension TheySaidSoClient {
             debugPrint("Cannot find keys '\(TheySaidSoClient.TheySaidSoResponseKeys.Contents)' in '\(result)'")
             return quote
         }
-        quote = Quote.randomQuoteFromResult(contentsDictionary)
+//        quote = Quote.randomQuoteFromResult(contentsDictionary)
         print("randomQuote: \(quote)")
         return quote
     }
