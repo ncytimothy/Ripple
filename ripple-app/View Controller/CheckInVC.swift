@@ -15,9 +15,6 @@ class CheckInViewController: UIViewController {
     var feelingsCollectionView: UICollectionView!
     var leadingConstraintForFeelingsCollection: CGFloat = 20
     
-
-    
-
     var nextBarButtonItem = UIBarButtonItem()
     
     var feelings = [Feeling]()

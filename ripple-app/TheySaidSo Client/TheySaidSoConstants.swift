@@ -25,11 +25,17 @@ extension TheySaidSoClient {
         static let QuoteOfTheDay  = "/qod.json"
         static let RandomQuote = "/quote/random.json"
         static let Categories = "/qod/categories.json"
+        static let Search = "/quote/search.json"
     }
     
     // MARK: - TheySaidSo Parameter Keys
     struct TheySaidSoParameterKeys {
         static let Category = "category"
+        static let MaxLength = "maxlength"
+    }
+    
+    struct TheySaidSoParameterValues {
+        static let MaxLength = "140"
     }
     
     // MARK: - TheySaidSo Response Keys

@@ -68,8 +68,36 @@ extension TheySaidSoClient {
                 return
             }
         }
+    }
+    
+    func downloadRandomQuote(completionHandlerForDownloadRandomQuote: @escaping(_ success: Bool, _ errorString: String?) -> Void) {
+        // 1. Specify the parameters
+        let parameters = [TheySaidSoClient.TheySaidSoParameterKeys.MaxLength:TheySaidSoClient.TheySaidSoParameterValues.MaxLength
+        ] as [String:AnyObject]
         
-        
+        // 2. Make the request
+        let _ = taskForGETMethod(parameters, method: TheySaidSoClient.Methods.Search) { (result, error) in
+            // 3. Were there errors returned?
+            guard (error == nil) else {
+                completionHandlerForDownloadRandomQuote(false, "Cannot download random quotes!")
+                return
+            }
+            // 4. Was result returned?
+            guard let result = result else {
+                debugPrint("Cannot get result")
+                return
+            }
+            
+            // 5. Convert JSON result to random quote
+            guard let quote = self.convertJSONToRandomQuote(result: result) else {
+                debugPrint("Cannot convert JSON to random quote")
+                return
+            }
+            
+            QuoteSharedData.sharedInstance.Quotes.append(quote)
+            completionHandlerForDownloadRandomQuote(true, "")
+            
+        }
     }
     
 //---------------------------------------------------------------------------------
@@ -98,6 +126,18 @@ extension TheySaidSoClient {
         print("quote: \(quoteDictionary)")
        
         quote = Quote.quoteFromResult(quoteDictionary)
+        return quote
+    }
+    
+    fileprivate func convertJSONToRandomQuote(result: AnyObject) -> Quote? {
+        var quote: Quote? = nil
+        
+        guard let contentsDictionary = result[TheySaidSoClient.TheySaidSoResponseKeys.Contents] as? [String:AnyObject] else {
+            debugPrint("Cannot find keys '\(TheySaidSoClient.TheySaidSoResponseKeys.Contents)' in '\(result)'")
+            return quote
+        }
+        quote = Quote.randomQuoteFromResult(contentsDictionary)
+        print("randomQuote: \(quote)")
         return quote
     }
     

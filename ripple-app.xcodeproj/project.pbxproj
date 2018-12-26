@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37ADB96FBD8A7A08419132AB /* Pods_ripple_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849742BD38E57155DC812EB9 /* Pods_ripple_app.framework */; };
 		C41760E421CF1BB900B29212 /* ThanksEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E321CF1BB900B29212 /* ThanksEditorVC.swift */; };
 		C41760E621CF1C6C00B29212 /* ThanksVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E521CF1C6C00B29212 /* ThanksVC+Extension.swift */; };
 		C41760E821CF239200B29212 /* EditorDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E721CF239200B29212 /* EditorDefaults.swift */; };
@@ -38,6 +39,7 @@
 		C4A5902121D091030074066F /* QuoteVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5902021D091030074066F /* QuoteVC+Extension.swift */; };
 		C4A5902321D09B030074066F /* QuoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5902221D09B030074066F /* QuoteCell.swift */; };
 		C4A5902521D09FB30074066F /* QuoteVC+CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5902421D09FB30074066F /* QuoteVC+CollectionExtension.swift */; };
+		C4B3861721D304FB00405E4C /* Ripple.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4B3861521D304FB00405E4C /* Ripple.xcdatamodeld */; };
 		C4B4172021CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4171F21CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift */; };
 		C4B9D5EB21B2806A00515E40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B9D5EA21B2806A00515E40 /* AppDelegate.swift */; };
 		C4B9D5ED21B2806A00515E40 /* CheckInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B9D5EC21B2806A00515E40 /* CheckInVC.swift */; };
@@ -50,6 +52,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		64628FC7922314EBB0E74393 /* Pods-ripple-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ripple-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-ripple-app/Pods-ripple-app.release.xcconfig"; sourceTree = "<group>"; };
+		849742BD38E57155DC812EB9 /* Pods_ripple_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ripple_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B994FA87B8A3E71A28FE048C /* Pods-ripple-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ripple-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ripple-app/Pods-ripple-app.debug.xcconfig"; sourceTree = "<group>"; };
 		C41760E321CF1BB900B29212 /* ThanksEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksEditorVC.swift; sourceTree = "<group>"; };
 		C41760E521CF1C6C00B29212 /* ThanksVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThanksVC+Extension.swift"; sourceTree = "<group>"; };
 		C41760E721CF239200B29212 /* EditorDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorDefaults.swift; sourceTree = "<group>"; };
@@ -81,6 +86,7 @@
 		C4A5902021D091030074066F /* QuoteVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuoteVC+Extension.swift"; sourceTree = "<group>"; };
 		C4A5902221D09B030074066F /* QuoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteCell.swift; sourceTree = "<group>"; };
 		C4A5902421D09FB30074066F /* QuoteVC+CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuoteVC+CollectionExtension.swift"; sourceTree = "<group>"; };
+		C4B3861621D304FB00405E4C /* Ripple.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ripple.xcdatamodel; sourceTree = "<group>"; };
 		C4B4171F21CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactSelectionVC+CollectionViewExtension.swift"; sourceTree = "<group>"; };
 		C4B9D5E721B2806A00515E40 /* ripple-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ripple-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4B9D5EA21B2806A00515E40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,12 +105,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37ADB96FBD8A7A08419132AB /* Pods_ripple_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1FCB716F9FA4637AC7B7F06B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				849742BD38E57155DC812EB9 /* Pods_ripple_app.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		223DB6786511B36C5976E25B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B994FA87B8A3E71A28FE048C /* Pods-ripple-app.debug.xcconfig */,
+				64628FC7922314EBB0E74393 /* Pods-ripple-app.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C42A330421B5698200820AC7 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +168,7 @@
 				C45C5A0A21D1D03500E0ABC6 /* Quote.swift */,
 				C45C5A0E21D1D89900E0ABC6 /* QuoteStorage.swift */,
 				C45C5A0C21D1D06500E0ABC6 /* QuoteConstants.swift */,
+				C4B3861521D304FB00405E4C /* Ripple.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +208,8 @@
 			children = (
 				C4B9D5E921B2806A00515E40 /* ripple-app */,
 				C4B9D5E821B2806A00515E40 /* Products */,
+				223DB6786511B36C5976E25B /* Pods */,
+				1FCB716F9FA4637AC7B7F06B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,9 +243,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4B9D5F921B2806A00515E40 /* Build configuration list for PBXNativeTarget "ripple-app" */;
 			buildPhases = (
+				E3BAC067E794195CE6F60738 /* [CP] Check Pods Manifest.lock */,
 				C4B9D5E321B2806A00515E40 /* Sources */,
 				C4B9D5E421B2806A00515E40 /* Frameworks */,
 				C4B9D5E521B2806A00515E40 /* Resources */,
+				1B039CF0D750F02570026AAB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -274,6 +303,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1B039CF0D750F02570026AAB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ripple-app/Pods-ripple-app-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ripple-app/Pods-ripple-app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3BAC067E794195CE6F60738 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ripple-app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C4B9D5E321B2806A00515E40 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -312,6 +388,7 @@
 				C4A5901F21D08E350074066F /* QuoteViewController.swift in Sources */,
 				C48D684A21CF70D3002AB82B /* HintVC.swift in Sources */,
 				C45C5A0921D1CCE400E0ABC6 /* TheySaidSoConvenience.swift in Sources */,
+				C4B3861721D304FB00405E4C /* Ripple.xcdatamodeld in Sources */,
 				C46F144F21CE072600C80533 /* PersonStorage.swift in Sources */,
 				C4801DD021CDD5B300B2762F /* Person.swift in Sources */,
 				C4B9D60121B28C7A00515E40 /* UIColor+Extensions.swift in Sources */,
@@ -452,6 +529,7 @@
 		};
 		C4B9D5FA21B2806A00515E40 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B994FA87B8A3E71A28FE048C /* Pods-ripple-app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -470,6 +548,7 @@
 		};
 		C4B9D5FB21B2806A00515E40 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64628FC7922314EBB0E74393 /* Pods-ripple-app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -508,6 +587,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C4B3861521D304FB00405E4C /* Ripple.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C4B3861621D304FB00405E4C /* Ripple.xcdatamodel */,
+			);
+			currentVersion = C4B3861621D304FB00405E4C /* Ripple.xcdatamodel */;
+			path = Ripple.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C4B9D5DF21B2806900515E40 /* Project object */;
 }

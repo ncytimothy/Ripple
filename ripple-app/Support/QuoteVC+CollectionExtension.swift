@@ -14,14 +14,16 @@ extension QuoteViewController: UICollectionViewDelegate, UICollectionViewDataSou
             let layout = UICollectionViewFlowLayout()
     
             layout.scrollDirection = UICollectionView.ScrollDirection.vertical
-    
+            
             quoteCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
             quoteCollectionView.translatesAutoresizingMaskIntoConstraints = false
             quoteCollectionView.backgroundColor = .primaryOrange
+//            quoteCollectionView.isScrollEnabled = false
+            
         }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return QuoteSharedData.sharedInstance.Quotes.count ?? 8
+        return QuoteSharedData.sharedInstance.Quotes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -36,7 +38,7 @@ extension QuoteViewController: UICollectionViewDelegate, UICollectionViewDataSou
        let longText = QuoteSharedData.sharedInstance.Quotes[indexPath.item].quoteString
         let rect = NSString(string: longText ?? "Long Quote").boundingRect(with: CGSize(width: view.frame.width, height: 1000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)], context: nil)
         
-        return CGSize(width: view.frame.width, height: rect.height + 110)
+        return CGSize(width: view.frame.width - 20, height: rect.height + 130)
     }
     
 }

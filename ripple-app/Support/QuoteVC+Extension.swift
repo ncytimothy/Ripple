@@ -50,7 +50,7 @@ extension QuoteViewController {
             quoteCollectionView.topAnchor.constraint(equalTo: headerTextView.bottomAnchor, constant: 8),
             quoteCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             quoteCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
-            quoteCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.55),
+            quoteCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8)
             
             ])
         

@@ -24,7 +24,7 @@ class QuoteCell: UICollectionViewCell {
             if let category = quote?.category {
                 categoryLabel.text = category.uppercased()
                 categoryLabel.font = UIFont.boldSystemFont(ofSize: 15)
-                categoryLabel.textColor = UIColor.white
+                categoryLabel.textColor = UIColor.signatureOrange
             }
             
             
@@ -41,8 +41,8 @@ class QuoteCell: UICollectionViewCell {
     let categoryLabel: UILabel = {
         let label = UILabel()
         label.text = "INSPIRING"
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.textColor = UIColor.signatureOrange
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -51,8 +51,8 @@ class QuoteCell: UICollectionViewCell {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 17)
         textView.text = "You're going to go through tough times - that's life. But I say, 'Nothing happens to you, it happens for you.' See the positive in negative events."
-        textView.backgroundColor = .black
-        textView.textColor = .white
+        textView.backgroundColor = .white
+        textView.textColor = .black
         
         textView.isEditable = false
         textView.isScrollEnabled = false
@@ -63,16 +63,16 @@ class QuoteCell: UICollectionViewCell {
     
     let authorLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.font = UIFont.italicSystemFont(ofSize: 17)
         label.text = "Joel Osteen"
-        label.textColor = .white
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     func setupViews() {
         
-        backgroundColor = .black
+        backgroundColor = .white
         
         layer.cornerRadius = 20
         
@@ -87,10 +87,10 @@ class QuoteCell: UICollectionViewCell {
                 
                 quoteTextView.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 10),
                 quoteTextView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-                quoteTextView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8),
-                quoteTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
-                
-                authorLabel.topAnchor.constraint(equalTo: quoteTextView.bottomAnchor, constant: 4),
+                quoteTextView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+                quoteTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7),
+            
+                authorLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -12),
                 authorLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
                 
             

@@ -21,8 +21,16 @@ class CustomTabBarController: UITabBarController {
         
         let quoteVC = QuoteViewController()
         quoteVC.tabBarItem = UITabBarItem(title: "Quotes", image: UIImage(named: "quote"), selectedImage: UIImage(named: "quote"))
-        let tabBarList = [homeVC, quoteVC]
+       
+        let activityVC = UIViewController()
+        activityVC.tabBarItem = UITabBarItem(title: "Activity", image: UIImage(named: "activity-happy"), selectedImage: UIImage(named: "activity-happy"))
+        
+        let historyVC = UIViewController()
+        historyVC.tabBarItem = UITabBarItem(title: "History", image: UIImage(named: "history"), selectedImage: UIImage(named: "history"))
+        
+        let tabBarList = [homeVC, quoteVC, activityVC, historyVC]
         viewControllers = tabBarList
+        
         
         
     }

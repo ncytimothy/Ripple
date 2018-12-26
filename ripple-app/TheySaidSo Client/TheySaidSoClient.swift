@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Keys
 
 class TheySaidSoClient: NSObject {
     
@@ -24,12 +25,14 @@ class TheySaidSoClient: NSObject {
         var request = URLRequest(url: theySaySoURL(parameters: parameters, method: method))
         
         // Uncomment below for Debug Purposes
-//        print("theySaidSoURL in taskForGETMethod: \(theySaySoURL(parameters: parameters, method: method))")
+        print("theySaidSoURL in taskForGETMethod: \(theySaySoURL(parameters: parameters, method: method))")
         
         
         // 2. Add the API Key into the project
         // TODO: Use Cocoapods-Keys later
-        request.setValue("Yv3FGhkF7r_g3KLX5V8IOQeF", forHTTPHeaderField: Constants.TheySaidSo.AuthHeader)
+        let keys = RippleAppKeys()
+        
+        request.setValue(keys.theySaidSoAPIKey, forHTTPHeaderField: Constants.TheySaidSo.AuthHeader)
         
         // 3. Create the task
         let task = session.dataTask(with: request) { (data, response, error) in

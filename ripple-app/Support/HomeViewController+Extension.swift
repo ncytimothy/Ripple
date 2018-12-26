@@ -30,7 +30,7 @@ extension HomeViewController: UITextViewDelegate {
             
             let attributedText = NSMutableAttributedString(string: "Tim", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
             
-            attributedText.append(NSAttributedString(string: "\nYou have 3 gratitudes to give today", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
+            attributedText.append(NSAttributedString(string: "\nYou have give 2 gratitudes today", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
             
             textView.attributedText = attributedText
             

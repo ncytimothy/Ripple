@@ -12,6 +12,7 @@ struct QuoteConstants {
     static let Quote = "Sample Quote"
     static let Author = "Sample Author"
     static let Category = "SAMPLE CATEGORY"
+    static let Categories = "SAMPLE CATEGORIES"
     
     
 }
