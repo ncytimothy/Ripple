@@ -30,8 +30,8 @@ class HomeViewController: UIViewController, UIActivityItemSource {
 
     
     let hintButton = HomeViewController.setButtonFor(title: "Hints")
-    let giveThanksButton = HomeViewController.setButtonFor(title: "Give Thanks")
-    let completeButton = HomeViewController.setButtonFor(title: "Complete")
+//    let giveThanksButton = HomeViewController.setButtonFor(title: "Give Thanks")
+    let giveButton = HomeViewController.setButtonFor(title: "Give")
     
   
     
@@ -54,26 +54,26 @@ class HomeViewController: UIViewController, UIActivityItemSource {
     }
 //----------------------------------------------------------------------------------------------------------------------------------------
     // MARK: - Actions
-    @objc func giveThanksTapped() {
-        print("Give Thanks Tapped")
-        let sharingText = editorTextView.text
-        
-        let activityController = UIActivityViewController(activityItems: [sharingText], applicationActivities: nil)
-        
-        enableButton(button: completeButton)
-        
-        activityController.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
-            if completed == true {
-                print("completed!")
-                self.enableButton(button: self.completeButton)
-            } else {
-                self.disableButton(button: self.completeButton)
-            }
-        }
-                
-        self.navigationController?.present(activityController, animated: true, completion: nil)
-        
-    }
+//    @objc func giveThanksTapped() {
+//        print("Give Thanks Tapped")
+//        let sharingText = editorTextView.text
+//
+//        let activityController = UIActivityViewController(activityItems: [sharingText], applicationActivities: nil)
+//
+//        enableButton(button: giveButton)
+//
+//        activityController.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
+//            if completed == true {
+//                print("completed!")
+//                self.enableButton(button: self.giveButton)
+//            } else {
+//                self.disableButton(button: self.giveButton)
+//            }
+//        }
+//
+//        self.navigationController?.present(activityController, animated: true, completion: nil)
+//
+//    }
     
     
     @objc func hintTapped() {
@@ -86,7 +86,7 @@ class HomeViewController: UIViewController, UIActivityItemSource {
     }
     
     
-    @objc func completeTapped() {
+    @objc func giveTapped() {
         print("Try to complete this gratitude...")
         
         UIView.animate(withDuration: 3,
@@ -100,8 +100,7 @@ class HomeViewController: UIViewController, UIActivityItemSource {
                        completion: nil)
         
         replaceTextViewPlaceholder()
-        disableButton(button: giveThanksButton)
-        disableButton(button: completeButton)
+        disableButton(button: giveButton)
         
     }
     
@@ -136,11 +135,11 @@ class HomeViewController: UIViewController, UIActivityItemSource {
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
         if editorTextView.isFirstResponder {
-            if let navigationBarOriginY = navigationController?.navigationBar.frame.maxY {
+//            if let navigationBarOriginY = navigationController?.navigationBar.frame.maxY {
                 // Add correct shifting distance for Add Quote Editor
 //                view.frame.origin.y = -editorTextView.frame.origin.y + navigationBarOriginY
                 view.frame.origin.y = -editorTextView.frame.origin.y
-            }
+//            }
         }
     }
     
