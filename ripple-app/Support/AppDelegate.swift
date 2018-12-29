@@ -10,6 +10,14 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    enum TabBarControllerConstants {
+        static let HomeViewController = 0
+        static let QuoteViewController = 1
+        static let ActivityViewController = 2
+        static let HistoryViewController = 3
+    }
+    
 
     var window: UIWindow?
     // DataController init to be injected to initial VC and passed
@@ -21,21 +29,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let checkInVC = CheckInViewController()
+//        let checkInVC = CheckInViewController()
 
-        let navigationVC = UINavigationController(rootViewController: checkInVC)
-        navigationVC.navigationBar.isTranslucent = false
-        navigationVC.navigationBar.setBackgroundImage(UIImage(named: "primaryOrange"), for: .default)
-        navigationVC.navigationBar.shadowImage = UIImage()
+//        let navigationVC = UINavigationController(rootViewController: checkInVC)
+//        navigationVC.navigationBar.isTranslucent = false
+//        navigationVC.navigationBar.setBackgroundImage(UIImage(named: "primaryOrange"), for: .default)
+//        navigationVC.navigationBar.shadowImage = UIImage()
         
-        checkInVC.dataController = dataController
+        let customTabBarController = CustomTabBarController()
+        guard let tabBarViewControllers = customTabBarController.viewControllers else { return true}
+        
+        let quoteVC = tabBarViewControllers[TabBarControllerConstants.QuoteViewController] as! QuoteViewController
+        quoteVC.dataController = dataController
+        
+//        self.navigationController?.pushViewController(customTabBarController, animated: true)
+        
+        
+//        checkInVC.dataController = dataController
         
         dataController.load()
         
-        navigationVC.navigationBar.barStyle = .black
-        navigationVC.navigationBar.tintColor = .white
+//        navigationVC.navigationBar.barStyle = .black
+//        navigationVC.navigationBar.tintColor = .white
 
-        window?.rootViewController = navigationVC
+        window?.rootViewController = customTabBarController
         
         return true
     }

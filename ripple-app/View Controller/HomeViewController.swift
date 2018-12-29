@@ -10,6 +10,10 @@ import UIKit
 
 class HomeViewController: UIViewController, UIActivityItemSource {
     
+    enum EditorTextViewConstants {
+        static let charUpperBound = 140
+    }
+    
     let homeCellId = "homeId"
     
     var dataController: DataController!
@@ -32,6 +36,16 @@ class HomeViewController: UIViewController, UIActivityItemSource {
     let hintButton = HomeViewController.setButtonFor(title: "Hints")
 //    let giveThanksButton = HomeViewController.setButtonFor(title: "Give Thanks")
     let giveButton = HomeViewController.setButtonFor(title: "Give")
+    
+    let charCountLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.text = String(EditorTextViewConstants.charUpperBound)
+        label.textColor = .white
+        //            label.backgroundColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
   
     
@@ -138,16 +152,18 @@ class HomeViewController: UIViewController, UIActivityItemSource {
 //            if let navigationBarOriginY = navigationController?.navigationBar.frame.maxY {
                 // Add correct shifting distance for Add Quote Editor
 //                view.frame.origin.y = -editorTextView.frame.origin.y + navigationBarOriginY
-                view.frame.origin.y = -editorTextView.frame.origin.y
+//                view.frame.origin.y = -editorTextView.frame.origin.y + 50
 //            }
         }
     }
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
+        
+        view.frame.origin.y = 0
         if let navigationBarOriginY = navigationController?.navigationBar.frame.maxY {
             // Add correct shifting distance for Add Quote Editor
 //            view.frame.origin.y = 0 + navigationBarOriginY
-            view.frame.origin.y = 0
+            
         }
     }
     

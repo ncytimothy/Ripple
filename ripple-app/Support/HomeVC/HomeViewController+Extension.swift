@@ -9,7 +9,7 @@
 import UIKit
 
 extension HomeViewController: UITextViewDelegate {
-
+    
     func setupViews() {
         view.backgroundColor = .primaryOrange
         disableButton(button: giveButton)
@@ -57,6 +57,8 @@ extension HomeViewController: UITextViewDelegate {
             return view
         }()
         
+       
+        
 
         hintButton.addTarget(self, action: #selector(hintTapped), for: .touchUpInside)
 //        giveThanksButton.addTarget(self, action: #selector(giveThanksTapped), for: .touchUpInside)
@@ -67,6 +69,7 @@ extension HomeViewController: UITextViewDelegate {
         view.addSubview(giveButton)
         view.addSubview(editorTextView)
         view.addSubview(giveButton)
+        view.addSubview(charCountLabel)
 
         
         NSLayoutConstraint.activate([
@@ -90,8 +93,12 @@ extension HomeViewController: UITextViewDelegate {
             editorTextView.topAnchor.constraint(equalTo: hintButton.bottomAnchor, constant: 14),
             editorTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             editorTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
-            editorTextView.heightAnchor.constraint(equalToConstant: 174),
-
+            editorTextView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
+            
+            charCountLabel.topAnchor.constraint(equalTo: editorTextView.bottomAnchor, constant: 8),
+            charCountLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            
+            
 //            giveThanksButton.topAnchor.constraint(equalTo: editorTextView.bottomAnchor, constant: 20),
 //            giveThanksButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 //            giveThanksButton.heightAnchor.constraint(equalToConstant: 50),
@@ -178,5 +185,18 @@ extension HomeViewController: UITextViewDelegate {
         UIView.animate(withDuration: 0.05) {
             button.alpha = 0.5
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+        let changedText = currentText.replacingCharacters(in: stringRange, with: text)
+        
+        return changedText.count <= EditorTextViewConstants.charUpperBound
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        charCountLabel.text = String(EditorTextViewConstants.charUpperBound - textView.text.count)
     }
 }
