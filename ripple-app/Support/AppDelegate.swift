@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         static let HistoryViewController = 3
     }
     
+    
 
     var window: UIWindow?
     // DataController init to be injected to initial VC and passed
@@ -51,6 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        navigationVC.navigationBar.barStyle = .black
 //        navigationVC.navigationBar.tintColor = .white
+        
+        UserDefaults.standard.set(0, forKey: "gratitude")
+        UserDefaults.standard.set("Tim", forKey: "username")
 
         window?.rootViewController = customTabBarController
         

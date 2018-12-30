@@ -47,13 +47,14 @@ class HomeViewController: UIViewController, UIActivityItemSource {
         return label
     }()
     
+    
+    
   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         configureTapGestureRecognizer()
-            
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -27,9 +27,14 @@ extension HomeViewController: UITextViewDelegate {
             
             textView.backgroundColor = .clear
             
-            let attributedText = NSMutableAttributedString(string: "Tim", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
+            guard let usernameString = UserDefaults.standard.string(forKey: "username") else {
+                print("cannot find key")
+                return textView
+            }
             
-            attributedText.append(NSAttributedString(string: "\nYou have given 2 gratitudes today", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
+            let attributedText = NSMutableAttributedString(string: usernameString, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
+            
+            attributedText.append(NSAttributedString(string: "\nYou have given \(UserDefaults.standard.integer(forKey: "gratitude")) gratitudes so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
             
             textView.attributedText = attributedText
             
