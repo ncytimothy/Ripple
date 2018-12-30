@@ -103,18 +103,24 @@ class HomeViewController: UIViewController, UIActivityItemSource {
     @objc func giveTapped() {
         print("Try to complete this gratitude...")
         
-        UIView.animate(withDuration: 3,
-                       delay: 0, usingSpringWithDamping: 0.5,
-                       initialSpringVelocity: 0,
-                       options: [.curveEaseIn,.curveEaseOut],
-                       animations: {
-                            self.editorTextView.alpha = 0.5
-                            self.editorTextView.alpha = 1
-                        },
-                       completion: nil)
+        let checkInVC = CheckInViewController()
+        checkInVC.textToSend = editorTextView.text
+        show(checkInVC, sender: self)
         
-        replaceTextViewPlaceholder()
-        disableButton(button: giveButton)
+        
+//        UIView.animate(withDuration: 3,
+//                       delay: 0, usingSpringWithDamping: 0.5,
+//                       initialSpringVelocity: 0,
+//                       options: [.curveEaseIn,.curveEaseOut],
+//                       animations: {
+//                            self.editorTextView.alpha = 0.5
+//                            self.editorTextView.alpha = 1
+//                        },
+//                       completion: nil)
+//
+//        replaceTextViewPlaceholder()
+//        disableButton(button: giveButton)
+        
         
     }
     

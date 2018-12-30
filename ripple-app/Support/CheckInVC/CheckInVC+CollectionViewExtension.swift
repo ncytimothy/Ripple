@@ -39,11 +39,18 @@ extension CheckInViewController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let feelingCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FeelingCell
         feelingCell.feeling = feelings[indexPath.row]
+        
+        
         return feelingCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! FeelingCell
+        
+        guard let feelingText = cell.feeling?.feelingText else  { return }
+//        let currentText = textToSend
+//        textToSend = currentText
+        
         updateSelectUI(cell: cell)
     }
     
@@ -52,6 +59,7 @@ extension CheckInViewController: UICollectionViewDataSource, UICollectionViewDel
         updateSelectUI(cell: cell)
     }
     
+  
 
 //    func updateSelectUI(cell: FeelingCell) {
 //        

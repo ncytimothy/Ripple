@@ -129,7 +129,7 @@ extension HomeViewController: UITextViewDelegate {
             ])
         
     }
-    
+     
     static func setButtonFor(title: String) -> UIButton {
         let button = UIButton()
         button.setTitle(title, for: .normal)
@@ -155,6 +155,7 @@ extension HomeViewController: UITextViewDelegate {
         if !textView.hasText || textView.text == EditorDefaults.placeholderText {
             replaceTextViewPlaceholder()
             disableButton(button: giveButton)
+            charCountLabel.text = String(EditorTextViewConstants.charUpperBound)
         }
     }
     
