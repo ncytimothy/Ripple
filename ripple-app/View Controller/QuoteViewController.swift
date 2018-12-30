@@ -37,6 +37,18 @@ class QuoteViewController: UIViewController {
         return indicator
     }()
     
+    let refreshButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("REFRESH", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.titleLabel?.textColor = .white
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.addTarget(self, action: #selector(refreshPressed), for: .touchUpInside)
+        return button
+    }()
+    
 //-------------------------------------------------------------------------------------------------------------------------------------
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -56,7 +68,7 @@ class QuoteViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        fetchedResultsController = nil
+//        fetchedResultsController = nil
     }
     
     override func viewDidAppear(_ animated: Bool) {

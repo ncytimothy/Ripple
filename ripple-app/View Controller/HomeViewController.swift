@@ -24,7 +24,7 @@ class HomeViewController: UIViewController, UIActivityItemSource {
         textView.font = UIFont.systemFont(ofSize: 17)
         textView.textColor = .gray
         textView.textAlignment = .left
-        
+    
         textView.translatesAutoresizingMaskIntoConstraints = false
         
         textView.layer.cornerRadius = 8.0
@@ -47,7 +47,37 @@ class HomeViewController: UIViewController, UIActivityItemSource {
         return label
     }()
     
+    let testUserLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.text = String(UserDefaults.standard.integer(forKey: "testNum"))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
+    let headerTextView: UITextView = {
+        let textView = UITextView()
+        
+        textView.backgroundColor = .clear
+        
+        //            guard let usernameString = UserDefaults.standard.string(forKey: "username") else {
+        //                print("cannot find key")
+        //                return textView
+        //            }
+        
+        let attributedText = NSMutableAttributedString(string: "Hi There", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        attributedText.append(NSAttributedString(string: "\nYou have given \(UserDefaults.standard.integer(forKey: "gratitude")) gratitudes so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        
+        textView.attributedText = attributedText
+        
+        textView.isEditable = false
+        textView.isSelectable = false
+        
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return textView
+    }()
     
   
     
@@ -100,6 +130,26 @@ class HomeViewController: UIViewController, UIActivityItemSource {
         present(hintVC, animated: true, completion: nil)
     }
     
+    @objc func handleGratitude() {
+        print("Trying to up gratitiude...")
+        
+        
+        
+        
+        let curValue = UserDefaults.standard.integer(forKey: "gratitude")
+        let newValue = curValue + 1
+        print("newValue: \(newValue)")
+        UserDefaults.standard.set(newValue, forKey: "testNum")
+        UserDefaults.standard.set(newValue, forKey: "gratitude")
+        let testNum = UserDefaults.standard.value(forKey: "testNum")
+        print("\(testNum)")
+        headerTextView.attributedText = setTextViewAttributedText()
+        testUserLabel.text = String(UserDefaults.standard.value(forKey: "testNum") as! Int)
+        
+        
+        
+    }
+    
     
     @objc func giveTapped() {
         print("Try to complete this gratitude...")
@@ -125,6 +175,25 @@ class HomeViewController: UIViewController, UIActivityItemSource {
         
     }
     
+    @objc func textViewTapped() {
+        print("textView tapped")
+        
+        let alert = UIAlertController(title: "Hello, what's your name?", message: "Enter your name to personalize your gifts!", preferredStyle: .alert)
+
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (action) in
+            guard let name = alert.textFields?[0].text else { return }
+            UserDefaults.standard.set(name, forKey: "username")
+            print("UserDefaults.standard.string(forKey: \"username\"): \(UserDefaults.standard.string(forKey: "username"))")
+            self.headerTextView.attributedText = self.setTextViewAttributedText()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+
+        alert.addTextField()
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 //----------------------------------------------------------------------------------------------------------------------------------------
 
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
@@ -133,7 +202,6 @@ class HomeViewController: UIViewController, UIActivityItemSource {
     }
     
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        print("jen!")
         return "Share gratitute messages using the Ripple app."
     }
     
@@ -172,6 +240,58 @@ class HomeViewController: UIViewController, UIActivityItemSource {
 //            view.frame.origin.y = 0 + navigationBarOriginY
             
         }
+    }
+    
+
+    
+    func setValueToDefaults(key:String, value:AnyObject){
+        self.removeKeyValueFromDefaults(Key:key)
+        UserDefaults.standard.set(value, forKey: key)
+        
+    }
+    
+    func getValueFromDefaults(key:String) ->AnyObject?{
+        
+        if((UserDefaults.standard.value(forKey: key)) != nil){
+            
+            let value:AnyObject = UserDefaults.standard.value(forKey: key)! as AnyObject
+            
+            return value
+        }else{
+            
+            return nil
+        }
+        
+    }
+    
+    func removeKeyValueFromDefaults(Key:String){
+        
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: Key)
+        defaults.synchronize()
+        
+    }
+    
+    func setTextViewAttributedText() -> NSAttributedString {
+        
+         var greetingTitle = "Hi There"
+        
+        if let unwrappedUserTitle = UserDefaults.standard.string(forKey: "username") {
+            greetingTitle = unwrappedUserTitle
+        }
+    
+        let attributedText = NSMutableAttributedString(string: greetingTitle, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        let gratitudeCount = UserDefaults.standard.integer(forKey: "gratitude")
+        
+        if gratitudeCount == 1 {
+                attributedText.append(NSAttributedString(string: "\nYou have given \(UserDefaults.standard.integer(forKey: "gratitude")) gratitude so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
+            return attributedText
+        }
+        
+        attributedText.append(NSAttributedString(string: "\nYou have given \(UserDefaults.standard.integer(forKey: "gratitude")) gratitudes so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        
+        return attributedText
     }
     
 }

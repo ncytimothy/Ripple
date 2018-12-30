@@ -14,6 +14,11 @@ extension HomeViewController: UITextViewDelegate {
         view.backgroundColor = .primaryOrange
         disableButton(button: giveButton)
         
+        UserDefaults.standard.set(0, forKey: "testNum")
+        
+        testUserLabel.text = String(getValueFromDefaults(key: "testNum") as! Int)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(textViewTapped))
+        headerTextView.addGestureRecognizer(tap)
         
 //        setupCollectionView()
 //        homeCollectionView.delegate = self
@@ -22,29 +27,6 @@ extension HomeViewController: UITextViewDelegate {
         
         editorTextView.delegate = self
         
-        let headerTextView: UITextView = {
-            let textView = UITextView()
-            
-            textView.backgroundColor = .clear
-            
-            guard let usernameString = UserDefaults.standard.string(forKey: "username") else {
-                print("cannot find key")
-                return textView
-            }
-            
-            let attributedText = NSMutableAttributedString(string: usernameString, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
-            
-            attributedText.append(NSAttributedString(string: "\nYou have given \(UserDefaults.standard.integer(forKey: "gratitude")) gratitudes so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
-            
-            textView.attributedText = attributedText
-            
-            textView.isEditable = false
-            textView.isSelectable = false
-            
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            
-            return textView
-        }()
         
         let safeCircleLabel: UILabel = {
             let label = UILabel()
@@ -62,12 +44,36 @@ extension HomeViewController: UITextViewDelegate {
             return view
         }()
         
+//        let headerTextView: UITextView = {
+//            let textView = UITextView()
+//
+//            textView.backgroundColor = .clear
+//            
+////            guard let usernameString = UserDefaults.standard.string(forKey: "username") else {
+////                print("cannot find key")
+////                return textView
+////            }
+//
+//            let attributedText = NSMutableAttributedString(string: "Hi There", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
+//
+//            attributedText.append(NSAttributedString(string: "\nYou have given 0 gratitudes so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
+//
+//            textView.attributedText = attributedText
+//
+//            textView.isEditable = false
+//            textView.isSelectable = false
+//
+//            textView.translatesAutoresizingMaskIntoConstraints = false
+//
+//            return textView
+//        }()
+        
        
         
 
         hintButton.addTarget(self, action: #selector(hintTapped), for: .touchUpInside)
 //        giveThanksButton.addTarget(self, action: #selector(giveThanksTapped), for: .touchUpInside)
-        giveButton.addTarget(self, action: #selector(giveTapped), for: .touchUpInside)
+        giveButton.addTarget(self, action: #selector(handleGratitude), for: .touchUpInside)
         
         view.addSubview(headerTextView)
         view.addSubview(hintButton)
@@ -75,6 +81,7 @@ extension HomeViewController: UITextViewDelegate {
         view.addSubview(editorTextView)
         view.addSubview(giveButton)
         view.addSubview(charCountLabel)
+        view.addSubview(testUserLabel)
 
         
         NSLayoutConstraint.activate([
@@ -99,9 +106,13 @@ extension HomeViewController: UITextViewDelegate {
             editorTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             editorTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             editorTextView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
-            
+
             charCountLabel.topAnchor.constraint(equalTo: editorTextView.bottomAnchor, constant: 8),
             charCountLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+
+            testUserLabel.topAnchor.constraint(equalTo: editorTextView.bottomAnchor, constant: 8),
+            testUserLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+//
             
             
 //            giveThanksButton.topAnchor.constraint(equalTo: editorTextView.bottomAnchor, constant: 20),

@@ -53,9 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        navigationVC.navigationBar.barStyle = .black
 //        navigationVC.navigationBar.tintColor = .white
         
-        UserDefaults.standard.set(0, forKey: "gratitude")
-        UserDefaults.standard.set("Tim", forKey: "username")
-
         window?.rootViewController = customTabBarController
         
         return true

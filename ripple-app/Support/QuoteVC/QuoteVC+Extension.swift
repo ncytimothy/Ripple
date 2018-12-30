@@ -19,17 +19,6 @@ extension QuoteViewController {
         quoteCollectionView.dataSource  = self
         quoteCollectionView.register(QuoteCell.self, forCellWithReuseIdentifier: quoteCellId)
         
-        let refreshButton: UIButton = {
-            let button = UIButton()
-            button.setTitle("REFRESH", for: .normal)
-            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-            button.titleLabel?.textColor = .white
-            
-            button.translatesAutoresizingMaskIntoConstraints = false
-            
-            button.addTarget(self, action: #selector(refreshPressed), for: .touchUpInside)
-            return button
-        }()
         
         let headerTextView: UITextView = {
             let textView = UITextView()
