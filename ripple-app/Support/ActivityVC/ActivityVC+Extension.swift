@@ -13,6 +13,11 @@ extension ActivityViewController {
     func setupViews() {
         view.backgroundColor = .primaryOrange
         
+        setupCollectionView()
+        activityCollectionView.delegate = self
+        activityCollectionView.dataSource = self
+        activityCollectionView.register(ActivityCell.self, forCellWithReuseIdentifier: activityCellId)
+        
         let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateStyle = .full
@@ -41,13 +46,23 @@ extension ActivityViewController {
             return textView
         }()
         
+       
         view.addSubview(headerTextView)
+        view.addSubview(activityCollectionView)
+       
         
         NSLayoutConstraint.activate([
             headerTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             headerTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             headerTextView.heightAnchor.constraint(equalToConstant: 100),
+            
+            activityCollectionView.topAnchor.constraint(equalTo: headerTextView.bottomAnchor, constant: 8),
+            activityCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            activityCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            activityCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
+            
+            
             
             
             ])

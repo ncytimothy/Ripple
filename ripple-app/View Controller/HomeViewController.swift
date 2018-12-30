@@ -47,13 +47,13 @@ class HomeViewController: UIViewController, UIActivityItemSource, UITextFieldDel
         return label
     }()
     
-    let testUserLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17)
-        label.text = String(UserDefaults.standard.integer(forKey: "testNum"))
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+//    let testUserLabel: UILabel = {
+//        let label = UILabel()
+//        label.font = UIFont.systemFont(ofSize: 17)
+//        label.text = String(UserDefaults.standard.integer(forKey: "testNum"))
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        return label
+//    }()
     
     let headerTextView: UITextView = {
         let textView = UITextView()
@@ -156,7 +156,7 @@ class HomeViewController: UIViewController, UIActivityItemSource, UITextFieldDel
         let testNum = UserDefaults.standard.value(forKey: "testNum")
         print("\(testNum)")
         headerTextView.attributedText = setTextViewAttributedText()
-        testUserLabel.text = String(UserDefaults.standard.value(forKey: "testNum") as! Int)
+//        testUserLabel.text = String(UserDefaults.standard.value(forKey: "testNum") as! Int)
         
         
         

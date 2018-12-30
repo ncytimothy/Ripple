@@ -11,6 +11,11 @@ import UIKit
 class ActivityViewController: UIViewController {
     
 //-------------------------------------------------------------------------------------------------------------------------------------
+    // MARK: - Properties
+    let activityCellId = "activityCell"
+    var activityCollectionView: UICollectionView!
+    
+//-------------------------------------------------------------------------------------------------------------------------------------
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

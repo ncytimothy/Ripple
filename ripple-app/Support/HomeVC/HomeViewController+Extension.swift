@@ -19,7 +19,7 @@ extension HomeViewController: UITextViewDelegate {
         
         UserDefaults.standard.set(0, forKey: "testNum")
         
-        testUserLabel.text = String(getValueFromDefaults(key: "testNum") as! Int)
+//        testUserLabel.text = String(getValueFromDefaults(key: "testNum") as! Int)
         let tap = UITapGestureRecognizer(target: self, action: #selector(textViewTapped))
         headerTextView.addGestureRecognizer(tap)
         
@@ -84,7 +84,7 @@ extension HomeViewController: UITextViewDelegate {
         view.addSubview(editorTextView)
         view.addSubview(giveButton)
         view.addSubview(charCountLabel)
-        view.addSubview(testUserLabel)
+//        view.addSubview(testUserLabel)
 
         
         NSLayoutConstraint.activate([
@@ -113,8 +113,8 @@ extension HomeViewController: UITextViewDelegate {
             charCountLabel.topAnchor.constraint(equalTo: editorTextView.bottomAnchor, constant: 8),
             charCountLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
 
-            testUserLabel.topAnchor.constraint(equalTo: editorTextView.bottomAnchor, constant: 8),
-            testUserLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+//            testUserLabel.topAnchor.constraint(equalTo: editorTextView.bottomAnchor, constant: 8),
+//            testUserLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
 //
             
             

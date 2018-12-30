@@ -50,6 +50,8 @@
 		C4B9D5FD21B2841B00515E40 /* CheckInVC+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B9D5FC21B2841B00515E40 /* CheckInVC+Extensions.swift */; };
 		C4B9D60121B28C7A00515E40 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B9D60021B28C7A00515E40 /* UIColor+Extensions.swift */; };
 		C4B9D60321B2920200515E40 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B9D60221B2920200515E40 /* UIView+Extensions.swift */; };
+		C4E4169321D90421006EC8D2 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E4169221D90421006EC8D2 /* ActivityCell.swift */; };
+		C4E4169521D90745006EC8D2 /* ActivityVC+CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E4169421D90745006EC8D2 /* ActivityVC+CollectionExtension.swift */; };
 		C4E460FB21D34E02007081FC /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E460FA21D34E02007081FC /* ActivityViewController.swift */; };
 		C4E4610221D34EA4007081FC /* ActivityVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E4610121D34EA4007081FC /* ActivityVC+Extension.swift */; };
 		C4FF4B4F21C6F8DA004BC137 /* ContactSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FF4B4E21C6F8DA004BC137 /* ContactSelectionVC.swift */; };
@@ -103,6 +105,8 @@
 		C4B9D5FC21B2841B00515E40 /* CheckInVC+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckInVC+Extensions.swift"; sourceTree = "<group>"; };
 		C4B9D60021B28C7A00515E40 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		C4B9D60221B2920200515E40 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		C4E4169221D90421006EC8D2 /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		C4E4169421D90745006EC8D2 /* ActivityVC+CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityVC+CollectionExtension.swift"; sourceTree = "<group>"; };
 		C4E460FA21D34E02007081FC /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		C4E4610121D34EA4007081FC /* ActivityVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityVC+Extension.swift"; sourceTree = "<group>"; };
 		C4FF4B4E21C6F8DA004BC137 /* ContactSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSelectionVC.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 				C46F145021CE07D400C80533 /* PersonCell.swift */,
 				C46F145821CE34CD00C80533 /* HomeCell.swift */,
 				C4A5902221D09B030074066F /* QuoteCell.swift */,
+				C4E4169221D90421006EC8D2 /* ActivityCell.swift */,
 				C48D684F21CF76F0002AB82B /* HintCell.swift */,
 			);
 			path = View;
@@ -292,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				C4E4610121D34EA4007081FC /* ActivityVC+Extension.swift */,
+				C4E4169421D90745006EC8D2 /* ActivityVC+CollectionExtension.swift */,
 			);
 			path = ActivityVC;
 			sourceTree = "<group>";
@@ -437,6 +443,7 @@
 				C45C5A0D21D1D06500E0ABC6 /* QuoteConstants-NoCD.swift in Sources */,
 				C4B9D60321B2920200515E40 /* UIView+Extensions.swift in Sources */,
 				C4B9D5EB21B2806A00515E40 /* AppDelegate.swift in Sources */,
+				C4E4169321D90421006EC8D2 /* ActivityCell.swift in Sources */,
 				C46F145721CE347400C80533 /* HomeVC+CollectionViewExtension.swift in Sources */,
 				C48D684C21CF71AC002AB82B /* Page.swift in Sources */,
 				C41760E621CF1C6C00B29212 /* ThanksVC+Extension.swift in Sources */,
@@ -444,6 +451,7 @@
 				C4B4172021CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift in Sources */,
 				C46F145921CE34CD00C80533 /* HomeCell.swift in Sources */,
 				C41760E421CF1BB900B29212 /* ThanksEditorVC.swift in Sources */,
+				C4E4169521D90745006EC8D2 /* ActivityVC+CollectionExtension.swift in Sources */,
 				C45C5A0F21D1D89900E0ABC6 /* QuoteStorage-NoCD.swift in Sources */,
 				C46A343021B3FE0300C31029 /* CheckInVC+CollectionViewExtension.swift in Sources */,
 				C4A5901D21D08DA60074066F /* CustomTabBarController.swift in Sources */,
