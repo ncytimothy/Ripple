@@ -9,6 +9,7 @@
 import UIKit
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     enum TabBarControllerConstants {
@@ -16,6 +17,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         static let QuoteViewController = 1
         static let ActivityViewController = 2
         static let HistoryViewController = 3
+    }
+    
+    enum FeelingConstants {
+        struct ImageName {
+            static let Happy = "happy"
+            static let Sad = "sad"
+            static let Love = "love"
+            static let Worried = "worried"
+            static let Angry = "angry"
+            static let Joyful = "joyful"
+        }
+        
+        struct FeelingString {
+            static let Happy = "Happy"
+            static let Sad = "Sad"
+            static let Love = "Loved"
+            static let Worried = "Worried"
+            static let Angry = "Angry"
+            static let Joyful = "Joyful"
+        }
     }
     
     
@@ -46,16 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         quoteVC.dataController = dataController
         homeVC.dataController = dataController
         
-//        self.navigationController?.pushViewController(customTabBarController, animated: true)
-        
-        
-//        checkInVC.dataController = dataController
-        
         dataController.load()
-        
-//        navigationVC.navigationBar.barStyle = .black
-//        navigationVC.navigationBar.tintColor = .white
-        
+        setUpFeeings()
+       
         window?.rootViewController = customTabBarController
         
         return true
@@ -96,6 +110,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         saveViewContext()
+    }
+    
+    fileprivate func setUpFeeings() {
+        let happy = setFeeling(imageName: FeelingConstants.ImageName.Happy, feelingString: FeelingConstants.FeelingString.Happy)
+        let sad = setFeeling(imageName: FeelingConstants.ImageName.Sad, feelingString: FeelingConstants.FeelingString.Sad)
+        let loved = setFeeling(imageName: FeelingConstants.ImageName.Love, feelingString: FeelingConstants.FeelingString.Love)
+        let worried = setFeeling(imageName: FeelingConstants.ImageName.Worried, feelingString: FeelingConstants.FeelingString.Worried)
+        let angry = setFeeling(imageName: FeelingConstants.ImageName.Angry, feelingString: FeelingConstants.FeelingString.Angry)
+        let joyful = setFeeling(imageName: FeelingConstants.ImageName.Joyful, feelingString: FeelingConstants.FeelingString.Joyful)
+    }
+    
+    fileprivate func setFeeling(imageName: String, feelingString: String) {
+        let feeling = Feeling(context: dataController.viewContext)
+        feeling.imageName = imageName
+        feeling.feelingString = feelingString
+        feeling.creationDate = Date()
+        do {
+            try dataController.viewContext.save()
+        } catch {
+            debugPrint("Cannot save feeling to Core Data")
+        }
     }
 
 }

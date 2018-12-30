@@ -65,11 +65,23 @@ class HomeViewController: UIViewController, UIActivityItemSource {
         //                return textView
         //            }
         
-        let attributedText = NSMutableAttributedString(string: "Hi There", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
+        print("\(UserDefaults.standard.string(forKey: "username"))")
         
-        attributedText.append(NSAttributedString(string: "\nYou have given \(UserDefaults.standard.integer(forKey: "gratitude")) gratitudes so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
+//        guard let username = UserDefaults.standard.string(forKey: "username") else { return textView }
         
-        textView.attributedText = attributedText
+//        let attributedText = NSMutableAttributedString()
+        
+//        if let username = UserDefaults.standard.string(forKey: "username") {
+//
+//        }
+//
+//          attributedText.append(NSAttributedString(string: username, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        
+//        let attributedText = NSMutableAttributedString(string: "username", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
+//
+//        attributedText.append(NSAttributedString(string: "\nYou have given \(UserDefaults.standard.integer(forKey: "gratitude")) gratitudes so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
+//
+//        textView.attributedText = setTextViewAttributedText()
         
         textView.isEditable = false
         textView.isSelectable = false
@@ -85,6 +97,9 @@ class HomeViewController: UIViewController, UIActivityItemSource {
         super.viewDidLoad()
         setupViews()
         configureTapGestureRecognizer()
+        
+        headerTextView.attributedText = setTextViewAttributedText()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -272,13 +287,19 @@ class HomeViewController: UIViewController, UIActivityItemSource {
     
     func setTextViewAttributedText() -> NSAttributedString {
         
-         var greetingTitle = "Hi There"
+        let attributedText = NSMutableAttributedString()
+        var usernameString = ""
         
         if let unwrappedUserTitle = UserDefaults.standard.string(forKey: "username") {
-            greetingTitle = unwrappedUserTitle
+            usernameString = unwrappedUserTitle
+        } else {
+            usernameString = "Hi There"
         }
-    
-        let attributedText = NSMutableAttributedString(string: greetingTitle, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        print("usernameString: \(usernameString)")
+        
+         attributedText.append(NSAttributedString(string: usernameString, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white]))
+      
         
         let gratitudeCount = UserDefaults.standard.integer(forKey: "gratitude")
         

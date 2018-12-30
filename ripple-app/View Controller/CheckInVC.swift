@@ -64,14 +64,14 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
 //--------------------------------------------------------------------------------------------------
     // MARK: Lifecycle
     
-    fileprivate func setUpFeeings() {
-        let happy = setFeeling(imageName: FeelingConstants.ImageName.Happy, feelingString: FeelingConstants.FeelingString.Happy)
-        let sad = setFeeling(imageName: FeelingConstants.ImageName.Sad, feelingString: FeelingConstants.FeelingString.Sad)
-        let loved = setFeeling(imageName: FeelingConstants.ImageName.Love, feelingString: FeelingConstants.FeelingString.Love)
-        let worried = setFeeling(imageName: FeelingConstants.ImageName.Worried, feelingString: FeelingConstants.FeelingString.Worried)
-        let angry = setFeeling(imageName: FeelingConstants.ImageName.Angry, feelingString: FeelingConstants.FeelingString.Angry)
-        let joyful = setFeeling(imageName: FeelingConstants.ImageName.Joyful, feelingString: FeelingConstants.FeelingString.Joyful)
-    }
+//    fileprivate func setUpFeeings() {
+//        let happy = setFeeling(imageName: FeelingConstants.ImageName.Happy, feelingString: FeelingConstants.FeelingString.Happy)
+//        let sad = setFeeling(imageName: FeelingConstants.ImageName.Sad, feelingString: FeelingConstants.FeelingString.Sad)
+//        let loved = setFeeling(imageName: FeelingConstants.ImageName.Love, feelingString: FeelingConstants.FeelingString.Love)
+//        let worried = setFeeling(imageName: FeelingConstants.ImageName.Worried, feelingString: FeelingConstants.FeelingString.Worried)
+//        let angry = setFeeling(imageName: FeelingConstants.ImageName.Angry, feelingString: FeelingConstants.FeelingString.Angry)
+//        let joyful = setFeeling(imageName: FeelingConstants.ImageName.Joyful, feelingString: FeelingConstants.FeelingString.Joyful)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,10 +80,12 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
         
         setUpFetchedResultsController()
         
-        if (fetchedResultsController.fetchedObjects?.isEmpty)! {
-            print("setting up feelings...")
-            setUpFeeings()
-        }
+        print("(fetchedResultsController.fetchedObjects?.isEmpty)!: \((fetchedResultsController.fetchedObjects?.isEmpty)!)")
+        
+//        if !(fetchedResultsController.fetchedObjects?.isEmpty)! {
+//            print("setting up feelings...")
+//            setUpFeeings()
+//        }
     }
     
 // -------------------------------------------------------------------------
@@ -117,17 +119,17 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
     }
 // -------------------------------------------------------------------------
     
-    fileprivate func setFeeling(imageName: String, feelingString: String) {
-        let feeling = Feeling(context: dataController.viewContext)
-        feeling.imageName = imageName
-        feeling.feelingString = feelingString
-        feeling.creationDate = Date()
-        do {
-            try dataController.viewContext.save()
-        } catch {
-            debugPrint("Cannot save feeling to Core Data")
-        }
-    }
+//    fileprivate func setFeeling(imageName: String, feelingString: String) {
+//        let feeling = Feeling(context: dataController.viewContext)
+//        feeling.imageName = imageName
+//        feeling.feelingString = feelingString
+//        feeling.creationDate = Date()
+//        do {
+//            try dataController.viewContext.save()
+//        } catch {
+//            debugPrint("Cannot save feeling to Core Data")
+//        }
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
