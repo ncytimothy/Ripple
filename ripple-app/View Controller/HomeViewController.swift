@@ -133,9 +133,6 @@ class HomeViewController: UIViewController, UIActivityItemSource {
     @objc func handleGratitude() {
         print("Trying to up gratitiude...")
         
-        
-        
-        
         let curValue = UserDefaults.standard.integer(forKey: "gratitude")
         let newValue = curValue + 1
         print("newValue: \(newValue)")
