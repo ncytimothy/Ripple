@@ -93,7 +93,7 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
         // 2. Configure the fetch request by adding a sort rule
         // fetchRequest.sortDescriptors property takes an array of sort descriptors
         // .sortDescriptors **MUST** be set on any NSFetchedResultsController instance
-        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         // 3. Instantiate fetched results controller with fetch request
