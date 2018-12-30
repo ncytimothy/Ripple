@@ -63,7 +63,7 @@ class QuoteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpFetchedResultsController()
-        print("fetchedObjects: \(fetchedResultsController.fetchedObjects)")
+        print("fetchedQuotes: \(fetchedResultsController.fetchedObjects)")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -139,6 +139,8 @@ class QuoteViewController: UIViewController {
     // MARK: - Helper
     fileprivate func downloadRandomQuotes() {
         var downloadCount: Int = 0
+        
+        guard (fetchedResultsController.fetchedObjects?.isEmpty)! else { return }
         
         while downloadCount < CollectionViewConstants.cellsCount {
             addRandomQuote()

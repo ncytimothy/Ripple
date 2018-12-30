@@ -24,7 +24,7 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
     
     var nextBarButtonItem = UIBarButtonItem()
     
-    var feelings = [FeelingNoCD]()
+    var feelings = [FeelingDisplay]()
     
     // DataController property passed from AppeDelegate
     var dataController: DataController!
@@ -64,25 +64,20 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
 //--------------------------------------------------------------------------------------------------
     // MARK: Lifecycle
     
-//    fileprivate func setUpFeeings() {
-//        let happy = setFeeling(imageName: FeelingConstants.ImageName.Happy, feelingString: FeelingConstants.FeelingString.Happy)
-//        let sad = setFeeling(imageName: FeelingConstants.ImageName.Sad, feelingString: FeelingConstants.FeelingString.Sad)
-//        let loved = setFeeling(imageName: FeelingConstants.ImageName.Love, feelingString: FeelingConstants.FeelingString.Love)
-//        let worried = setFeeling(imageName: FeelingConstants.ImageName.Worried, feelingString: FeelingConstants.FeelingString.Worried)
-//        let angry = setFeeling(imageName: FeelingConstants.ImageName.Angry, feelingString: FeelingConstants.FeelingString.Angry)
-//        let joyful = setFeeling(imageName: FeelingConstants.ImageName.Joyful, feelingString: FeelingConstants.FeelingString.Joyful)
-//    }
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
         
+        setUpFeeings()
+        
         setUpFetchedResultsController()
         
-        print("(fetchedResultsController.fetchedObjects?.isEmpty)!: \((fetchedResultsController.fetchedObjects?.isEmpty)!)")
+        print("fetchedFeelings: \(fetchedResultsController.fetchedObjects)")
         
-//        if !(fetchedResultsController.fetchedObjects?.isEmpty)! {
+//        if (fetchedResultsController.fetchedObjects?.isEmpty)! {
 //            print("setting up feelings...")
 //            setUpFeeings()
 //        }
@@ -119,17 +114,27 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
     }
 // -------------------------------------------------------------------------
     
-//    fileprivate func setFeeling(imageName: String, feelingString: String) {
-//        let feeling = Feeling(context: dataController.viewContext)
-//        feeling.imageName = imageName
-//        feeling.feelingString = feelingString
-//        feeling.creationDate = Date()
-//        do {
-//            try dataController.viewContext.save()
-//        } catch {
-//            debugPrint("Cannot save feeling to Core Data")
-//        }
-//    }
+    fileprivate func setFeeling(imageName: String, feelingString: String) {
+        print("setFeeling...")
+        let feeling = Feeling(context: dataController.viewContext)
+        feeling.imageName = imageName
+        feeling.feelingString = feelingString
+        feeling.creationDate = Date()
+        do {
+            try dataController.viewContext.save()
+        } catch {
+            debugPrint("Cannot save feeling to Core Data")
+        }
+    }
+    
+    fileprivate func setUpFeeings() {
+        let happy = setFeeling(imageName: FeelingConstants.ImageName.Happy, feelingString: FeelingConstants.FeelingString.Happy)
+        let sad = setFeeling(imageName: FeelingConstants.ImageName.Sad, feelingString: FeelingConstants.FeelingString.Sad)
+        let loved = setFeeling(imageName: FeelingConstants.ImageName.Love, feelingString: FeelingConstants.FeelingString.Love)
+        let worried = setFeeling(imageName: FeelingConstants.ImageName.Worried, feelingString: FeelingConstants.FeelingString.Worried)
+        let angry = setFeeling(imageName: FeelingConstants.ImageName.Angry, feelingString: FeelingConstants.FeelingString.Angry)
+        let joyful = setFeeling(imageName: FeelingConstants.ImageName.Joyful, feelingString: FeelingConstants.FeelingString.Joyful)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

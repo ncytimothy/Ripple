@@ -62,6 +62,10 @@ extension QuoteViewController {
         
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     static func setButtonFor(title: String) -> UIButton {
         let button = UIButton()
         button.setTitle(title, for: .normal)

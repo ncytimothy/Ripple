@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         homeVC.dataController = dataController
         
         dataController.load()
-        setUpFeeings()
+//        setUpFeeings()
        
         window?.rootViewController = customTabBarController
         
@@ -112,26 +112,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveViewContext()
     }
     
-    fileprivate func setUpFeeings() {
-        let happy = setFeeling(imageName: FeelingConstants.ImageName.Happy, feelingString: FeelingConstants.FeelingString.Happy)
-        let sad = setFeeling(imageName: FeelingConstants.ImageName.Sad, feelingString: FeelingConstants.FeelingString.Sad)
-        let loved = setFeeling(imageName: FeelingConstants.ImageName.Love, feelingString: FeelingConstants.FeelingString.Love)
-        let worried = setFeeling(imageName: FeelingConstants.ImageName.Worried, feelingString: FeelingConstants.FeelingString.Worried)
-        let angry = setFeeling(imageName: FeelingConstants.ImageName.Angry, feelingString: FeelingConstants.FeelingString.Angry)
-        let joyful = setFeeling(imageName: FeelingConstants.ImageName.Joyful, feelingString: FeelingConstants.FeelingString.Joyful)
-    }
+//    fileprivate func setUpFeeings() {
+//        let happy = setFeeling(imageName: FeelingConstants.ImageName.Happy, feelingString: FeelingConstants.FeelingString.Happy)
+//        let sad = setFeeling(imageName: FeelingConstants.ImageName.Sad, feelingString: FeelingConstants.FeelingString.Sad)
+//        let loved = setFeeling(imageName: FeelingConstants.ImageName.Love, feelingString: FeelingConstants.FeelingString.Love)
+//        let worried = setFeeling(imageName: FeelingConstants.ImageName.Worried, feelingString: FeelingConstants.FeelingString.Worried)
+//        let angry = setFeeling(imageName: FeelingConstants.ImageName.Angry, feelingString: FeelingConstants.FeelingString.Angry)
+//        let joyful = setFeeling(imageName: FeelingConstants.ImageName.Joyful, feelingString: FeelingConstants.FeelingString.Joyful)
+//    }
     
-    fileprivate func setFeeling(imageName: String, feelingString: String) {
-        let feeling = Feeling(context: dataController.viewContext)
-        feeling.imageName = imageName
-        feeling.feelingString = feelingString
-        feeling.creationDate = Date()
-        do {
-            try dataController.viewContext.save()
-        } catch {
-            debugPrint("Cannot save feeling to Core Data")
-        }
-    }
+//    fileprivate func setFeeling(imageName: String, feelingString: String) {
+//        let feeling = Feeling(context: dataController.viewContext)
+//        feeling.imageName = imageName
+//        feeling.feelingString = feelingString
+//        feeling.creationDate = Date()
+//        do {
+//            try dataController.viewContext.save()
+//        } catch {
+//            debugPrint("Cannot save feeling to Core Data")
+//        }
+//    }
 
 }
 

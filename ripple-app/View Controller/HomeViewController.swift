@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UIActivityItemSource {
+class HomeViewController: UIViewController, UIActivityItemSource, UITextFieldDelegate {
     
     enum EditorTextViewConstants {
         static let charUpperBound = 140
@@ -191,11 +191,22 @@ class HomeViewController: UIViewController, UIActivityItemSource {
     @objc func textViewTapped() {
         print("textView tapped")
         
+        var usernameString = "Hi There"
+        
         let alert = UIAlertController(title: "Hello, what's your name?", message: "Enter your name to personalize your gifts!", preferredStyle: .alert)
 
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (action) in
-            guard let name = alert.textFields?[0].text else { return }
-            UserDefaults.standard.set(name, forKey: "username")
+            guard let unwrappedUsername = alert.textFields?[0].text else { return }
+            
+            let trimmedString = unwrappedUsername.trimmingCharacters(in: .whitespaces)
+    
+            if !(trimmedString == "") {
+                print("here!")
+               usernameString = unwrappedUsername
+            }
+            
+           
+            UserDefaults.standard.set(usernameString, forKey: "username")
             print("UserDefaults.standard.string(forKey: \"username\"): \(UserDefaults.standard.string(forKey: "username"))")
             self.headerTextView.attributedText = self.setTextViewAttributedText()
         }
@@ -206,6 +217,10 @@ class HomeViewController: UIViewController, UIActivityItemSource {
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
+    
+    
     
 //----------------------------------------------------------------------------------------------------------------------------------------
 

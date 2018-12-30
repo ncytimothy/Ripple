@@ -10,6 +10,10 @@ import UIKit
 
 extension HintViewController {
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     func setupViews() {
         collectionView.backgroundColor = .primaryOrange
         // .self: returns the class that we need

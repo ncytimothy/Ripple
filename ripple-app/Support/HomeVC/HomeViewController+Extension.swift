@@ -12,6 +12,9 @@ extension HomeViewController: UITextViewDelegate {
     
     func setupViews() {
         view.backgroundColor = .primaryOrange
+        
+        
+        
         disableButton(button: giveButton)
         
         UserDefaults.standard.set(0, forKey: "testNum")
@@ -144,6 +147,10 @@ extension HomeViewController: UITextViewDelegate {
             
             ])
         
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
      
     static func setButtonFor(title: String) -> UIButton {
