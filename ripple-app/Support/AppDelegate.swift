@@ -41,7 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let tabBarViewControllers = customTabBarController.viewControllers else { return true}
         
         let quoteVC = tabBarViewControllers[TabBarControllerConstants.QuoteViewController] as! QuoteViewController
+        let homeVC = tabBarViewControllers[TabBarControllerConstants.HomeViewController] as! HomeViewController
+        
         quoteVC.dataController = dataController
+        homeVC.dataController = dataController
         
 //        self.navigationController?.pushViewController(customTabBarController, animated: true)
         
@@ -94,9 +97,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         saveViewContext()
     }
-    
-
-
 
 }
 

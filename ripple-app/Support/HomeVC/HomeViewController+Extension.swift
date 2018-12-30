@@ -73,7 +73,7 @@ extension HomeViewController: UITextViewDelegate {
 
         hintButton.addTarget(self, action: #selector(hintTapped), for: .touchUpInside)
 //        giveThanksButton.addTarget(self, action: #selector(giveThanksTapped), for: .touchUpInside)
-        giveButton.addTarget(self, action: #selector(handleGratitude), for: .touchUpInside)
+        giveButton.addTarget(self, action: #selector(giveTapped), for: .touchUpInside)
         
         view.addSubview(headerTextView)
         view.addSubview(hintButton)

@@ -55,14 +55,14 @@ class QuoteViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         
-        setUpFetchedResulsController()
+        setUpFetchedResultsController()
         downloadRandomQuotes()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setUpFetchedResulsController()
+        setUpFetchedResultsController()
         print("fetchedObjects: \(fetchedResultsController.fetchedObjects)")
     }
     
@@ -79,7 +79,7 @@ class QuoteViewController: UIViewController {
 // -------------------------------------------------------------------------
     // MARK: - Fetched Results Controller Setup
     
-    fileprivate func setUpFetchedResulsController() {
+    fileprivate func setUpFetchedResultsController() {
         // 1. Create Fetch Request
         let fetchRequest: NSFetchRequest<Quote> = Quote.fetchRequest()
         

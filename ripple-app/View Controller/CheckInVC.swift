@@ -12,8 +12,6 @@ import MessageUI
 
 class CheckInViewController: UIViewController, MFMessageComposeViewControllerDelegate {
   
-    
-    
 //--------------------------------------------------------------------------------------------------
     // MARK: Properties
 
@@ -26,59 +24,109 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
     
     var nextBarButtonItem = UIBarButtonItem()
     
-    var feelings = [Feeling]()
+    var feelings = [FeelingNoCD]()
     
     // DataController property passed from AppeDelegate
-    var dataController: DataController?
+    var dataController: DataController!
     
+    // Fetched Results Controller
+    var fetchedResultsController: NSFetchedResultsController<Feeling>!
     
     let nextButton: UIButton = CheckInViewController.setButtonFor(title: "SEND")
     let cancelButton: UIButton = CheckInViewController.setButtonFor(title: "CANCEL")
     
-    
-//    let nextButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("SEND", for: .normal)
-//        button.setTitleColor(.white, for: .normal)
-//        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
-    
-
-    
-    enum TabBarControllerConstants {
-        static let HomeViewController = 0
-        static let QuoteViewController = 1
-        static let ActivityViewController = 2
-        static let HistoryViewController = 3
+    enum FeelingConstants {
+        struct ImageName {
+            static let Happy = "happy"
+            static let Sad = "sad"
+            static let Love = "love"
+            static let Worried = "worried"
+            static let Angry = "angry"
+            static let Joyful = "joyful"
+        }
+        
+        struct FeelingString {
+            static let Happy = "Happy"
+            static let Sad = "Sad"
+            static let Love = "Loved"
+            static let Worried = "Worried"
+            static let Angry = "Angry"
+            static let Joyful = "Joyful"
+        }
     }
+    
+    enum CollectionViewConstants {
+        static let cellsCount: Int = 6
+    }
+    
+    
     
 //--------------------------------------------------------------------------------------------------
     // MARK: Lifecycle
+    
+    fileprivate func setUpFeeings() {
+        let happy = setFeeling(imageName: FeelingConstants.ImageName.Happy, feelingString: FeelingConstants.FeelingString.Happy)
+        let sad = setFeeling(imageName: FeelingConstants.ImageName.Sad, feelingString: FeelingConstants.FeelingString.Sad)
+        let loved = setFeeling(imageName: FeelingConstants.ImageName.Love, feelingString: FeelingConstants.FeelingString.Love)
+        let worried = setFeeling(imageName: FeelingConstants.ImageName.Worried, feelingString: FeelingConstants.FeelingString.Worried)
+        let angry = setFeeling(imageName: FeelingConstants.ImageName.Angry, feelingString: FeelingConstants.FeelingString.Angry)
+        let joyful = setFeeling(imageName: FeelingConstants.ImageName.Joyful, feelingString: FeelingConstants.FeelingString.Joyful)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
         
+        setUpFetchedResultsController()
         
-        let happy = Feeling.setFeeling(feelingImageName: "happy", feelingText: "Happy")
-        let sad = Feeling.setFeeling(feelingImageName: "sad", feelingText: "Sad")
-        let loved = Feeling.setFeeling(feelingImageName: "love", feelingText: "Loved")
-        let worried = Feeling.setFeeling(feelingImageName: "worried", feelingText: "Worried")
-        let angry = Feeling.setFeeling(feelingImageName: "angry", feelingText: "Angry")
-        let joyful = Feeling.setFeeling(feelingImageName: "joyful", feelingText: "Joyful")
+        if (fetchedResultsController.fetchedObjects?.isEmpty)! {
+            print("setting up feelings...")
+            setUpFeeings()
+        }
+    }
+    
+// -------------------------------------------------------------------------
+    // MARK: - Fetched Results Controller Setup
+    
+    fileprivate func setUpFetchedResultsController() {
+        // 1. Create Fetch Request
+        let fetchRequest: NSFetchRequest<Feeling> = Feeling.fetchRequest()
         
-        feelings.append(happy)
-        feelings.append(sad)
-        feelings.append(loved)
-        feelings.append(worried)
-        feelings.append(angry)
-        feelings.append(joyful)
-       
+        // 2. Configure the fetch request by adding a sort rule
+        // fetchRequest.sortDescriptors property takes an array of sort descriptors
+        // .sortDescriptors **MUST** be set on any NSFetchedResultsController instance
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
         
+        // 3. Instantiate fetched results controller with fetch request
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "feeling")
         
+        // 4. Set the fetched results controller delegate property to self
+        fetchedResultsController.delegate = self
+        
+        // 5. Perform fetch to load data and start tracking
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("The fetch cannot be performed: \(error.localizedDescription)")
+        }
+        
+        // 6. Remove the Fetched Results Controller when the view disappears
+        // 7. Implement delegate confromance + methods for fetched results controller for UI updates (in an Extension)
+    }
+// -------------------------------------------------------------------------
+    
+    fileprivate func setFeeling(imageName: String, feelingString: String) {
+        let feeling = Feeling(context: dataController.viewContext)
+        feeling.imageName = imageName
+        feeling.feelingString = feelingString
+        feeling.creationDate = Date()
+        do {
+            try dataController.viewContext.save()
+        } catch {
+            debugPrint("Cannot save feeling to Core Data")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,7 +142,7 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
         
         for indexPath in indexPathForSelectItems {
             let selectedCell = feelingsCollectionView.cellForItem(at: indexPath) as! FeelingCell
-            guard let feelingText = selectedCell.feeling?.feelingText else { return }
+            guard let feelingText = selectedCell.feeling?.feelingString else { return }
             
         }
         
@@ -104,8 +152,8 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
             print("indexPathForSelectItems: \(indexPathForSelectItems)")
             for indexPath in indexPathForSelectItems {
                 let selectedCell = feelingsCollectionView.cellForItem(at: indexPath) as! FeelingCell
-                guard let feelingText = selectedCell.feeling?.feelingText else { return }
-                print("selectedCell.feeling?.feelingText: \(selectedCell.feeling?.feelingText)")
+                guard let feelingText = selectedCell.feeling?.feelingString else { return }
+                print("selectedCell.feeling?.feelingText: \(selectedCell.feeling?.feelingString)")
             }
         }
         
@@ -123,7 +171,7 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
             
             for indexPath in indexPathForSelectItems {
                 let selectedCell = feelingsCollectionView.cellForItem(at: indexPath) as! FeelingCell
-                guard let feelingText = selectedCell.feeling?.feelingText else { return }
+                guard let feelingText = selectedCell.feeling?.feelingString else { return }
                 
                 messageController.body = textToSend + " " + "#Feeling\(feelingText)"
                 
@@ -177,6 +225,26 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
     }
 
 
+}
+
+// -------------------------------------------------------------------------
+// MARK: - NSFetchedResultsControllerDelegate
+extension CheckInViewController: NSFetchedResultsControllerDelegate {
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            feelingsCollectionView.insertItems(at: [newIndexPath!])
+        case .delete:
+            feelingsCollectionView.deleteItems(at: [indexPath!])
+        case .update:
+            feelingsCollectionView.reloadItems(at: [newIndexPath!])
+            break
+        default:
+            break
+        }
+    }
 }
 
 

@@ -22,11 +22,11 @@ class FeelingCell: UICollectionViewCell {
     var feeling: Feeling? {
         didSet {
             
-            if let feelingImageName = feeling?.feelingImageName {
+            if let feelingImageName = feeling?.imageName {
                 feelingImageView.image = UIImage(named: feelingImageName)
             }
             
-            if let feelingText = feeling?.feelingText {
+            if let feelingText = feeling?.feelingString {
                 titleLabel.text = feelingText
             }
             

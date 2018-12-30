@@ -8,17 +8,16 @@
 
 import UIKit
 
-class Feeling {
+class FeelingNoCD {
     var feelingImageName: String?
     var feelingText: String?
     
-   
     
-    static func setFeeling(feelingImageName: String?, feelingText: String?) -> Feeling {
-        guard let feelingImageName = feelingImageName else { return Feeling() }
-        guard let feelingText = feelingText else { return Feeling() }
+    static func setFeeling(feelingImageName: String?, feelingText: String?) -> FeelingNoCD {
+        guard let feelingImageName = feelingImageName else { return FeelingNoCD() }
+        guard let feelingText = feelingText else { return FeelingNoCD() }
         
-        let feeling = Feeling()
+        let feeling = FeelingNoCD()
         feeling.feelingImageName = feelingImageName
         feeling.feelingText = feelingText
         

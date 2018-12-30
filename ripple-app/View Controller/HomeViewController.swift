@@ -156,6 +156,7 @@ class HomeViewController: UIViewController, UIActivityItemSource {
         
         let checkInVC = CheckInViewController()
         checkInVC.textToSend = editorTextView.text
+        checkInVC.dataController = dataController
         show(checkInVC, sender: self)
         
         
