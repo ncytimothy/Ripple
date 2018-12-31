@@ -24,8 +24,6 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
     
     var nextBarButtonItem = UIBarButtonItem()
     
-    var feelings = [FeelingDisplay]()
-    
     // DataController property passed from AppeDelegate
     var dataController: DataController!
     
@@ -63,24 +61,13 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
     
 //--------------------------------------------------------------------------------------------------
     // MARK: Lifecycle
-    
-  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
-        
         setUpFeeings()
-        
         setUpFetchedResultsController()
         
-        print("fetchedFeelings: \(fetchedResultsController.fetchedObjects)")
-        
-//        if (fetchedResultsController.fetchedObjects?.isEmpty)! {
-//            print("setting up feelings...")
-//            setUpFeeings()
-//        }
     }
     
 // -------------------------------------------------------------------------
@@ -113,6 +100,7 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
         // 7. Implement delegate confromance + methods for fetched results controller for UI updates (in an Extension)
     }
 // -------------------------------------------------------------------------
+    // MARK: - Helpers
     
     fileprivate func setFeeling(imageName: String, feelingString: String) {
         print("setFeeling...")
@@ -132,41 +120,25 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
         
         
     }
-    
+
     fileprivate func setUpFeeings() {
-        let happy = setFeeling(imageName: FeelingConstants.ImageName.Happy, feelingString: FeelingConstants.FeelingString.Happy)
-        let sad = setFeeling(imageName: FeelingConstants.ImageName.Sad, feelingString: FeelingConstants.FeelingString.Sad)
-        let loved = setFeeling(imageName: FeelingConstants.ImageName.Love, feelingString: FeelingConstants.FeelingString.Love)
-        let worried = setFeeling(imageName: FeelingConstants.ImageName.Worried, feelingString: FeelingConstants.FeelingString.Worried)
-        let angry = setFeeling(imageName: FeelingConstants.ImageName.Angry, feelingString: FeelingConstants.FeelingString.Angry)
-        let joyful = setFeeling(imageName: FeelingConstants.ImageName.Joyful, feelingString: FeelingConstants.FeelingString.Joyful)
+        setFeeling(imageName: FeelingConstants.ImageName.Happy, feelingString: FeelingConstants.FeelingString.Happy)
+        setFeeling(imageName: FeelingConstants.ImageName.Sad, feelingString: FeelingConstants.FeelingString.Sad)
+        setFeeling(imageName: FeelingConstants.ImageName.Love, feelingString: FeelingConstants.FeelingString.Love)
+        setFeeling(imageName: FeelingConstants.ImageName.Worried, feelingString: FeelingConstants.FeelingString.Worried)
+        setFeeling(imageName: FeelingConstants.ImageName.Angry, feelingString: FeelingConstants.FeelingString.Angry)
+        setFeeling(imageName: FeelingConstants.ImageName.Joyful, feelingString: FeelingConstants.FeelingString.Joyful)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
+// -------------------------------------------------------------------------
+    // MARK: - Actions
     @objc func handleNext() {
-        print("Trying to get to next page...")
-        
-        // Test Code
-        guard let indexPathForSelectItems = feelingsCollectionView.indexPathsForSelectedItems else { return }
-        
-        for indexPath in indexPathForSelectItems {
-            let selectedCell = feelingsCollectionView.cellForItem(at: indexPath) as! FeelingCell
-            guard let feelingText = selectedCell.feeling?.feelingString else { return }
-            
-        }
-        
-        
         
         if let indexPathForSelectItems = feelingsCollectionView.indexPathsForSelectedItems {
             print("indexPathForSelectItems: \(indexPathForSelectItems)")
             for indexPath in indexPathForSelectItems {
                 let selectedCell = feelingsCollectionView.cellForItem(at: indexPath) as! FeelingCell
                 guard let feelingText = selectedCell.feeling?.feelingString else { return }
-                print("selectedCell.feeling?.feelingText: \(selectedCell.feeling?.feelingString)")
             }
         }
         
@@ -200,19 +172,6 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
             present(alert, animated: true, completion: nil)
         }
     }
-    
-//    @objc func nextTapped() {
-//        print("Next tapped...")
-//
-////        let customTabBarController = CustomTabBarController()
-////        guard let tabBarViewControllers = customTabBarController.viewControllers else { return }
-////
-////        let quoteVC = tabBarViewControllers[TabBarControllerConstants.QuoteViewController] as! QuoteViewController
-////        quoteVC.dataController = dataController
-////
-////        self.navigationController?.pushViewController(customTabBarController, animated: true)
-//
-//    }
     
     @objc func handleCancel() {
         print("trying to cancel/dismiss check in vc...")

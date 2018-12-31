@@ -54,7 +54,7 @@ extension TheySaidSoClient {
                             return
                         }
 
-                        QuoteSharedData.sharedInstance.Quotes.append(quote)
+//                        QuoteSharedData.sharedInstance.Quotes.append(quote)
                         completionHandlerForDownloadQuote(true, "")
                     }
                 }
@@ -183,7 +183,6 @@ extension TheySaidSoClient {
         let quoteDictionary = quotesArray[0]
         print("quote: \(quoteDictionary)")
        
-//        quote = Quote.quoteFromResult(quoteDictionary)
         return quote
     }
     
@@ -194,8 +193,6 @@ extension TheySaidSoClient {
             debugPrint("Cannot find keys '\(TheySaidSoClient.TheySaidSoResponseKeys.Contents)' in '\(result)'")
             return quote
         }
-//        quote = Quote.randomQuoteFromResult(contentsDictionary)
-        print("randomQuote: \(quote)")
         return quote
     }
     

@@ -46,36 +46,8 @@ extension HomeViewController: UITextViewDelegate {
             view.translatesAutoresizingMaskIntoConstraints = false
             return view
         }()
-        
-//        let headerTextView: UITextView = {
-//            let textView = UITextView()
-//
-//            textView.backgroundColor = .clear
-//            
-////            guard let usernameString = UserDefaults.standard.string(forKey: "username") else {
-////                print("cannot find key")
-////                return textView
-////            }
-//
-//            let attributedText = NSMutableAttributedString(string: "Hi There", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
-//
-//            attributedText.append(NSAttributedString(string: "\nYou have given 0 gratitudes so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
-//
-//            textView.attributedText = attributedText
-//
-//            textView.isEditable = false
-//            textView.isSelectable = false
-//
-//            textView.translatesAutoresizingMaskIntoConstraints = false
-//
-//            return textView
-//        }()
-        
-       
-        
 
         hintButton.addTarget(self, action: #selector(hintTapped), for: .touchUpInside)
-//        giveThanksButton.addTarget(self, action: #selector(giveThanksTapped), for: .touchUpInside)
         giveButton.addTarget(self, action: #selector(giveTapped), for: .touchUpInside)
         
         view.addSubview(headerTextView)
@@ -84,9 +56,7 @@ extension HomeViewController: UITextViewDelegate {
         view.addSubview(editorTextView)
         view.addSubview(giveButton)
         view.addSubview(charCountLabel)
-//        view.addSubview(testUserLabel)
 
-        
         NSLayoutConstraint.activate([
               
             headerTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -112,39 +82,7 @@ extension HomeViewController: UITextViewDelegate {
 
             charCountLabel.topAnchor.constraint(equalTo: editorTextView.bottomAnchor, constant: 8),
             charCountLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
-
-//            testUserLabel.topAnchor.constraint(equalTo: editorTextView.bottomAnchor, constant: 8),
-//            testUserLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
-//
-            
-            
-//            giveThanksButton.topAnchor.constraint(equalTo: editorTextView.bottomAnchor, constant: 20),
-//            giveThanksButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            giveThanksButton.heightAnchor.constraint(equalToConstant: 50),
-//            giveThanksButton.widthAnchor.constraint(equalToConstant: 200),
-
-        
-//            safeCircleLabel.topAnchor.constraint(equalTo: headerTextView.bottomAnchor, constant: 20),
-//            safeCircleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-//            safeCircleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-//
-//            dividerLineView.topAnchor.constraint(equalTo: safeCircleLabel.bottomAnchor, constant: 8),
-//            dividerLineView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
-//            dividerLineView.heightAnchor.constraint(equalToConstant: 1),
-//            dividerLineView.widthAnchor.constraint(equalToConstant: view.frame.width),
-//            
-//            homeCollectionView.topAnchor.constraint(equalTo: headerTextView.bottomAnchor),
-//            homeCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//            homeCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//            homeCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
-//
-//            bottomButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-////            bottomButton.topAnchor.constraint(equalTo: homeCollectionView.bottomAnchor, constant: 8),
-//            bottomButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
-//            bottomButton.heightAnchor.constraint(equalToConstant: 50),
-//            bottomButton.widthAnchor.constraint(equalToConstant: 200)
-//            
-            
+                        
             ])
         
     }

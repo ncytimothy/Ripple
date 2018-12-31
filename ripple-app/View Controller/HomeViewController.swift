@@ -7,16 +7,22 @@
 //
 
 import UIKit
+import CoreData
 
-class HomeViewController: UIViewController, UIActivityItemSource, UITextFieldDelegate {
-    
+class HomeViewController: UIViewController {
+//-------------------------------------------------------------------------------------------------------------------------------------
+    // MARK: - Properties
     enum EditorTextViewConstants {
         static let charUpperBound = 140
     }
     
     let homeCellId = "homeId"
     
+    // Dependency Data Controller Injection
     var dataController: DataController!
+    
+    // Fetched Results Controller, specified with an entity
+    var fetchedResultsController: NSFetchedResultsController<Gratitude>!
    
     let editorTextView: UITextView = {
         let textView = UITextView()
@@ -34,7 +40,6 @@ class HomeViewController: UIViewController, UIActivityItemSource, UITextFieldDel
 
     
     let hintButton = HomeViewController.setButtonFor(title: "Hints")
-//    let giveThanksButton = HomeViewController.setButtonFor(title: "Give Thanks")
     let giveButton = HomeViewController.setButtonFor(title: "Give")
     
     let charCountLabel: UILabel = {
@@ -42,46 +47,14 @@ class HomeViewController: UIViewController, UIActivityItemSource, UITextFieldDel
         label.font = UIFont.systemFont(ofSize: 17)
         label.text = String(EditorTextViewConstants.charUpperBound)
         label.textColor = .white
-        //            label.backgroundColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-//    let testUserLabel: UILabel = {
-//        let label = UILabel()
-//        label.font = UIFont.systemFont(ofSize: 17)
-//        label.text = String(UserDefaults.standard.integer(forKey: "testNum"))
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
     
     let headerTextView: UITextView = {
         let textView = UITextView()
         
         textView.backgroundColor = .clear
-        
-        //            guard let usernameString = UserDefaults.standard.string(forKey: "username") else {
-        //                print("cannot find key")
-        //                return textView
-        //            }
-        
-        print("\(UserDefaults.standard.string(forKey: "username"))")
-        
-//        guard let username = UserDefaults.standard.string(forKey: "username") else { return textView }
-        
-//        let attributedText = NSMutableAttributedString()
-        
-//        if let username = UserDefaults.standard.string(forKey: "username") {
-//
-//        }
-//
-//          attributedText.append(NSAttributedString(string: username, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white]))
-        
-//        let attributedText = NSMutableAttributedString(string: "username", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
-//
-//        attributedText.append(NSAttributedString(string: "\nYou have given \(UserDefaults.standard.integer(forKey: "gratitude")) gratitudes so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
-//
-//        textView.attributedText = setTextViewAttributedText()
         
         textView.isEditable = false
         textView.isSelectable = false
@@ -91,50 +64,57 @@ class HomeViewController: UIViewController, UIActivityItemSource, UITextFieldDel
         return textView
     }()
     
-  
+//-------------------------------------------------------------------------------------------------------------------------------------
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         configureTapGestureRecognizer()
-        
-        headerTextView.attributedText = setTextViewAttributedText()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        subscribeToKeyboardNotifications()
+        setUpFetchedResultsController()
+        headerTextView.attributedText = setTextViewAttributedText()
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        unsubscribeToKeyboardNotifications()
+    }
+    
+// -------------------------------------------------------------------------
+    // MARK: - Fetched Results Controller Setup
+    
+    fileprivate func setUpFetchedResultsController() {
+        // 1. Create Fetch Request
+        let fetchRequest: NSFetchRequest<Gratitude> = Gratitude.fetchRequest()
+        
+        // 2. Configure the fetch request by adding a sort rule
+        // fetchRequest.sortDescriptors property takes an array of sort descriptors
+        // .sortDescriptors **MUST** be set on any NSFetchedResultsController instance
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // 3. Instantiate fetched results controller with fetch request
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "gratitude")
+        
+        // 4. Set the fetched results controller delegate property to self
+        fetchedResultsController.delegate = self
+        
+        // 5. Perform fetch to load data and start tracking
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("The fetch cannot be performed: \(error.localizedDescription)")
+        }
+        
+        // 6. Remove the Fetched Results Controller when the view disappears
+        // 7. Implement delegate confromance + methods for fetched results controller for UI updates (in an Extension)
     }
 //----------------------------------------------------------------------------------------------------------------------------------------
     // MARK: - Actions
-//    @objc func giveThanksTapped() {
-//        print("Give Thanks Tapped")
-//        let sharingText = editorTextView.text
-//
-//        let activityController = UIActivityViewController(activityItems: [sharingText], applicationActivities: nil)
-//
-//        enableButton(button: giveButton)
-//
-//        activityController.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
-//            if completed == true {
-//                print("completed!")
-//                self.enableButton(button: self.giveButton)
-//            } else {
-//                self.disableButton(button: self.giveButton)
-//            }
-//        }
-//
-//        self.navigationController?.present(activityController, animated: true, completion: nil)
-//
-//    }
-    
     
     @objc func hintTapped() {
         
@@ -145,51 +125,15 @@ class HomeViewController: UIViewController, UIActivityItemSource, UITextFieldDel
         present(hintVC, animated: true, completion: nil)
     }
     
-    @objc func handleGratitude() {
-        print("Trying to up gratitiude...")
-        
-        let curValue = UserDefaults.standard.integer(forKey: "gratitude")
-        let newValue = curValue + 1
-        print("newValue: \(newValue)")
-        UserDefaults.standard.set(newValue, forKey: "testNum")
-        UserDefaults.standard.set(newValue, forKey: "gratitude")
-        let testNum = UserDefaults.standard.value(forKey: "testNum")
-        print("\(testNum)")
-        headerTextView.attributedText = setTextViewAttributedText()
-//        testUserLabel.text = String(UserDefaults.standard.value(forKey: "testNum") as! Int)
-        
-        
-        
-    }
-    
-    
     @objc func giveTapped() {
-        print("Try to complete this gratitude...")
         
         let checkInVC = CheckInViewController()
         checkInVC.textToSend = editorTextView.text
         checkInVC.dataController = dataController
         show(checkInVC, sender: self)
-        
-        
-//        UIView.animate(withDuration: 3,
-//                       delay: 0, usingSpringWithDamping: 0.5,
-//                       initialSpringVelocity: 0,
-//                       options: [.curveEaseIn,.curveEaseOut],
-//                       animations: {
-//                            self.editorTextView.alpha = 0.5
-//                            self.editorTextView.alpha = 1
-//                        },
-//                       completion: nil)
-//
-//        replaceTextViewPlaceholder()
-//        disableButton(button: giveButton)
-        
-        
     }
     
     @objc func textViewTapped() {
-        print("textView tapped")
         
         var usernameString = "Hi There"
         
@@ -205,9 +149,7 @@ class HomeViewController: UIViewController, UIActivityItemSource, UITextFieldDel
                usernameString = unwrappedUsername
             }
             
-           
             UserDefaults.standard.set(usernameString, forKey: "username")
-            print("UserDefaults.standard.string(forKey: \"username\"): \(UserDefaults.standard.string(forKey: "username"))")
             self.headerTextView.attributedText = self.setTextViewAttributedText()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
@@ -218,86 +160,15 @@ class HomeViewController: UIViewController, UIActivityItemSource, UITextFieldDel
         self.present(alert, animated: true, completion: nil)
     }
     
-    
-    
-    
-    
 //----------------------------------------------------------------------------------------------------------------------------------------
-
-    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+    // MARK: - Helpers
+    fileprivate func setGratitudeAttributedString(_ gratitudeCount: Int) -> NSAttributedString {
         
-        return "Share gratitute messages using the Ripple app."
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        return "Share gratitute messages using the Ripple app."
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
-        return "Ripple Message"
-    }
-    
-    
-    
-    func subscribeToKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    func unsubscribeToKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-    }
-    
-    @objc func keyboardWillShow(_ notification: NSNotification) {
-        if editorTextView.isFirstResponder {
-//            if let navigationBarOriginY = navigationController?.navigationBar.frame.maxY {
-                // Add correct shifting distance for Add Quote Editor
-//                view.frame.origin.y = -editorTextView.frame.origin.y + navigationBarOriginY
-//                view.frame.origin.y = -editorTextView.frame.origin.y + 50
-//            }
+        if gratitudeCount == 1 {
+            return NSAttributedString(string: "\nYou have given \(gratitudeCount) gratitude so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white])
+        } else {
+            return NSAttributedString(string: "\nYou have given \(gratitudeCount) gratitudes so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white])
         }
-    }
-    
-    @objc func keyboardWillHide(_ notification: NSNotification) {
-        
-        view.frame.origin.y = 0
-        if let navigationBarOriginY = navigationController?.navigationBar.frame.maxY {
-            // Add correct shifting distance for Add Quote Editor
-//            view.frame.origin.y = 0 + navigationBarOriginY
-            
-        }
-    }
-    
-
-    
-    func setValueToDefaults(key:String, value:AnyObject){
-        self.removeKeyValueFromDefaults(Key:key)
-        UserDefaults.standard.set(value, forKey: key)
-        
-    }
-    
-    func getValueFromDefaults(key:String) ->AnyObject?{
-        
-        if((UserDefaults.standard.value(forKey: key)) != nil){
-            
-            let value:AnyObject = UserDefaults.standard.value(forKey: key)! as AnyObject
-            
-            return value
-        }else{
-            
-            return nil
-        }
-        
-    }
-    
-    func removeKeyValueFromDefaults(Key:String){
-        
-        let defaults = UserDefaults.standard
-        defaults.removeObject(forKey: Key)
-        defaults.synchronize()
-        
     }
     
     func setTextViewAttributedText() -> NSAttributedString {
@@ -311,21 +182,24 @@ class HomeViewController: UIViewController, UIActivityItemSource, UITextFieldDel
             usernameString = "Hi There"
         }
         
-        print("usernameString: \(usernameString)")
-        
          attributedText.append(NSAttributedString(string: usernameString, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white]))
-      
         
-        let gratitudeCount = UserDefaults.standard.integer(forKey: "gratitude")
+        guard let gratitudeCount = fetchedResultsController.fetchedObjects?.count else { return attributedText }
         
-        if gratitudeCount == 1 {
-                attributedText.append(NSAttributedString(string: "\nYou have given \(UserDefaults.standard.integer(forKey: "gratitude")) gratitude so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
-            return attributedText
-        }
-        
-        attributedText.append(NSAttributedString(string: "\nYou have given \(UserDefaults.standard.integer(forKey: "gratitude")) gratitudes so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        attributedText.append(setGratitudeAttributedString(gratitudeCount))
         
         return attributedText
     }
     
 }
+
+// -------------------------------------------------------------------------
+// MARK: - NSFetchedResultsControllerDelegate
+extension HomeViewController: NSFetchedResultsControllerDelegate {
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+       
+    }
+}
+

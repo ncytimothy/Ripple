@@ -16,16 +16,10 @@ class CustomTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        guard let dataController = dataController else {
-//            debugPrint("Cannot pass dataController in tab")
-//            return
-//        }
-        
         tabBar.tintColor = UIColor.primaryOrange
         
         let homeVC = HomeViewController()
         homeVC.tabBarItem = UITabBarItem(title: "Give", image: UIImage(named: "heart-selected"), selectedImage: UIImage(named: "heart-selected"))
-        
         
         let quoteVC = QuoteViewController()
         quoteVC.tabBarItem = UITabBarItem(title: "Quotes", image: UIImage(named: "quote"), selectedImage: UIImage(named: "quote"))
@@ -35,11 +29,7 @@ class CustomTabBarController: UITabBarController {
         
         let tabBarList = [homeVC, quoteVC, activityVC]
         viewControllers = tabBarList
-        
-        
-        
-        
-        
+ 
     }
     
     

@@ -15,52 +15,17 @@ extension CheckInViewController {
     
         view.backgroundColor = UIColor.primaryOrange
         
-//        nextBarButtonItem = UIBarButtonItem(title: "NEXT", style: .done, target: self, action: #selector(nextTapped))
         nextButton.isEnabled = false
         nextButton.alpha = 0.5
         
         cancelButton.setTitleColor(.gray, for: .normal)
 
         setupCollectionView()
-//        setupBottomConstraints()
         
         feelingsCollectionView.delegate = self
         feelingsCollectionView.dataSource = self
         feelingsCollectionView.register(FeelingCell.self, forCellWithReuseIdentifier: cellId)
-        
-        
-        
-        
-//        self.navigationItem.setRightBarButton(nextBarButtonItem, animated: true)
-        
-//        backButton.alpha = 0
-//        nextBarButtonItem.isEnabled = false
-                
-//        let titleLabel: UILabel = {
-//            let label = UILabel()
-//            let attributedText = NSMutableAttributedString(string: "How are you feeling today?", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white])
-//            label.attributedText = attributedText
-//            label.translatesAutoresizingMaskIntoConstraints = false
-//            return label
-//        }()
-        
-//        let headerLabel = UILabel.setHeaderLabel(title: "Check-in", subtitle: "How are you feeling today?")
-        
-//        let titleLabel: UILabel = {
-//            let label = UILabel()
-//            label.numberOfLines = 2
-//
-//            let attributedText = NSMutableAttributedString(string: "Check-in", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
-//
-//            attributedText.append(NSAttributedString(string: "\nHow are you feeling today?", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
-//
-//            label.attributedText = attributedText
-//
-//            label.translatesAutoresizingMaskIntoConstraints = false
-//
-//            return label
-//        }()
-        
+   
         let headerTextView: UITextView = {
             let textView = UITextView()
             
@@ -115,34 +80,19 @@ extension CheckInViewController {
         nextButton.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(handleCancel), for: .touchUpInside)
         
-//        view.addSubview(titleLabel)
         view.addSubview(feelingsCollectionView)
-//        view.addSubview(nextButton)
         view.addSubview(headerTextView)
         view.addSubview(bottomControlsStackView)
-//        headerContainerView.addSubview(headerLabel)
-//        view.addSubview()
-    
+
         
         
         NSLayoutConstraint.activate([
 
-//            headerContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-//            headerContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//            headerContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//            headerContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05),
-//
-//            headerLabel.leadingAnchor.constraint(equalTo: headerContainerView.leadingAnchor, constant: 28),
-//            headerLabel.centerYAnchor.constraint(equalTo: headerContainerView.centerYAnchor),
-            
             headerTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             headerTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             headerTextView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15),
             
-//            nextButton.topAnchor.constraint(equalTo: headerTextView.bottomAnchor),
-//            nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
-
             feelingsCollectionView.topAnchor.constraint(equalTo: headerTextView.bottomAnchor),
             feelingsCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: leadingConstraintForFeelingsCollection),
             feelingsCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -leadingConstraintForFeelingsCollection),
@@ -161,22 +111,6 @@ extension CheckInViewController {
         return .lightContent
     }
 
-//    func setupBottomConstraints() {
-//        let bottomControlsStackView = UIStackView(arrangedSubviews: [cancelButton, nextButton])
-//        bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        bottomControlsStackView.distribution = .fillEqually
-//
-//        view.addSubview(bottomControlsStackView)
-//
-//        NSLayoutConstraint.activate([
-//                bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-//                bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//                bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//                bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
-//            ])
-//    }
-//
     static func setButtonFor(title: String) -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(title, for: .normal)

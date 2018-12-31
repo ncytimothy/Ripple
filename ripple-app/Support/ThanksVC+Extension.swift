@@ -24,9 +24,6 @@ extension ThanksEditorViewController: UITextViewDelegate {
         
         thanksTextView.delegate = self
         
-        
-        
-        
         view.addSubview(thanksTextView)
         
         NSLayoutConstraint.activate([

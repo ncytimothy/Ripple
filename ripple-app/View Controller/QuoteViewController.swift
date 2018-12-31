@@ -63,17 +63,14 @@ class QuoteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpFetchedResultsController()
-        print("fetchedQuotes: \(fetchedResultsController.fetchedObjects)")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        fetchedResultsController = nil
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        self.presentLoadingAlert()
     }
     
 // -------------------------------------------------------------------------
@@ -156,17 +153,6 @@ class QuoteViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.quoteCollectionView.reloadData()
                 }
-                
-                // TODO: Prevention from tampering of the collection so that cells can be returned
-                // properly
-                
-//                print("QuoteSharedData.sharedInstance.Quotes.count: \(QuoteSharedData.sharedInstance.Quotes.count)")
-//
-//                if QuoteSharedData.sharedInstance.Quotes.count == CollectionViewConstants.cellsCount {
-//                    self.quoteCollectionView.isScrollEnabled = true
-//                    self.alert.dismiss(animated: true, completion: nil)
-//                }
-                
             }
         }
     }

@@ -18,29 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         static let ActivityViewController = 2
         static let HistoryViewController = 3
     }
-    
-    enum FeelingConstants {
-        struct ImageName {
-            static let Happy = "happy"
-            static let Sad = "sad"
-            static let Love = "love"
-            static let Worried = "worried"
-            static let Angry = "angry"
-            static let Joyful = "joyful"
-        }
-        
-        struct FeelingString {
-            static let Happy = "Happy"
-            static let Sad = "Sad"
-            static let Love = "Loved"
-            static let Worried = "Worried"
-            static let Angry = "Angry"
-            static let Joyful = "Joyful"
-        }
-    }
-    
-    
-
+  
     var window: UIWindow?
     // DataController init to be injected to initial VC and passed
     let dataController = DataController(modelName: "Ripple")
@@ -50,13 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        
-//        let checkInVC = CheckInViewController()
-
-//        let navigationVC = UINavigationController(rootViewController: checkInVC)
-//        navigationVC.navigationBar.isTranslucent = false
-//        navigationVC.navigationBar.setBackgroundImage(UIImage(named: "primaryOrange"), for: .default)
-//        navigationVC.navigationBar.shadowImage = UIImage()
         
         let customTabBarController = CustomTabBarController()
         guard let tabBarViewControllers = customTabBarController.viewControllers else { return true}
@@ -71,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         dataController.load()
-//        setUpFeeings()
+
        
         window?.rootViewController = customTabBarController
         
@@ -114,27 +85,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         saveViewContext()
     }
-    
-//    fileprivate func setUpFeeings() {
-//        let happy = setFeeling(imageName: FeelingConstants.ImageName.Happy, feelingString: FeelingConstants.FeelingString.Happy)
-//        let sad = setFeeling(imageName: FeelingConstants.ImageName.Sad, feelingString: FeelingConstants.FeelingString.Sad)
-//        let loved = setFeeling(imageName: FeelingConstants.ImageName.Love, feelingString: FeelingConstants.FeelingString.Love)
-//        let worried = setFeeling(imageName: FeelingConstants.ImageName.Worried, feelingString: FeelingConstants.FeelingString.Worried)
-//        let angry = setFeeling(imageName: FeelingConstants.ImageName.Angry, feelingString: FeelingConstants.FeelingString.Angry)
-//        let joyful = setFeeling(imageName: FeelingConstants.ImageName.Joyful, feelingString: FeelingConstants.FeelingString.Joyful)
-//    }
-    
-//    fileprivate func setFeeling(imageName: String, feelingString: String) {
-//        let feeling = Feeling(context: dataController.viewContext)
-//        feeling.imageName = imageName
-//        feeling.feelingString = feelingString
-//        feeling.creationDate = Date()
-//        do {
-//            try dataController.viewContext.save()
-//        } catch {
-//            debugPrint("Cannot save feeling to Core Data")
-//        }
-//    }
-
 }
 

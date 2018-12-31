@@ -11,30 +11,18 @@
 		C41760E421CF1BB900B29212 /* ThanksEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E321CF1BB900B29212 /* ThanksEditorVC.swift */; };
 		C41760E621CF1C6C00B29212 /* ThanksVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E521CF1C6C00B29212 /* ThanksVC+Extension.swift */; };
 		C41760E821CF239200B29212 /* EditorDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E721CF239200B29212 /* EditorDefaults.swift */; };
-		C42A330921B569FC00820AC7 /* ConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42A330821B569FC00820AC7 /* ConfirmationVC.swift */; };
 		C45C5A0521D1C84500E0ABC6 /* TheySaidSoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C5A0421D1C84500E0ABC6 /* TheySaidSoClient.swift */; };
 		C45C5A0721D1CA1A00E0ABC6 /* TheySaidSoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C5A0621D1CA1A00E0ABC6 /* TheySaidSoConstants.swift */; };
 		C45C5A0921D1CCE400E0ABC6 /* TheySaidSoConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C5A0821D1CCE400E0ABC6 /* TheySaidSoConvenience.swift */; };
-		C45C5A0B21D1D03500E0ABC6 /* Quote-NoCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C5A0A21D1D03500E0ABC6 /* Quote-NoCD.swift */; };
-		C45C5A0D21D1D06500E0ABC6 /* QuoteConstants-NoCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C5A0C21D1D06500E0ABC6 /* QuoteConstants-NoCD.swift */; };
-		C45C5A0F21D1D89900E0ABC6 /* QuoteStorage-NoCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C5A0E21D1D89900E0ABC6 /* QuoteStorage-NoCD.swift */; };
 		C46A342E21B3FA0400C31029 /* FeelingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46A342D21B3FA0400C31029 /* FeelingCell.swift */; };
 		C46A343021B3FE0300C31029 /* CheckInVC+CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46A342F21B3FE0300C31029 /* CheckInVC+CollectionViewExtension.swift */; };
-		C46F144D21CE05D600C80533 /* PersonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F144C21CE05D600C80533 /* PersonConstants.swift */; };
-		C46F144F21CE072600C80533 /* PersonStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F144E21CE072600C80533 /* PersonStorage.swift */; };
-		C46F145121CE07D400C80533 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F145021CE07D400C80533 /* PersonCell.swift */; };
 		C46F145321CE2B5A00C80533 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F145221CE2B5A00C80533 /* HomeViewController.swift */; };
 		C46F145521CE2BBF00C80533 /* HomeViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F145421CE2BBF00C80533 /* HomeViewController+Extension.swift */; };
-		C46F145721CE347400C80533 /* HomeVC+CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F145621CE347400C80533 /* HomeVC+CollectionViewExtension.swift */; };
-		C46F145921CE34CD00C80533 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46F145821CE34CD00C80533 /* HomeCell.swift */; };
-		C4801DCE21CDD50500B2762F /* ContactsSelectionVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4801DCD21CDD50500B2762F /* ContactsSelectionVC+Extension.swift */; };
-		C4801DD021CDD5B300B2762F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4801DCF21CDD5B300B2762F /* Person.swift */; };
 		C48D684A21CF70D3002AB82B /* HintVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48D684921CF70D3002AB82B /* HintVC.swift */; };
 		C48D684C21CF71AC002AB82B /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48D684B21CF71AC002AB82B /* Page.swift */; };
 		C48D684E21CF765D002AB82B /* HintVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48D684D21CF765D002AB82B /* HintVC+Extension.swift */; };
 		C48D685021CF76F0002AB82B /* HintCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48D684F21CF76F0002AB82B /* HintCell.swift */; };
 		C4923CE921D32EE500338D7A /* GCDMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4923CE821D32EE500338D7A /* GCDMain.swift */; };
-		C495AD2B21B41F030059F70A /* FeelingCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495AD2A21B41F030059F70A /* FeelingCell+Model.swift */; };
 		C4A5901D21D08DA60074066F /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5901C21D08DA60074066F /* CustomTabBarController.swift */; };
 		C4A5901F21D08E350074066F /* QuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5901E21D08E350074066F /* QuoteViewController.swift */; };
 		C4A5902121D091030074066F /* QuoteVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5902021D091030074066F /* QuoteVC+Extension.swift */; };
@@ -42,7 +30,6 @@
 		C4A5902521D09FB30074066F /* QuoteVC+CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A5902421D09FB30074066F /* QuoteVC+CollectionExtension.swift */; };
 		C4B3861721D304FB00405E4C /* Ripple.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4B3861521D304FB00405E4C /* Ripple.xcdatamodeld */; };
 		C4B3861921D3062800405E4C /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B3861821D3062800405E4C /* DataController.swift */; };
-		C4B4172021CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4171F21CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift */; };
 		C4B9D5EB21B2806A00515E40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B9D5EA21B2806A00515E40 /* AppDelegate.swift */; };
 		C4B9D5ED21B2806A00515E40 /* CheckInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B9D5EC21B2806A00515E40 /* CheckInVC.swift */; };
 		C4B9D5F221B2806A00515E40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4B9D5F121B2806A00515E40 /* Assets.xcassets */; };
@@ -54,7 +41,6 @@
 		C4E4169521D90745006EC8D2 /* ActivityVC+CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E4169421D90745006EC8D2 /* ActivityVC+CollectionExtension.swift */; };
 		C4E460FB21D34E02007081FC /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E460FA21D34E02007081FC /* ActivityViewController.swift */; };
 		C4E4610221D34EA4007081FC /* ActivityVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E4610121D34EA4007081FC /* ActivityVC+Extension.swift */; };
-		C4FF4B4F21C6F8DA004BC137 /* ContactSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FF4B4E21C6F8DA004BC137 /* ContactSelectionVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,30 +50,18 @@
 		C41760E321CF1BB900B29212 /* ThanksEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksEditorVC.swift; sourceTree = "<group>"; };
 		C41760E521CF1C6C00B29212 /* ThanksVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThanksVC+Extension.swift"; sourceTree = "<group>"; };
 		C41760E721CF239200B29212 /* EditorDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorDefaults.swift; sourceTree = "<group>"; };
-		C42A330821B569FC00820AC7 /* ConfirmationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationVC.swift; sourceTree = "<group>"; };
 		C45C5A0421D1C84500E0ABC6 /* TheySaidSoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheySaidSoClient.swift; sourceTree = "<group>"; };
 		C45C5A0621D1CA1A00E0ABC6 /* TheySaidSoConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheySaidSoConstants.swift; sourceTree = "<group>"; };
 		C45C5A0821D1CCE400E0ABC6 /* TheySaidSoConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheySaidSoConvenience.swift; sourceTree = "<group>"; };
-		C45C5A0A21D1D03500E0ABC6 /* Quote-NoCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote-NoCD.swift"; sourceTree = "<group>"; };
-		C45C5A0C21D1D06500E0ABC6 /* QuoteConstants-NoCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuoteConstants-NoCD.swift"; sourceTree = "<group>"; };
-		C45C5A0E21D1D89900E0ABC6 /* QuoteStorage-NoCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuoteStorage-NoCD.swift"; sourceTree = "<group>"; };
 		C46A342D21B3FA0400C31029 /* FeelingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingCell.swift; sourceTree = "<group>"; };
 		C46A342F21B3FE0300C31029 /* CheckInVC+CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckInVC+CollectionViewExtension.swift"; sourceTree = "<group>"; };
-		C46F144C21CE05D600C80533 /* PersonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonConstants.swift; sourceTree = "<group>"; };
-		C46F144E21CE072600C80533 /* PersonStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonStorage.swift; sourceTree = "<group>"; };
-		C46F145021CE07D400C80533 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		C46F145221CE2B5A00C80533 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C46F145421CE2BBF00C80533 /* HomeViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Extension.swift"; sourceTree = "<group>"; };
-		C46F145621CE347400C80533 /* HomeVC+CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+CollectionViewExtension.swift"; sourceTree = "<group>"; };
-		C46F145821CE34CD00C80533 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
-		C4801DCD21CDD50500B2762F /* ContactsSelectionVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactsSelectionVC+Extension.swift"; sourceTree = "<group>"; };
-		C4801DCF21CDD5B300B2762F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		C48D684921CF70D3002AB82B /* HintVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintVC.swift; sourceTree = "<group>"; };
 		C48D684B21CF71AC002AB82B /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		C48D684D21CF765D002AB82B /* HintVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HintVC+Extension.swift"; sourceTree = "<group>"; };
 		C48D684F21CF76F0002AB82B /* HintCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintCell.swift; sourceTree = "<group>"; };
 		C4923CE821D32EE500338D7A /* GCDMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDMain.swift; sourceTree = "<group>"; };
-		C495AD2A21B41F030059F70A /* FeelingCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeelingCell+Model.swift"; sourceTree = "<group>"; };
 		C4A5901C21D08DA60074066F /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		C4A5901E21D08E350074066F /* QuoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteViewController.swift; sourceTree = "<group>"; };
 		C4A5902021D091030074066F /* QuoteVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuoteVC+Extension.swift"; sourceTree = "<group>"; };
@@ -95,7 +69,6 @@
 		C4A5902421D09FB30074066F /* QuoteVC+CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuoteVC+CollectionExtension.swift"; sourceTree = "<group>"; };
 		C4B3861621D304FB00405E4C /* Ripple.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ripple.xcdatamodel; sourceTree = "<group>"; };
 		C4B3861821D3062800405E4C /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		C4B4171F21CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactSelectionVC+CollectionViewExtension.swift"; sourceTree = "<group>"; };
 		C4B9D5E721B2806A00515E40 /* ripple-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ripple-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4B9D5EA21B2806A00515E40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4B9D5EC21B2806A00515E40 /* CheckInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInVC.swift; sourceTree = "<group>"; };
@@ -109,7 +82,6 @@
 		C4E4169421D90745006EC8D2 /* ActivityVC+CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityVC+CollectionExtension.swift"; sourceTree = "<group>"; };
 		C4E460FA21D34E02007081FC /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		C4E4610121D34EA4007081FC /* ActivityVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityVC+Extension.swift"; sourceTree = "<group>"; };
-		C4FF4B4E21C6F8DA004BC137 /* ContactSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSelectionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				C46A342D21B3FA0400C31029 /* FeelingCell.swift */,
-				C46F145021CE07D400C80533 /* PersonCell.swift */,
-				C46F145821CE34CD00C80533 /* HomeCell.swift */,
 				C4A5902221D09B030074066F /* QuoteCell.swift */,
 				C4E4169221D90421006EC8D2 /* ActivityCell.swift */,
 				C48D684F21CF76F0002AB82B /* HintCell.swift */,
@@ -158,14 +128,12 @@
 			isa = PBXGroup;
 			children = (
 				C4B9D5EC21B2806A00515E40 /* CheckInVC.swift */,
-				C4FF4B4E21C6F8DA004BC137 /* ContactSelectionVC.swift */,
 				C4A5901C21D08DA60074066F /* CustomTabBarController.swift */,
 				C46F145221CE2B5A00C80533 /* HomeViewController.swift */,
 				C4A5901E21D08E350074066F /* QuoteViewController.swift */,
 				C4E460FA21D34E02007081FC /* ActivityViewController.swift */,
 				C41760E321CF1BB900B29212 /* ThanksEditorVC.swift */,
 				C48D684921CF70D3002AB82B /* HintVC.swift */,
-				C42A330821B569FC00820AC7 /* ConfirmationVC.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -174,15 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				C4923CE721D32ECD00338D7A /* GCD */,
-				C495AD2A21B41F030059F70A /* FeelingCell+Model.swift */,
-				C4801DCF21CDD5B300B2762F /* Person.swift */,
-				C46F144E21CE072600C80533 /* PersonStorage.swift */,
-				C46F144C21CE05D600C80533 /* PersonConstants.swift */,
 				C41760E721CF239200B29212 /* EditorDefaults.swift */,
 				C48D684B21CF71AC002AB82B /* Page.swift */,
-				C45C5A0A21D1D03500E0ABC6 /* Quote-NoCD.swift */,
-				C45C5A0E21D1D89900E0ABC6 /* QuoteStorage-NoCD.swift */,
-				C45C5A0C21D1D06500E0ABC6 /* QuoteConstants-NoCD.swift */,
 				C4B3861521D304FB00405E4C /* Ripple.xcdatamodeld */,
 				C4B3861821D3062800405E4C /* DataController.swift */,
 			);
@@ -194,7 +155,6 @@
 			children = (
 				C4B9D5EA21B2806A00515E40 /* AppDelegate.swift */,
 				C4E460FC21D34E47007081FC /* CheckInVC */,
-				C4E460FD21D34E60007081FC /* ContactsSelectionVC */,
 				C4E460FE21D34E6E007081FC /* HomeVC */,
 				C4E460FF21D34E7A007081FC /* QuoteVC */,
 				C41760E521CF1C6C00B29212 /* ThanksVC+Extension.swift */,
@@ -266,20 +226,10 @@
 			path = CheckInVC;
 			sourceTree = "<group>";
 		};
-		C4E460FD21D34E60007081FC /* ContactsSelectionVC */ = {
-			isa = PBXGroup;
-			children = (
-				C4801DCD21CDD50500B2762F /* ContactsSelectionVC+Extension.swift */,
-				C4B4171F21CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift */,
-			);
-			path = ContactsSelectionVC;
-			sourceTree = "<group>";
-		};
 		C4E460FE21D34E6E007081FC /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
 				C46F145421CE2BBF00C80533 /* HomeViewController+Extension.swift */,
-				C46F145621CE347400C80533 /* HomeVC+CollectionViewExtension.swift */,
 			);
 			path = HomeVC;
 			sourceTree = "<group>";
@@ -421,38 +371,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C42A330921B569FC00820AC7 /* ConfirmationVC.swift in Sources */,
-				C495AD2B21B41F030059F70A /* FeelingCell+Model.swift in Sources */,
-				C46F145121CE07D400C80533 /* PersonCell.swift in Sources */,
 				C48D684E21CF765D002AB82B /* HintVC+Extension.swift in Sources */,
 				C4923CE921D32EE500338D7A /* GCDMain.swift in Sources */,
-				C45C5A0B21D1D03500E0ABC6 /* Quote-NoCD.swift in Sources */,
 				C4B3861921D3062800405E4C /* DataController.swift in Sources */,
 				C41760E821CF239200B29212 /* EditorDefaults.swift in Sources */,
 				C4A5902521D09FB30074066F /* QuoteVC+CollectionExtension.swift in Sources */,
 				C46F145321CE2B5A00C80533 /* HomeViewController.swift in Sources */,
 				C45C5A0521D1C84500E0ABC6 /* TheySaidSoClient.swift in Sources */,
-				C46F144D21CE05D600C80533 /* PersonConstants.swift in Sources */,
-				C4FF4B4F21C6F8DA004BC137 /* ContactSelectionVC.swift in Sources */,
 				C45C5A0721D1CA1A00E0ABC6 /* TheySaidSoConstants.swift in Sources */,
 				C48D685021CF76F0002AB82B /* HintCell.swift in Sources */,
 				C46A342E21B3FA0400C31029 /* FeelingCell.swift in Sources */,
 				C4B9D5ED21B2806A00515E40 /* CheckInVC.swift in Sources */,
-				C4801DCE21CDD50500B2762F /* ContactsSelectionVC+Extension.swift in Sources */,
 				C4B9D5FD21B2841B00515E40 /* CheckInVC+Extensions.swift in Sources */,
-				C45C5A0D21D1D06500E0ABC6 /* QuoteConstants-NoCD.swift in Sources */,
 				C4B9D60321B2920200515E40 /* UIView+Extensions.swift in Sources */,
 				C4B9D5EB21B2806A00515E40 /* AppDelegate.swift in Sources */,
 				C4E4169321D90421006EC8D2 /* ActivityCell.swift in Sources */,
-				C46F145721CE347400C80533 /* HomeVC+CollectionViewExtension.swift in Sources */,
 				C48D684C21CF71AC002AB82B /* Page.swift in Sources */,
 				C41760E621CF1C6C00B29212 /* ThanksVC+Extension.swift in Sources */,
 				C4E460FB21D34E02007081FC /* ActivityViewController.swift in Sources */,
-				C4B4172021CDF58800FB0BBD /* ContactSelectionVC+CollectionViewExtension.swift in Sources */,
-				C46F145921CE34CD00C80533 /* HomeCell.swift in Sources */,
 				C41760E421CF1BB900B29212 /* ThanksEditorVC.swift in Sources */,
 				C4E4169521D90745006EC8D2 /* ActivityVC+CollectionExtension.swift in Sources */,
-				C45C5A0F21D1D89900E0ABC6 /* QuoteStorage-NoCD.swift in Sources */,
 				C46A343021B3FE0300C31029 /* CheckInVC+CollectionViewExtension.swift in Sources */,
 				C4A5901D21D08DA60074066F /* CustomTabBarController.swift in Sources */,
 				C4A5902321D09B030074066F /* QuoteCell.swift in Sources */,
@@ -461,8 +399,6 @@
 				C48D684A21CF70D3002AB82B /* HintVC.swift in Sources */,
 				C45C5A0921D1CCE400E0ABC6 /* TheySaidSoConvenience.swift in Sources */,
 				C4B3861721D304FB00405E4C /* Ripple.xcdatamodeld in Sources */,
-				C46F144F21CE072600C80533 /* PersonStorage.swift in Sources */,
-				C4801DD021CDD5B300B2762F /* Person.swift in Sources */,
 				C4B9D60121B28C7A00515E40 /* UIColor+Extensions.swift in Sources */,
 				C46F145521CE2BBF00C80533 /* HomeViewController+Extension.swift in Sources */,
 				C4A5902121D091030074066F /* QuoteVC+Extension.swift in Sources */,

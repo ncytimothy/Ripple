@@ -25,10 +25,6 @@ extension QuoteViewController: UICollectionViewDelegate, UICollectionViewDataSou
                     loadingIndicator.centerYAnchor.constraint(equalTo: quoteCollectionView.centerYAnchor)
                 ])
             
-//            quoteCollectionView.isScrollEnabled = false
-            
-            
-            
         }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -47,8 +43,7 @@ extension QuoteViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        // TODO: Perhaps dynamic sizing
+
        let longText = fetchedResultsController.object(at: indexPath).quoteString
         let rect = NSString(string: longText ?? "Long Quote").boundingRect(with: CGSize(width: view.frame.width, height: 1000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)], context: nil)
         

@@ -61,13 +61,8 @@ extension ActivityViewController {
             activityCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             activityCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             activityCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
-            
-            
-            
-            
+    
             ])
-        
-        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -48,8 +48,6 @@ extension CheckInViewController: UICollectionViewDataSource, UICollectionViewDel
         let cell = collectionView.cellForItem(at: indexPath) as! FeelingCell
         
         guard let feelingText = cell.feeling?.feelingString else  { return }
-//        let currentText = textToSend
-//        textToSend = currentText
         updateSelectUI(cell: cell)
     }
     
@@ -57,44 +55,4 @@ extension CheckInViewController: UICollectionViewDataSource, UICollectionViewDel
         let cell = collectionView.cellForItem(at: indexPath) as! FeelingCell
         updateSelectUI(cell: cell)
     }
-    
-  
-
-//    func updateSelectUI(cell: FeelingCell) {
-//        
-//        if cell.isSelected {
-//            if  cell.colorOverlay.alpha == 0.0 {
-//                animateSelectOverlay(cell)
-//                nextButton.isHidden = false
-//            } else {
-//                animateDeselectOverlay(cell)
-//                nextButton.isHidden = true
-//            }
-//        }
-//        
-//        if !cell.isSelected && cell.colorOverlay.alpha != 0.0 {
-//            animateDeselectOverlay(cell)
-//        }
-//        
-//    }
-    
-//    fileprivate func animateSelectOverlay(_ cell: FeelingCell) {
-//        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options:                     [.curveEaseIn, .curveEaseOut], animations: {
-//            cell.colorOverlay.alpha = 0.68
-//            cell.colorOverlay.bounds.size.height -= 20
-//            cell.colorOverlay.bounds.size.width -= 20
-//        }, completion: nil
-//        )
-//    }
-//    
-//    
-//    fileprivate func animateDeselectOverlay(_ cell: FeelingCell) {
-//        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [.curveEaseIn, .curveEaseOut], animations: {
-//            cell.colorOverlay.bounds.size.height += 20
-//            cell.colorOverlay.bounds.size.width += 20
-//            cell.colorOverlay.alpha = 0.0
-//        }, completion: nil
-//        )
-//    }
-    
 }
