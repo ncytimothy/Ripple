@@ -63,9 +63,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let quoteVC = tabBarViewControllers[TabBarControllerConstants.QuoteViewController] as! QuoteViewController
         let homeVC = tabBarViewControllers[TabBarControllerConstants.HomeViewController] as! HomeViewController
+        let activityVC = tabBarViewControllers[TabBarControllerConstants.ActivityViewController] as! ActivityViewController
         
         quoteVC.dataController = dataController
         homeVC.dataController = dataController
+        activityVC.dataController = dataController
+        
         
         dataController.load()
 //        setUpFeeings()

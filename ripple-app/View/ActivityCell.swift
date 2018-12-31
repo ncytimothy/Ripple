@@ -19,6 +19,24 @@ class ActivityCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var gratitude: Gratitude? {
+        didSet {
+            if let gratitudeString = gratitude?.gratitudeString {
+                gratitudeTextView.text = gratitudeString
+            }
+            
+            if let feeling = gratitude?.feeling, let imageName = feeling.imageName {
+                feelingImageView.image = UIImage(named: imageName) 
+            }
+            
+            if let date = gratitude?.creationDate {
+                let dateString = dateFormatter.string(from: date)
+                dateLabel.text = dateString
+            }
+            
+        }
+    }
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 17)

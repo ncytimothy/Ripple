@@ -39,7 +39,7 @@ extension QuoteViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: quoteCellId, for: indexPath) as! QuoteCell
         
         //GUARD TO BE USED AND NEEDED
-        // This is guard away the unneccesary redownloading of photos when the
+        // This is guard away the unneccesary redownloading of quotes when the
         // persistent store already exists
         guard !(self.fetchedResultsController.fetchedObjects?.isEmpty)! else { return cell }
         cell.quote = self.fetchedResultsController.object(at: indexPath)

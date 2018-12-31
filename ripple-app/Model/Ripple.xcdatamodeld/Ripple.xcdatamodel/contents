@@ -4,6 +4,12 @@
         <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="feelingString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="gratitudes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gratitude" inverseName="feeling" inverseEntity="Gratitude" syncable="YES"/>
+    </entity>
+    <entity name="Gratitude" representedClassName="Gratitude" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="gratitudeString" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="feeling" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Feeling" inverseName="gratitudes" inverseEntity="Feeling" syncable="YES"/>
     </entity>
     <entity name="Quote" representedClassName="Quote" syncable="YES" codeGenerationType="class">
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,7 +18,8 @@
         <attribute name="quoteString" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Quote" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Feeling" positionX="-54" positionY="18" width="128" height="90"/>
+        <element name="Feeling" positionX="69.9296875" positionY="-196.953125" width="128" height="103"/>
+        <element name="Quote" positionX="99.89453125" positionY="-20.26953125" width="128" height="103"/>
+        <element name="Gratitude" positionX="-131.31640625" positionY="-181.90234375" width="128" height="88"/>
     </elements>
 </model>

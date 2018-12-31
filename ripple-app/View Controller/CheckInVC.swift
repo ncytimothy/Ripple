@@ -59,7 +59,7 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
         static let cellsCount: Int = 6
     }
     
-    
+    var selectedCell = FeelingCell()
     
 //--------------------------------------------------------------------------------------------------
     // MARK: Lifecycle
@@ -120,11 +120,17 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
         feeling.imageName = imageName
         feeling.feelingString = feelingString
         feeling.creationDate = Date()
-        do {
-            try dataController.viewContext.save()
-        } catch {
-            debugPrint("Cannot save feeling to Core Data")
+        
+        if dataController.viewContext.hasChanges {
+            print("hasChanges...")
+            do {
+                try dataController.viewContext.save()
+            } catch {
+                debugPrint("Cannot save feeling to Core Data")
+            }
         }
+        
+        
     }
     
     fileprivate func setUpFeeings() {
@@ -177,7 +183,8 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
             guard let indexPathForSelectItems = feelingsCollectionView.indexPathsForSelectedItems else { return }
             
             for indexPath in indexPathForSelectItems {
-                let selectedCell = feelingsCollectionView.cellForItem(at: indexPath) as! FeelingCell
+                selectedCell = feelingsCollectionView.cellForItem(at: indexPath) as! FeelingCell
+                
                 guard let feelingText = selectedCell.feeling?.feelingString else { return }
                 
                 messageController.body = textToSend + " " + "#Feeling\(feelingText)"
@@ -217,6 +224,20 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
         switch result {
         case .sent:
             print("sent")
+            
+            let gratitude = Gratitude(context: dataController.viewContext)
+            gratitude.gratitudeString = textToSend
+            gratitude.creationDate = Date()
+            gratitude.feeling = selectedCell.feeling
+            
+            do {
+                try dataController.viewContext.save()
+            } catch {
+                debugPrint("Cannot save gratitude!")
+            }
+            
+            print("gratitude: \(gratitude)")
+            
             dismiss(animated: true, completion: {
                 self.dismiss(animated: true, completion: nil)
             })
