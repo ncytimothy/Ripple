@@ -47,21 +47,20 @@ class ActivityCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFit
         print("imageView.intrinsicContentSize: \(imageView.intrinsicContentSize)")
         imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
-//        imageView.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .vertical)
+    imageView.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
         
-        imageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.horizontal)
+//        imageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.horizontal)
         
         return imageView
     }()
     
     let gratitudeTextView: UITextView = {
         let textView = UITextView()
-        textView.text = "Hi John, thanks for always being there for me and listening to my troubles. \n\nI was worried about finding a job and anxious when seeing other people were getting job offers."
+        textView.text = "Hi Jennifer, thank you for always being here for me and listening to what’s on my mind. \n\nI had a lot fun with you in our trip and I value your genuine attitude towards life. <3"
         textView.font = UIFont.systemFont(ofSize: 17)
         textView.translatesAutoresizingMaskIntoConstraints = false
-//      textView.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
-        textView.setContentHuggingPriority(UILayoutPriority.defaultLow, for: NSLayoutConstraint.Axis.horizontal)
+      textView.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
+//        textView.setContentHuggingPriority(UILayoutPriority.defaultLow, for: NSLayoutConstraint.Axis.horizontal)
         return textView
     }()
     
@@ -83,9 +82,10 @@ class ActivityCell: UICollectionViewCell {
         let stackView = UIStackView(arrangedSubviews: [feelingImageView, gratitudeTextView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
 //        stackView.alignment = .fill
         stackView.axis = .horizontal
+        stackView.spacing = 20
         
 
         addSubview(titleLabel)
@@ -110,12 +110,12 @@ class ActivityCell: UICollectionViewCell {
 //            feelingImageView.widthAnchor.constraint(equalToConstant: 80),
             
            
-//            gratitudeTextView.widthAnchor.constraint(equalToConstant: 90),
+            gratitudeTextView.widthAnchor.constraint(equalToConstant: 250),
             
             stackView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 8),
 //            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            stackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            stackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8),
             stackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.6)
             
             
