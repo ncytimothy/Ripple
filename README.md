@@ -60,3 +60,6 @@ Activity View Controller:
 # Ripple's Future
 Firebase Implementation
 - Firebase Realtime Messaging will be implemented in additon to the MFMessageComposeViewController so that users can stay within the app
+
+Contacts Suggestion
+- Import contacts and show suggested people to send gratitude messages to (MVP for now)
