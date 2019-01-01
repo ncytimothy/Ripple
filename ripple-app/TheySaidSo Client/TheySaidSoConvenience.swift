@@ -135,6 +135,8 @@ extension TheySaidSoClient {
     fileprivate func convertJSONForRandomQuote(result: AnyObject, attribute: String) -> String? {
         var randomQuoteAttribute: String? = nil
         
+        print("result: \(result)")
+        
         guard let contentsDictionary = result[TheySaidSoResponseKeys.Contents] as? [String:AnyObject], let quoteAttribute = contentsDictionary[attribute] as? String else {
             debugPrint("Cannot find keys '\(TheySaidSoResponseKeys.Contents)' or '\(attribute)' in '\(result)'")
             randomQuoteAttribute = ""
