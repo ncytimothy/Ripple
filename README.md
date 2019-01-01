@@ -39,4 +39,24 @@ Check In View Controller:
 - User will see a menu of feelings/emojis to be tagged to their messages
 - The emojis are persisted locally on the device 
 - When the user taps on "Send", the button will check if SMS services are available on the device (to prevent crashing)
-- If SMS services are available, then the user will be prompted with MFMessasgeComposeViewController UI
+- If SMS services are available, then the user will be prompted with MFMessasgeComposeViewController UI (MessageUI)
+- Afer the message is sent in the MFMessageComposeViewController, the gratitude will be persisted (where a relationship is already created between the feeling and gratitude)
+
+Feeling and Gratitude Relationship
+- Gratitude - 1 to 1 -- Feeling
+- Feeling - 1 to M -- Gratitude
+
+Quote View Controller:
+- User can see 5 quotes from TheySaidSo REST API as for message inspiration
+- The quotes are persisted locally
+- The user may refresh the quotes at any time
+- The user is not allowed to refresh the collection view until all quotes have been downloaded (this is prevent the unnecessary download of quotes)
+- Reachability implemented in the controller to check for internet reachability. If internet is not available, then either refresh will not proceed (previously persisted quotes will stay) or download will not initiate at all
+
+Activity View Controller:
+- User can review the historical messages sent previously, where they can see the message body, feeling emoji and creation date
+- The gratitude are being fetched locally
+
+# Ripple's Future
+Firebase Implementation
+- Firebase Realtime Messaging will be implemented in additon to the MFMessageComposeViewController so that users can stay within the app
