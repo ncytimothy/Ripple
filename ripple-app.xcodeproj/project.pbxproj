@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		37ADB96FBD8A7A08419132AB /* Pods_ripple_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849742BD38E57155DC812EB9 /* Pods_ripple_app.framework */; };
+		C40CDE2B21DB43AA0084977F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40CDE2A21DB43AA0084977F /* Reachability.swift */; };
 		C41760E421CF1BB900B29212 /* ThanksEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E321CF1BB900B29212 /* ThanksEditorVC.swift */; };
 		C41760E621CF1C6C00B29212 /* ThanksVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E521CF1C6C00B29212 /* ThanksVC+Extension.swift */; };
 		C41760E821CF239200B29212 /* EditorDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E721CF239200B29212 /* EditorDefaults.swift */; };
@@ -47,6 +48,7 @@
 		64628FC7922314EBB0E74393 /* Pods-ripple-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ripple-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-ripple-app/Pods-ripple-app.release.xcconfig"; sourceTree = "<group>"; };
 		849742BD38E57155DC812EB9 /* Pods_ripple_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ripple_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B994FA87B8A3E71A28FE048C /* Pods-ripple-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ripple-app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ripple-app/Pods-ripple-app.debug.xcconfig"; sourceTree = "<group>"; };
+		C40CDE2A21DB43AA0084977F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = "../../../Downloads/Reachability.swift-master/Sources/Reachability.swift"; sourceTree = "<group>"; };
 		C41760E321CF1BB900B29212 /* ThanksEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksEditorVC.swift; sourceTree = "<group>"; };
 		C41760E521CF1C6C00B29212 /* ThanksVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThanksVC+Extension.swift"; sourceTree = "<group>"; };
 		C41760E721CF239200B29212 /* EditorDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorDefaults.swift; sourceTree = "<group>"; };
@@ -111,6 +113,14 @@
 				64628FC7922314EBB0E74393 /* Pods-ripple-app.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C40CDE2921DB43960084977F /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				C40CDE2A21DB43AA0084977F /* Reachability.swift */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		C42A330421B5698200820AC7 /* View */ = {
@@ -188,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				C4B9D5E921B2806A00515E40 /* ripple-app */,
+				C40CDE2921DB43960084977F /* Reachability */,
 				C4B9D5E821B2806A00515E40 /* Products */,
 				223DB6786511B36C5976E25B /* Pods */,
 				1FCB716F9FA4637AC7B7F06B /* Frameworks */,
@@ -401,6 +412,7 @@
 				C4B3861721D304FB00405E4C /* Ripple.xcdatamodeld in Sources */,
 				C4B9D60121B28C7A00515E40 /* UIColor+Extensions.swift in Sources */,
 				C46F145521CE2BBF00C80533 /* HomeViewController+Extension.swift in Sources */,
+				C40CDE2B21DB43AA0084977F /* Reachability.swift in Sources */,
 				C4A5902121D091030074066F /* QuoteVC+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

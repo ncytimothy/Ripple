@@ -49,6 +49,10 @@ class QuoteViewController: UIViewController {
         return button
     }()
     
+    let reachability = Reachability()!
+    
+     var successCount: Int = 0
+    
 //-------------------------------------------------------------------------------------------------------------------------------------
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -60,9 +64,15 @@ class QuoteViewController: UIViewController {
 
     }
     
+
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpFetchedResultsController()
+
+        isReachable()
+        setupReachabilityObserver()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -105,8 +115,42 @@ class QuoteViewController: UIViewController {
 // -------------------------------------------------------------------------
     // MARK: - Actions
     
+    fileprivate func setRefreshButton(_ isRefreshed: Bool) {
+        refreshButton.isEnabled = isRefreshed
+        
+        if isRefreshed {
+            refreshButton.alpha = 1.0
+        } else {
+            refreshButton.alpha = 0.5
+        }
+      
+    }
+    
+    fileprivate func setRefreshCollectionView(_ isRefreshed: Bool) {
+        quoteCollectionView.isScrollEnabled = isRefreshed
+        
+        if isRefreshed {
+            loadingIndicator.stopAnimating()
+        } else {
+            loadingIndicator.startAnimating()
+        }
+        
+        
+    }
+    
     @objc func refreshPressed() {
         
+        guard (reachability.connection != .none) else {
+            print("No internet")
+            self.presentAlert(TheySaidSoClient.Alert.NoInternetTitle, TheySaidSoClient.Alert.NoInternetMessage, TheySaidSoClient.Alert.OK, completion: {
+                self.loadingIndicator.stopAnimating()
+            })
+            return
+        }
+        
+        successCount = 0
+        setRefreshButton(false)
+    
         deleteAllQuotes()
         downloadRandomQuotes()
         
@@ -116,9 +160,6 @@ class QuoteViewController: UIViewController {
     // MARK: - Delete Quotes
     
     func deleteAllQuotes() {
-        quoteCollectionView.isScrollEnabled = false
-        loadingIndicator.startAnimating()
-        
         if let quotesToDelete = fetchedResultsController.fetchedObjects {
             for quoteToDelete in quotesToDelete {
                 dataController.viewContext.delete(quoteToDelete)
@@ -140,6 +181,9 @@ class QuoteViewController: UIViewController {
         guard (fetchedResultsController.fetchedObjects?.isEmpty)! else { return }
         
         while downloadCount < CollectionViewConstants.cellsCount {
+            loadingIndicator.startAnimating()
+            setRefreshCollectionView(false)
+            setRefreshButton(false)
             addRandomQuote()
             downloadCount += 1
         }
@@ -159,11 +203,70 @@ class QuoteViewController: UIViewController {
     
     fileprivate func addRandomQuote() {
         guard (fetchedResultsController.fetchedObjects?.isEmpty)! else { return }
-        
+
+
         TheySaidSoClient.sharedInstance().downloadRandomQuote(dataController: dataController) { (success, error) in
             if success {
-                debugPrint("Success!")
+                self.successCount += 1
+                performUIUpdatesOnMain {
+                    self.setRefreshCollectionView(true)
+                   
+                }
+                if self.successCount == CollectionViewConstants.cellsCount {
+                    performUIUpdatesOnMain {
+                       self.setRefreshButton(true)
+                    }
+                }
             }
+        }
+    }
+    
+    private func presentAlert(_ title: String, _ message: String, _ action: String, completion: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString(action, comment: "Default action"), style: .default, handler: {_ in
+            NSLog("The \"\(title)\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: completion)
+    }
+    
+    func isReachable() {
+        reachability.whenReachable = { _ in
+            print("Network reachable")
+        }
+        
+        reachability.whenUnreachable = { _ in
+            self.presentAlert(TheySaidSoClient.Alert.NoInternetTitle, TheySaidSoClient.Alert.NoInternetMessage, TheySaidSoClient.Alert.OK, completion: nil)
+            self.loadingIndicator.stopAnimating()
+            self.setRefreshButton(true)
+        }
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+        
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .wifi:
+            print("Reachable via WiFi")
+        case .cellular:
+            print("Reachable via Cellular")
+        case .none:
+            print("Network not reachable")
+        }
+    }
+    
+    fileprivate func setupReachabilityObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        do {
+            try reachability.startNotifier()
+        } catch {
+            debugPrint("Could not start reachability notifier")
         }
     }
 }

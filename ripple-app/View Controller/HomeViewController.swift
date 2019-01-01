@@ -156,8 +156,8 @@ class HomeViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
 
         alert.addTextField()
-        alert.addAction(confirmAction)
         alert.addAction(cancelAction)
+        alert.addAction(confirmAction)
         self.present(alert, animated: true, completion: nil)
     }
     

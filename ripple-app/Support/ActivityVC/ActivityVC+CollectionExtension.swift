@@ -21,11 +21,9 @@ extension ActivityViewController: UICollectionViewDelegate, UICollectionViewData
         activityCollectionView.translatesAutoresizingMaskIntoConstraints = false
         activityCollectionView.backgroundColor = .primaryOrange
     
-
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
         return fetchedResultsController.sections?[section].numberOfObjects ?? CollectionViewConstants.cellsCount
     }
     

@@ -53,5 +53,12 @@ extension TheySaidSoClient {
         static let randomQuotesConstants: Int = 8
     }
     
+    struct Alert {
+        static let NoInternetTitle = "No internet connection"
+        static let NoInternetMessage = "Please check your internet connection settings"
+        static let OK = "OK"
+        static let Dismiss = "Dismiss"
+    }
+    
     
 }

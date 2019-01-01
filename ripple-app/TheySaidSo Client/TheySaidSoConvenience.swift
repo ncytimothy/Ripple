@@ -124,8 +124,10 @@ extension TheySaidSoClient {
         
         do {
             try dataController.viewContext.save()
+            completionHandlerForSaveRandomQuoteToCoreData(true)
         } catch {
             debugPrint("Cannot save quote to Core Data")
+               completionHandlerForSaveRandomQuoteToCoreData(false)
         }
         
     }
