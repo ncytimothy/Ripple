@@ -63,3 +63,9 @@ Firebase Implementation
 
 Contacts Suggestion
 - Import contacts and show suggested people to send gratitude messages to (MVP for now)
+
+Tagging Feelings
+- Sending messages bit, since it brings up the message compose controller, it may not be optimal (Now it’s called “Tag”)
+
+Actionable Quotes
+- Do something when you tap on the quote
