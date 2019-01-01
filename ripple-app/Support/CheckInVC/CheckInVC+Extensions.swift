@@ -33,7 +33,7 @@ extension CheckInViewController {
             
             let attributedText = NSMutableAttributedString(string: "Tag a feeling", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
             
-            attributedText.append(NSAttributedString(string: "\nTag a feeling to your message and experience", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
+            attributedText.append(NSAttributedString(string: "\nTag a feeling to your message", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
             
             textView.attributedText = attributedText
             

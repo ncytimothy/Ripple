@@ -66,7 +66,6 @@ class ActivityCell: UICollectionViewCell {
         print("imageView.intrinsicContentSize: \(imageView.intrinsicContentSize)")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
-        
 //        imageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.horizontal)
         
         return imageView
@@ -129,13 +128,13 @@ class ActivityCell: UICollectionViewCell {
 //            feelingImageView.widthAnchor.constraint(equalToConstant: 20),
             
            
-            gratitudeTextView.widthAnchor.constraint(equalToConstant: 250),
+            gratitudeTextView.widthAnchor.constraint(equalToConstant: 200),
             
             stackView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 8),
 //            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
             stackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
             stackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8),
-            stackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.6)
+            stackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.68)
             
             
             

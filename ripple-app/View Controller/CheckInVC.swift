@@ -30,7 +30,7 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
     // Fetched Results Controller
     var fetchedResultsController: NSFetchedResultsController<Feeling>!
     
-    let nextButton: UIButton = CheckInViewController.setButtonFor(title: "SEND")
+    let nextButton: UIButton = CheckInViewController.setButtonFor(title: "TAG")
     let cancelButton: UIButton = CheckInViewController.setButtonFor(title: "CANCEL")
     
     enum FeelingConstants {

@@ -27,7 +27,7 @@ extension QuoteViewController {
             
             let attributedText = NSMutableAttributedString(string: "Quotes of the Day", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 32), NSAttributedString.Key.foregroundColor: UIColor.white])
             
-            attributedText.append(NSAttributedString(string: "\nGet some inspiration for your gratitudes!", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
+            attributedText.append(NSAttributedString(string: "\nGet inspired!", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white]))
             
             textView.attributedText = attributedText
             
