@@ -58,6 +58,7 @@ class HomeViewController: UIViewController {
         
         textView.isEditable = false
         textView.isSelectable = false
+        textView.isScrollEnabled = false
         
         textView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -165,9 +166,9 @@ class HomeViewController: UIViewController {
     fileprivate func setGratitudeAttributedString(_ gratitudeCount: Int) -> NSAttributedString {
         
         if gratitudeCount == 1 {
-            return NSAttributedString(string: "\nYou have given \(gratitudeCount) gratitude so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white])
+            return NSAttributedString(string: "\nYou have given \(gratitudeCount) gratitude", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white])
         } else {
-            return NSAttributedString(string: "\nYou have given \(gratitudeCount) gratitudes so far", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white])
+            return NSAttributedString(string: "\nYou have given \(gratitudeCount) gratitudes", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22), NSAttributedString.Key.foregroundColor: UIColor.white])
         }
     }
     

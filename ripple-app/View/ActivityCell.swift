@@ -65,7 +65,7 @@ class ActivityCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFit
         print("imageView.intrinsicContentSize: \(imageView.intrinsicContentSize)")
         imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
+        imageView.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
         
 //        imageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.horizontal)
         
@@ -74,9 +74,10 @@ class ActivityCell: UICollectionViewCell {
     
     let gratitudeTextView: UITextView = {
         let textView = UITextView()
-        textView.text = "Hi Jennifer, thank you for always being here for me and listening to what’s on my mind. \n\nI had a lot fun with you in our trip and I value your genuine attitude towards life. <3"
+        textView.text = "Hi Emma, thank you for always being here for me and listening to what’s on my mind. \n\nI had a lot fun with you in our trip and I value your genuine attitude towards life. <3"
         textView.font = UIFont.systemFont(ofSize: 17)
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isEditable = false
       textView.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
 //        textView.setContentHuggingPriority(UILayoutPriority.defaultLow, for: NSLayoutConstraint.Axis.horizontal)
         return textView
@@ -124,8 +125,8 @@ class ActivityCell: UICollectionViewCell {
             dateLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15),
             dateLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             
-//            feelingImageView.heightAnchor.constraint(equalToConstant: 80),
-//            feelingImageView.widthAnchor.constraint(equalToConstant: 80),
+//            feelingImageView.heightAnchor.constraint(equalToConstant: 20),
+//            feelingImageView.widthAnchor.constraint(equalToConstant: 20),
             
            
             gratitudeTextView.widthAnchor.constraint(equalToConstant: 250),
