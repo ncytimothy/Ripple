@@ -191,15 +191,16 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
             
             do {
                 try dataController.viewContext.save()
+                dismiss(animated: true, completion: {
+                    self.dismiss(animated: true, completion: nil)
+                })
             } catch {
                 debugPrint("Cannot save gratitude!")
             }
             
             print("gratitude: \(gratitude)")
             
-            dismiss(animated: true, completion: {
-                self.dismiss(animated: true, completion: nil)
-            })
+            
             
         case .cancelled:
             print("cancelled")
