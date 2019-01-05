@@ -156,6 +156,14 @@ class QuoteViewController: UIViewController {
         
     }
     
+    @objc func handleTag(_ collectionView: UICollectionView, _ indexPath: IndexPath) {
+        let checkInVC = CheckInViewController()
+        let quoteCell = collectionView.cellForItem(at: indexPath) as! QuoteCell
+        checkInVC.textToSend = quoteCell.quoteTextView.text
+        checkInVC.dataController = dataController
+        show(checkInVC, sender: self)
+    }
+    
 //-------------------------------------------------------------------------------------------------------------------------------------
     // MARK: - Delete Quotes
     

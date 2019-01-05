@@ -15,8 +15,8 @@ extension CheckInViewController {
     
         view.backgroundColor = UIColor.primaryOrange
         
-        nextButton.isEnabled = false
-        nextButton.alpha = 0.5
+        tagButton.isEnabled = false
+        tagButton.alpha = 0.5
         
         cancelButton.setTitleColor(.gray, for: .normal)
 
@@ -69,7 +69,7 @@ extension CheckInViewController {
             return containterView
         }()
         
-        let bottomControlsStackView = UIStackView(arrangedSubviews: [cancelButton, nextButton])
+        let bottomControlsStackView = UIStackView(arrangedSubviews: [cancelButton, tagButton])
         bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
         
         bottomControlsStackView.distribution = .fillEqually
@@ -77,7 +77,7 @@ extension CheckInViewController {
     
 
         
-        nextButton.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
+        tagButton.addTarget(self, action: #selector(handleTag), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(handleCancel), for: .touchUpInside)
         
         view.addSubview(feelingsCollectionView)
@@ -125,12 +125,12 @@ extension CheckInViewController {
         if cell.isSelected {
             if  cell.colorOverlay.alpha == 0.0 {
                 animateSelectOverlay(cell)
-                nextButton.alpha = 1.0
-                nextButton.isEnabled = true
+                tagButton.alpha = 1.0
+                tagButton.isEnabled = true
             } else {
                 animateDeselectOverlay(cell)
-                nextButton.alpha = 0.5
-                nextButton.isEnabled = false
+                tagButton.alpha = 0.5
+                tagButton.isEnabled = false
             }
         }
         

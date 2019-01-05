@@ -47,6 +47,7 @@ class QuoteCell: UICollectionViewCell {
         return label
     }()
     
+    
     let quoteTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 17)
@@ -56,6 +57,7 @@ class QuoteCell: UICollectionViewCell {
         
         textView.isEditable = false
         textView.isScrollEnabled = false
+        textView.isSelectable = false
         
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
@@ -83,12 +85,11 @@ class QuoteCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
                 categoryLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 12),
                 categoryLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-    
                 
                 quoteTextView.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 10),
                 quoteTextView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
                 quoteTextView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-                quoteTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7),
+                quoteTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.425),
             
                 authorLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -12),
                 authorLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -99,5 +100,20 @@ class QuoteCell: UICollectionViewCell {
         
         
     }
+    
+    static func setButtonFor(title: String) -> UIButton {
+        let button = UIButton()
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.primaryOrange, for: .normal)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 8
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }
+    
+//------------------------------------------------------------------------------
+    // MARK: - Actions
+ 
     
 }

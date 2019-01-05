@@ -30,7 +30,7 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
     // Fetched Results Controller
     var fetchedResultsController: NSFetchedResultsController<Feeling>!
     
-    let nextButton: UIButton = CheckInViewController.setButtonFor(title: "TAG")
+    let tagButton: UIButton = CheckInViewController.setButtonFor(title: "TAG")
     let cancelButton: UIButton = CheckInViewController.setButtonFor(title: "CANCEL")
     
     enum FeelingConstants {
@@ -132,7 +132,7 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
     
 // -------------------------------------------------------------------------
     // MARK: - Actions
-    @objc func handleNext() {
+    @objc func handleTag() {
         
         if let indexPathForSelectItems = feelingsCollectionView.indexPathsForSelectedItems {
             print("indexPathForSelectItems: \(indexPathForSelectItems)")

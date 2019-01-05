@@ -30,6 +30,7 @@ extension CheckInViewController: UICollectionViewDataSource, UICollectionViewDel
         feelingsCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         feelingsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         feelingsCollectionView.backgroundColor = UIColor.primaryOrange
+        feelingsCollectionView.allowsSelection = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
