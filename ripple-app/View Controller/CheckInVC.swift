@@ -73,8 +73,9 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
     
     override func viewDidAppear(_ animated: Bool) {
         print("viewDidAppear called")
-        if let feelingsCount = UserDefaults.standard.value(forKey: "setFeelingsBefore") as? Bool {
-            if feelingsCount == false {
+        if let setFeelingsBefore = UserDefaults.standard.value(forKey: "setFeelingsBefore") as? Bool {
+            print("setFeelingsBefore: \(setFeelingsBefore)")
+            if setFeelingsBefore == false {
                 UserDefaults.standard.set(true, forKey: "setFeelingsBefore")
                 setUpFeeings()
             }

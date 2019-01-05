@@ -77,6 +77,7 @@ class ActivityCell: UICollectionViewCell {
         textView.font = UIFont.systemFont(ofSize: 17)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isEditable = false
+        textView.isScrollEnabled = false
       textView.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
 //        textView.setContentHuggingPriority(UILayoutPriority.defaultLow, for: NSLayoutConstraint.Axis.horizontal)
         return textView

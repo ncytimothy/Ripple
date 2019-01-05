@@ -1,0 +1,23 @@
+PODS:
+  - Keys (1.0.1)
+  - PieCharts (0.0.7)
+
+DEPENDENCIES:
+  - Keys (from `Pods/CocoaPodsKeys`)
+  - PieCharts
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - PieCharts
+
+EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys
+
+SPEC CHECKSUMS:
+  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
+  PieCharts: 30e50dfa7dc19e5b84e9878d32089673ef5d0453
+
+PODFILE CHECKSUM: 77fd8dde303ba7e251b61f4282361a56d9f54318
+
+COCOAPODS: 1.5.3

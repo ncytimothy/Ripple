@@ -1,0 +1,6 @@
+framework module Pods_ripple_app {
+  umbrella header "Pods-ripple-app-umbrella.h"
+
+  export *
+  module * { export * }
+}

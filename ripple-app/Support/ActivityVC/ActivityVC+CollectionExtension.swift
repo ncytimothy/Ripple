@@ -33,8 +33,8 @@ extension ActivityViewController: UICollectionViewDelegate, UICollectionViewData
         //GUARD TO BE USED AND NEEDED
         // This is guard away the unneccesary redownloading of quotes when the
         // persistent store already exists
-//        guard !(self.fetchedResultsController.fetchedObjects?.isEmpty)! else { return cell }
-//        cell.gratitude = self.fetchedResultsController.object(at: indexPath)
+        guard !(self.fetchedResultsController.fetchedObjects?.isEmpty)! else { return cell }
+        cell.gratitude = self.fetchedResultsController.object(at: indexPath)
         
         return cell
     }

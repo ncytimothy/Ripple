@@ -22,7 +22,7 @@ class FeelingCell: UICollectionViewCell {
     var feeling: Feeling? {
         didSet {
             
-            if let feelingImageName = feeling?.imageName {
+            if let feelingImageName = feeling?.imageName { 
                 feelingImageView.image = UIImage(named: feelingImageName)
             }
             
