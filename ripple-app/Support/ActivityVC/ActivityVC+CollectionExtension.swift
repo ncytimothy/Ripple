@@ -24,7 +24,6 @@ extension ActivityViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
         return fetchedResultsController.sections?[section].numberOfObjects ?? CollectionViewConstants.cellsCount
     }
     

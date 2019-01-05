@@ -19,26 +19,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="happy" translatesAutoresizingMaskIntoConstraints="NO" id="pKG-8v-9UL">
-                                <rect key="frame" x="137.5" y="103" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="jmK-Jr-nr9"/>
-                                    <constraint firstAttribute="height" constant="100" id="u5g-Zp-YJU"/>
-                                </constraints>
+                                <rect key="frame" x="138" y="103" width="99" height="100"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be ripples of positivity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0v-VO-92g">
-                                <rect key="frame" x="90.5" y="337" width="194" height="23"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="194" id="0Et-2J-Hfi"/>
-                                </constraints>
+                                <rect key="frame" x="91" y="337" width="193" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Ripple" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzR-eB-ikO">
-                                <rect key="frame" x="147.5" y="277" width="80" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Ripple With Us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzR-eB-ikO">
+                                <rect key="frame" x="114" y="277" width="147" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="Kxs-mC-0BT"/>
-                                    <constraint firstAttribute="height" constant="30" id="rSX-Yj-ubK"/>
+                                    <constraint firstAttribute="height" constant="30" id="ldm-bA-jat"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -47,12 +39,15 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.65098039215686276" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="BzR-eB-ikO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="A29-3p-kni"/>
-                            <constraint firstItem="P0v-VO-92g" firstAttribute="top" secondItem="BzR-eB-ikO" secondAttribute="bottom" constant="30" id="GKq-xr-igh"/>
-                            <constraint firstItem="pKG-8v-9UL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="McH-zy-8hQ"/>
-                            <constraint firstItem="pKG-8v-9UL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="83" id="jjT-ao-dI7"/>
-                            <constraint firstItem="BzR-eB-ikO" firstAttribute="centerX" secondItem="P0v-VO-92g" secondAttribute="centerX" id="oFU-b9-giL"/>
-                            <constraint firstItem="BzR-eB-ikO" firstAttribute="top" secondItem="pKG-8v-9UL" secondAttribute="bottom" constant="74" id="xjC-RU-lRg"/>
+                            <constraint firstItem="pKG-8v-9UL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="138" id="BGz-Wz-O7v"/>
+                            <constraint firstItem="pKG-8v-9UL" firstAttribute="centerX" secondItem="BzR-eB-ikO" secondAttribute="centerX" id="Bct-HH-1Xd"/>
+                            <constraint firstItem="BzR-eB-ikO" firstAttribute="top" secondItem="pKG-8v-9UL" secondAttribute="bottom" constant="74" id="FBJ-k4-gvP"/>
+                            <constraint firstItem="pKG-8v-9UL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="H7F-jx-qvt"/>
+                            <constraint firstItem="P0v-VO-92g" firstAttribute="top" secondItem="BzR-eB-ikO" secondAttribute="bottom" constant="30" id="LoO-eu-Mw9"/>
+                            <constraint firstItem="P0v-VO-92g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="91" id="SZR-oe-GbE"/>
+                            <constraint firstItem="BzR-eB-ikO" firstAttribute="centerX" secondItem="P0v-VO-92g" secondAttribute="centerX" id="WI2-uy-xih"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="P0v-VO-92g" secondAttribute="bottom" constant="307" id="ZNg-lP-UHy"/>
+                            <constraint firstItem="pKG-8v-9UL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="83" id="lRI-Ry-MWS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
