@@ -36,6 +36,7 @@ extension CheckInViewController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("fetchedResultsController.sections?[section].numberOfObjects: \(fetchedResultsController.sections?[section].numberOfObjects)")
         return fetchedResultsController.sections?[section].numberOfObjects ?? CollectionViewConstants.cellsCount
+//        return feelingsLive.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

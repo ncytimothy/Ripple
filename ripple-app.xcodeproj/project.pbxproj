@@ -12,6 +12,7 @@
 		C41760E421CF1BB900B29212 /* ThanksEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E321CF1BB900B29212 /* ThanksEditorVC.swift */; };
 		C41760E621CF1C6C00B29212 /* ThanksVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E521CF1C6C00B29212 /* ThanksVC+Extension.swift */; };
 		C41760E821CF239200B29212 /* EditorDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41760E721CF239200B29212 /* EditorDefaults.swift */; };
+		C41EC78521E092A5002E6D62 /* FeelingLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41EC78421E092A5002E6D62 /* FeelingLive.swift */; };
 		C45C5A0521D1C84500E0ABC6 /* TheySaidSoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C5A0421D1C84500E0ABC6 /* TheySaidSoClient.swift */; };
 		C45C5A0721D1CA1A00E0ABC6 /* TheySaidSoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C5A0621D1CA1A00E0ABC6 /* TheySaidSoConstants.swift */; };
 		C45C5A0921D1CCE400E0ABC6 /* TheySaidSoConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45C5A0821D1CCE400E0ABC6 /* TheySaidSoConvenience.swift */; };
@@ -52,6 +53,7 @@
 		C41760E321CF1BB900B29212 /* ThanksEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksEditorVC.swift; sourceTree = "<group>"; };
 		C41760E521CF1C6C00B29212 /* ThanksVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThanksVC+Extension.swift"; sourceTree = "<group>"; };
 		C41760E721CF239200B29212 /* EditorDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorDefaults.swift; sourceTree = "<group>"; };
+		C41EC78421E092A5002E6D62 /* FeelingLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingLive.swift; sourceTree = "<group>"; };
 		C45C5A0421D1C84500E0ABC6 /* TheySaidSoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheySaidSoClient.swift; sourceTree = "<group>"; };
 		C45C5A0621D1CA1A00E0ABC6 /* TheySaidSoConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheySaidSoConstants.swift; sourceTree = "<group>"; };
 		C45C5A0821D1CCE400E0ABC6 /* TheySaidSoConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheySaidSoConvenience.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			children = (
 				C4923CE721D32ECD00338D7A /* GCD */,
 				C41760E721CF239200B29212 /* EditorDefaults.swift */,
+				C41EC78421E092A5002E6D62 /* FeelingLive.swift */,
 				C48D684B21CF71AC002AB82B /* Page.swift */,
 				C4B3861521D304FB00405E4C /* Ripple.xcdatamodeld */,
 				C4B3861821D3062800405E4C /* DataController.swift */,
@@ -391,6 +394,7 @@
 				C45C5A0521D1C84500E0ABC6 /* TheySaidSoClient.swift in Sources */,
 				C45C5A0721D1CA1A00E0ABC6 /* TheySaidSoConstants.swift in Sources */,
 				C48D685021CF76F0002AB82B /* HintCell.swift in Sources */,
+				C41EC78521E092A5002E6D62 /* FeelingLive.swift in Sources */,
 				C46A342E21B3FA0400C31029 /* FeelingCell.swift in Sources */,
 				C4B9D5ED21B2806A00515E40 /* CheckInVC.swift in Sources */,
 				C4B9D5FD21B2841B00515E40 /* CheckInVC+Extensions.swift in Sources */,

@@ -33,6 +33,8 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
     let tagButton: UIButton = CheckInViewController.setButtonFor(title: "TAG")
     let cancelButton: UIButton = CheckInViewController.setButtonFor(title: "CANCEL")
     
+    var feelingsLive = [FeelingLive]()
+    
     enum FeelingConstants {
         struct ImageName {
             static let Happy = "happy"
@@ -65,8 +67,18 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
         super.viewDidLoad()
         
         setupViews()
-        setUpFeeings()
         setUpFetchedResultsController()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear called")
+        if let feelingsCount = UserDefaults.standard.value(forKey: "setFeelingsBefore") as? Bool {
+            if feelingsCount == false {
+                UserDefaults.standard.set(true, forKey: "setFeelingsBefore")
+                setUpFeeings()
+            }
+        }
         
     }
     
@@ -104,21 +116,20 @@ class CheckInViewController: UIViewController, MFMessageComposeViewControllerDel
     
     fileprivate func setFeeling(imageName: String, feelingString: String) {
         print("setFeeling...")
+//        let feeling = FeelingLive(imageName: imageName, feelingString: feelingString)
+//        feelingsLive.append(feeling)
+        
         let feeling = Feeling(context: dataController.viewContext)
         feeling.imageName = imageName
         feeling.feelingString = feelingString
         feeling.creationDate = Date()
-        
-        if dataController.viewContext.hasChanges {
-            print("hasChanges...")
-            do {
-                try dataController.viewContext.save()
-            } catch {
-                debugPrint("Cannot save feeling to Core Data")
-            }
+    
+        do {
+            try dataController.viewContext.save()
+          
+        } catch {
+            debugPrint("Cannot save feeling to Core Data")
         }
-        
-        
     }
 
     fileprivate func setUpFeeings() {

@@ -31,6 +31,4 @@ class CustomTabBarController: UITabBarController {
         viewControllers = tabBarList
  
     }
-    
-    
 }

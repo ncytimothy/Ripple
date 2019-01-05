@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         homeVC.dataController = dataController
         activityVC.dataController = dataController
         
+        checkIfFirstLaunch()
         
         dataController.load()
 
@@ -84,6 +85,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         saveViewContext()
+    }
+    
+    func checkIfFirstLaunch() {
+        if UserDefaults.standard.bool(forKey: "hasLaunchedBefore") {
+            print("App launched before")
+        } else {
+            print("This is the first laucnh ever!")
+            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+            UserDefaults.standard.set(false, forKey: "setFeelingsBefore")
+        }
     }
 }
 

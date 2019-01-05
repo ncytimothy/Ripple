@@ -146,7 +146,6 @@ class HomeViewController: UIViewController {
             let trimmedString = unwrappedUsername.trimmingCharacters(in: .whitespaces)
     
             if !(trimmedString == "") {
-                print("here!")
                usernameString = unwrappedUsername
             }
             
